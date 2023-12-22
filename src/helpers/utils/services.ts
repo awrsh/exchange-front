@@ -17,6 +17,7 @@ export const logRequestedUrl = ({ baseURL, method, url }: AxiosRequestConfig) =>
     }
 };
 
+
 export const generateFormData = (obj: object) => {
     const data = new FormData();
     Object.entries(obj).forEach(([key, value]) => {
