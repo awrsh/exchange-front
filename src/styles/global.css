@@ -1,3 +1,50 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+    font-family: "bold";
+    src: url("../assets/fonts/IRANYekanBold.ttf");
+}
+@font-face {
+    font-family: "extrabold";
+    src: url("../assets/fonts/IRANYekanExtraBold.ttf");
+}
+@font-face {
+    font-family: "extrablack";
+    src: url("../assets/fonts/IRANYekanBlack.ttf");
+}
+@font-face {
+    font-family: "ex-bold";
+    src: url("../assets/fonts/IRANYekanExtraBlack.ttf");
+}
+@font-face {
+    font-family: "regular";
+    src: url("../assets/fonts/IRANYekanRegular.ttf");
+}
+@font-face {
+    font-family: "medium";
+    src: url("../assets/fonts/IRANYekanMedium.ttf");
+}
+@font-face {
+    font-family: "light";
+    src: url("../assets/fonts/IRANYekanLight.ttf");
+}
+@font-face {
+    font-family: "thin";
+    src: url("../assets/fonts/IRANYekanThin.ttf");
+}
+@font-face {
+    font-family: "num";
+    src: url("../assets/fonts/num.ttf");
+}
+
+@layer utilities {
+    .layout{
+        @apply w-[90%] mx-auto
+    }
+}
+body {
+    direction: rtl;
+}

@@ -5,7 +5,19 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "bold": "bold",
+        "extrabold": "extrabold",
+        "extrablack": "extrablack",
+        "black": "black",
+        "thin": "thin",
+        "light": "light",
+        "regular": "regular",
+        "medium": "medium",
+        "num": "num",
+      }
   },
-  plugins: [],
+},
+plugins: [],
 }
