@@ -6,10 +6,6 @@ import Verify from "./pages/auth/verify"
 const Pages = [
   {
     path:"/",
-    element:<p>testststsst</p>
-  },
-  {
-    path:"/auth",
     element:<Auth/>
   },
   {
