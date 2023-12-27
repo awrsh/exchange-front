@@ -10,14 +10,14 @@ import Slide2 from "../../assets/images/slide2.jpeg"
 
 const Verify = () => {
     const navigate = useNavigate()
-    const [value, setValue] = useState("");
+    const [value] = useState("");
     const [minutes, setMinutes] = useState(2);
     const [seconds, setSeconds] = useState(30);
     const [searchParams] = useSearchParams()
-    const onCompleted = async (code: string) => {
-        setValue(code);
-    };
-
+  
+const onSubmit = ()=>{
+    navigate(`/auth/register?phone=${searchParams.get("phone")}`)
+}
 
 
     return (
@@ -41,10 +41,10 @@ const Verify = () => {
                     </div>
 
                     <span className="block mt-14">
-                        <ReactInputVerificationCode onChange={onCompleted} placeholder="" length={4} value={value} />
+                        <ReactInputVerificationCode  placeholder="" length={4} value={value} />
                     </span>
 
-                    <Button name="تائید کد" containerClass="!mt-14" />
+                    <Button onClick={onSubmit} name="تائید کد" containerClass="!mt-14" />
                 </div>
             </div>
             <div className="flex-1 hidden lg:flex bg-neutral-50">

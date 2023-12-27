@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        "int": "#1F0990",
+      },
       fontFamily: {
         "bold": "bold",
         "extrabold": "extrabold",
@@ -17,7 +20,7 @@ export default {
         "medium": "medium",
         "num": "num",
       }
+    },
   },
-},
-plugins: [],
+  plugins: [],
 }

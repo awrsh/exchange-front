@@ -9,7 +9,7 @@ interface Props {
 }
 const Button = ({ name, disabled, className, type="submit", onClick, containerClass  }: Props) => {
     return (
-        <ButtonMui type={type} disabled={disabled} className={`!flex !justify-center  !text-white !items-center w-full !py-3 !bg-indigo-500 hover:!bg-indigo-600 ${containerClass}`} onClick={onClick}>
+        <ButtonMui  type={type} disabled={disabled} className={`!flex !justify-center  !text-white !items-center w-full !py-3 !bg-int ${containerClass}`} onClick={onClick}>
             <span className={`font-bold  ${className}`}>{name}</span>
         </ButtonMui>
     )

@@ -1,8 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
 @font-face {
     font-family: "bold";
     src: url("../assets/fonts/IRANYekanBold.ttf");
@@ -57,8 +55,59 @@ body {
 }
 
 .ReactInputVerificationCode__container .is-filled{
-    @apply  !bg-indigo-500 !text-white
+    @apply  !text-int 
 }
 .ReactInputVerificationCode__container .is-active{
-    @apply !bg-gray-200 !text-indigo-500 
+    @apply !bg-gray-200 !text-int 
+}
+
+
+
+.rmdp-day-picker {
+    @apply !font-regular
+}
+ .rmdp-day span{
+    @apply !text-[10px] font-regular
+}
+ .rmdp-week-day{
+    @apply !text-[11px]
+}
+
+.rmdp-header-values{
+    @apply !font-bold text-int
+}
+
+.rmdp-today span{
+    @apply !text-int !text-black
+}
+
+
+.rmdp-selected span{
+    @apply !text-int !text-white
+}
+.rmdp-container {
+    @apply !w-full !bg-gray-50 border border-[#e1e1e1] rounded-lg !shadow-none
+}
+.rmdp-container input{
+  @apply !font-regular rounded-xl !h-11 !w-full !bg-gray-50  !shadow-none  border-gray-50
+}
+.rmdp-input:focus{
+    @apply !border-hidden
+}
+
+.rmdp-container input::placeholder{
+    @apply !font-regular !text-[13px]
+}
+
+*::-webkit-scrollbar{
+    width: 4px;
+    border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb{
+    background-color: #eee;
+}
+
+*::-webkit-scrollbar-track{
+    background-color: #f2f2f2;
 }

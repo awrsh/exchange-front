@@ -45,21 +45,21 @@ const Input = ({
     placeholderRtl = true,
     isError = true,
 }: Props) => {
-  
-   
+
+
     return (
-        <div className="flex-1">
-            <div className={`${className}`}>
+        <>
+            <div className={`flex-1 ${className}`}>
                 {label && (
                     <label className="pb-[4px] block font-medium text-[13px] text-[#3b3b3b]">
                         <span className="font-es-bold ml-1">{count}</span>
-                        {label}
-                        {required && <span className="text-[#DF2040] text-xl">*</span>}
+                        {label}:
+                        {required && <span className="text-[#DF2040] text-sm">*</span>}
                     </label>
                 )}
                 <div className="flex items-center gap-3">
                     <div
-                        className={`border-[1px] flex-1  border-[#e1e1e1]  overflow-hidden  h-14 bg-gray_light gap-3 rounded-lg flex items-center ${subLabel ? "pr-2" : "px-2"
+                        className={`border-[1px] flex-1  border-[#e1e1e1]  overflow-hidden  h-12 bg-gray-50 gap-3 rounded-lg flex items-center ${disabled?"bg-gray-50":""} ${subLabel ? "pr-2" : "px-2"
                             } ${formik && formik?.touched[name!] && formik?.errors[name!] ? "border-red-500" : "border-gray_deep "
                             } ${inputdivClass}`}
                     >
@@ -73,7 +73,7 @@ const Input = ({
                                 }`}
                             placeholder={placeholder}
                             value={isOnChange ? value : formik.values[name!]}
-                            onChange={isOnChange ? onChange : (e) => formik.setFieldValue(name,(e.target.value))}
+                            onChange={isOnChange ? onChange : (e) => formik.setFieldValue(name, (e.target.value))}
                             autoComplete="off"
                         />
                         {icon_left}
@@ -83,16 +83,16 @@ const Input = ({
                             </p>
                         )}
                     </div>
-                   
+
                 </div>
+                {
+                    isError &&
+                    <span className="font-regular py-1 text-[10px] pr-1 block text-red-600">
+                        {formik?.touched[name!] && formik?.errors[name!] ? formik?.errors[name!] : null}
+                    </span>
+                }
             </div>
-            {
-                isError &&
-                <span className="font-regular py-1 text-[10px] pr-1 block text-red-600">
-                    {formik?.touched[name!] && formik?.errors[name!] ? formik?.errors[name!] : null}
-                </span>
-            }
-        </div>
+        </>
     );
 };
 
