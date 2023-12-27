@@ -47,6 +47,7 @@ body {
     direction: rtl;
 }
 
+
 .ReactInputVerificationCode__container{
     @apply !w-full !flex-row-reverse font-num
 }
