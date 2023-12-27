@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useLocation } from "react-router-dom";
-import { getUser } from "../services/auth";
 import axios from "../services/utils/axios";
 
 const useVerifyAuth = () => {
@@ -16,7 +15,7 @@ const useVerifyAuth = () => {
                 // setAuthLoading(true);
                 axios.defaults.headers.common["Authorization"] = `Bearer ${cookies.token}`;
                 try {
-                    const { user } = await getUser();
+                    // const { user } = await getUser();
                     // setUser({ user });
                 } catch (error: any) {
                     if (error?.response?.status === 401) {
