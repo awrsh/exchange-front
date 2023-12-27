@@ -74,6 +74,7 @@ const Input = ({
                             placeholder={placeholder}
                             value={isOnChange ? value : formik.values[name!]}
                             onChange={isOnChange ? onChange : (e) => formik.setFieldValue(name,(e.target.value))}
+                            autoComplete="off"
                         />
                         {icon_left}
                         {subLabel && (

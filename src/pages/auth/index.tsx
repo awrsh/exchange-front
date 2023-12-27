@@ -4,19 +4,21 @@ import Button from "../../componets/common/Button"
 import { initialValuesPhone } from "../../helpers/utils/initialValues"
 import { validationSchemaPhone } from "../../helpers/utils/validationSchema"
 import Logo from "../../assets/images/logo.webp"
-import Slider from "../../componets/auth/Slider"
+import Slide2 from "../../assets/images/slide2.jpeg"
+import { useNavigate } from "react-router-dom"
 const Auth = () => {
+    const navigate = useNavigate()
     const formik = useFormik({
         initialValues: initialValuesPhone,
         validationSchema: validationSchemaPhone,
-        onSubmit: () => {
-
+        onSubmit: (values) => {
+            navigate(`/auth/verify?phone=${values.phone}`)
         }
     })
     return (
-        <div className="flex  h-screen ">
+        <div className="flex  h-screen max-h-screen overflow-hidden">
             <div className="flex-1 h-full flex flex-col mt-20 ">
-                <div className="w-[80%] mx-auto">
+                <div className="w-[90%] md:w-[80%] mx-auto">
                     <img src={Logo} alt="" className="w-32 h-32 mb-10 mx-auto" />
                     <h1 className="font-extrabold text-2xl">با بهترین قیمت و سرعت بالا معامله کنید</h1>
                     <p className="font-bold pt-4 text-xl">
@@ -28,11 +30,8 @@ const Auth = () => {
                     </form>
                 </div>
             </div>
-            <div className="flex-1 hidden lg:flex max-w-full  justify-center items-center overflow-hidden bg-neutral-50">
-                <div className="w-[80%] mx-auto">
-                    <p className="font-extrabold my-10 text-2xl text-zinc-900 txet-2xl">خرید آسان</p>
-                    <Slider />
-                </div>
+            <div className="flex-1 hidden lg:flex bg-neutral-50">
+                <img className='object-cover h-full w-full rounded-xl' src={Slide2} alt='' />
             </div>
         </div>
     )

@@ -48,3 +48,17 @@
 body {
     direction: rtl;
 }
+
+.ReactInputVerificationCode__container{
+    @apply !w-full !flex-row-reverse font-num
+}
+.ReactInputVerificationCode__container > div{
+    @apply !shadow-none !w-[70px] !h-[70px] rounded-xl !bg-gray-100 border-2 border-transparent
+}
+
+.ReactInputVerificationCode__container .is-filled{
+    @apply  !bg-indigo-500 !text-white
+}
+.ReactInputVerificationCode__container .is-active{
+    @apply !bg-gray-200 !text-indigo-500 
+}

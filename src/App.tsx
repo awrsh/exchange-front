@@ -1,4 +1,5 @@
 import Auth from "./pages/auth"
+import Verify from "./pages/auth/verify"
 
 
 const Pages = [
@@ -9,6 +10,10 @@ const Pages = [
   {
     path:"/auth",
     element:<Auth/>
+  },
+  {
+    path:"/auth/verify",
+    element:<Verify/>
   }
 ]
 
