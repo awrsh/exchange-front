@@ -45,6 +45,7 @@
 }
 body {
     direction: rtl;
+    @apply bg-neutral-100
 }
 
 
@@ -79,12 +80,12 @@ body {
 }
 
 .rmdp-today span{
-    @apply !text-int !text-black
+    @apply !text-int 
 }
 
 
 .rmdp-selected span{
-    @apply !text-int !text-white
+    @apply !text-int 
 }
 .rmdp-container {
     @apply !w-full !bg-gray-50 border border-[#e1e1e1] rounded-lg !shadow-none

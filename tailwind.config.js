@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         "int": "#1F0990",
+        "ashy": "#3b3b3b",
       },
       fontFamily: {
         "bold": "bold",
