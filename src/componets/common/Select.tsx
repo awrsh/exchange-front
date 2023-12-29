@@ -1,0 +1,95 @@
+import { ReactNode } from "react";
+import ReactSelect, { FormatOptionLabelMeta, GetOptionLabel } from "react-select";
+interface Props {
+    options: any[];
+    formik: any;
+    name: string;
+    getOptionLabel?: GetOptionLabel<any> | undefined;
+    getOptionValue?: GetOptionLabel<any> | undefined;
+    label?: string;
+    isLoading?: boolean;
+    onChange?: (value: any) => void;
+    isDisabled?: boolean;
+    isMulti?: boolean;
+    defaultValue?: any;
+    onMenuScrollToBottom?: () => void;
+    required?: boolean;
+    placeholder?: string;
+    backgroundColor?: string;
+    className?: string;
+    isSearchable?: boolean,
+    formatOptionLabel?: ((data: any, formatOptionLabelMeta: FormatOptionLabelMeta<any>) => ReactNode) | undefined;
+}
+const Select = ({
+    options,
+    isMulti,
+    defaultValue,
+    formik,
+    name,
+    getOptionValue,
+    isDisabled,
+    getOptionLabel,
+    label,
+    isLoading,
+    onChange,
+    onMenuScrollToBottom,
+    required,
+    placeholder,
+    backgroundColor = "#f5f5f5",
+    className,
+    isSearchable = false,
+    formatOptionLabel
+}: Props) => {
+    const styles = {
+        control: (base: any, state: any) => ({
+            ...base,
+            border: state.isFocused ? 0 : formik.errors[name!]?.id ? "1px solid #ef4444" : 0,
+            backgroundColor: backgroundColor,
+            height: isMulti ? "fit-content" : "40.58px",
+            borderRadius: "8px",
+            fontSize: "12px !important",
+            fontFamily: "dana",
+            // This line disable the blue border
+            boxShadow: state.isFocused ? 0 : 0,
+            "&:hover": {
+                border: state.isFocused ? 0 : 0,
+            },
+            options: (styles: any) => ({
+                ...styles,
+                fontSize: "12px !important",
+            }),
+        }),
+    };
+    return (
+        <div className={`w-full ${className}`}>
+            <label className="text-right flex items-center pr-1 pb-1"><span className="text-neutral-900   text-[13px] font-bold">{label} : </span>
+                {
+                    required && <span className="text-blue-500 text-base font-bold">*</span>
+                }
+            </label>
+            <ReactSelect
+                defaultValue={defaultValue}
+                isMulti={isMulti}
+                value={formik.values[name]}
+                isLoading={isLoading}
+                placeholder={<span className="!text-gray-400">{placeholder}</span>}
+                styles={styles}
+                options={options}
+                onMenuScrollToBottom={onMenuScrollToBottom}
+                getOptionLabel={getOptionLabel}
+                getOptionValue={getOptionValue}
+                formatOptionLabel={formatOptionLabel}
+                onChange={onChange ? onChange : (value) => formik.setFieldValue(name, value)}
+                name={name}
+                isSearchable={isSearchable}
+                noOptionsMessage={() => <span className="text-xs font-medium">لیست خالی است</span>}
+                isDisabled={isDisabled}
+            />
+            <span className="block font-artin-light mt-[1px] text-[11px] text-red-500 pr-1">
+                {formik.errors[name!]?.id ? formik.errors[name!]?.id : null}
+            </span>
+        </div>
+    );
+};
+
+export default Select;
