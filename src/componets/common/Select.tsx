@@ -45,7 +45,7 @@ const Select = ({
             ...base,
             border: state.isFocused ? 0 : formik.errors[name!]?.id ? "1px solid #ef4444" : 0,
             backgroundColor: backgroundColor,
-            height: isMulti ? "fit-content" : "40.58px",
+            height: isMulti ? "fit-content" : "46.58px",
             borderRadius: "8px",
             fontSize: "12px !important",
             fontFamily: "dana",
@@ -62,10 +62,9 @@ const Select = ({
     };
     return (
         <div className={`w-full ${className}`}>
-            <label className="text-right flex items-center pr-1 pb-1"><span className="text-neutral-900   text-[13px] font-bold">{label} : </span>
-                {
-                    required && <span className="text-blue-500 text-base font-bold">*</span>
-                }
+            <label className="pb-[4px] block font-medium text-[13px] text-[#3b3b3b]">
+                {label}:
+                {required && <span className="text-[#DF2040] text-sm">*</span>}
             </label>
             <ReactSelect
                 defaultValue={defaultValue}

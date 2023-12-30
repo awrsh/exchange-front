@@ -59,7 +59,7 @@ const Input = ({
                 )}
                 <div className="flex items-center gap-3">
                     <div
-                        className={`border-[1px] flex-1  border-[#e1e1e1]  overflow-hidden  h-12 bg-gray-50 gap-3 rounded-lg flex items-center ${disabled?"bg-gray-50":""} ${subLabel ? "pr-2" : "px-2"
+                        className={`border-[1px] flex-1  border-[#e1e1e1]  overflow-hidden  h-[44px] bg-[#f5f5f5] gap-3 rounded-lg flex items-center ${disabled?"bg-gray-50":""} ${subLabel ? "pr-2" : "px-2"
                             } ${formik && formik?.touched[name!] && formik?.errors[name!] ? "border-red-500" : "border-gray_deep "
                             } ${inputdivClass}`}
                     >
