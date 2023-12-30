@@ -1,13 +1,16 @@
 import { Slider } from '@mui/material'
 import { styled } from '@mui/material/styles';
-const CustomSlider = () => {
+interface Props{
+    color?:string
+}
+const CustomSlider = ({color="#52af77"}:Props) => {
 
     function valuetext(value: number) {
         return <span className='font-num'>{value}%</span>;
     }
 
     const PrettoSlider = styled(Slider)({
-        color: '#52af77',
+        color,
         height: 8,
         '& .MuiSlider-track': {
             border: 'none',
@@ -32,7 +35,7 @@ const CustomSlider = () => {
             width: 32,
             height: 32,
             borderRadius: '50% 50% 50% 0',
-            backgroundColor: '#52af77',
+            backgroundColor: color,
             transformOrigin: 'bottom left',
             transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
             '&::before': { display: 'none' },
