@@ -1,5 +1,8 @@
 export const routes = {
     auth:{
-        me:""
+        me:"/users/detail/",
+        register:"/auth/register/",
+        login:"/auth/login/",
+        verify:"/auth/otp/verify/",
     }
 }

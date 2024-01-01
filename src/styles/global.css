@@ -48,19 +48,27 @@ body {
     @apply bg-neutral-100
 }
 
+.ltr{
+    direction: ltr;
+}
+
 
 .ReactInputVerificationCode__container{
     @apply !w-full !flex-row-reverse font-num
 }
 .ReactInputVerificationCode__container > div{
-    @apply !shadow-none !w-[70px] !h-[70px] rounded-xl !bg-gray-100 border-2 border-transparent
+    box-shadow: none !important;
+    border: 1px solid #eee !important;
+    @apply  !w-[70px] !h-[70px] rounded-xl !bg-white  
 }
 
-.ReactInputVerificationCode__container .is-filled{
+.hlUHmK.is-filled{
+    border: 1px solid gray !important;
     @apply  !text-int 
 }
-.ReactInputVerificationCode__container .is-active{
-    @apply !bg-gray-200 !text-int 
+.hlUHmK.is-active{
+    border: 1px solid #1F0990 !important;
+    @apply  !text-int 
 }
 
 
@@ -112,4 +120,10 @@ body {
 
 *::-webkit-scrollbar-track{
     background-color: #f2f2f2;
+}
+
+
+
+.go3958317564{
+    @apply font-bold text-xs
 }

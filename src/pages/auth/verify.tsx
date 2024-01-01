@@ -6,19 +6,20 @@ import ReactInputVerificationCode from "react-input-verification-code";
 import Button from "../../componets/common/Button";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Slide2 from "../../assets/images/slide2.jpeg"
+import useVerifyMutation from "../../hook/mutation/auth/useVerifyMutation";
 
 
 const Verify = () => {
+    const {mutate,isLoading} = useVerifyMutation()
     const navigate = useNavigate()
-    const [value] = useState("");
+    const [value,setValue] = useState("");
     const [minutes, setMinutes] = useState(2);
     const [seconds, setSeconds] = useState(30);
     const [searchParams] = useSearchParams()
   
 const onSubmit = ()=>{
-    navigate(`/auth/register?phone=${searchParams.get("phone")}`)
+mutate({mobile:searchParams.get("mobile")!,otp:Number(value)})
 }
-
 
     return (
         <div className="flex gap-10 h-screen max-h-screen overflow-hidden">
@@ -30,10 +31,10 @@ const onSubmit = ()=>{
                     >
                         <FaArrowRight className="text-zinc-500" size={22} />
                     </span>
-                    <Timer minutes={minutes} seconds={seconds} setMinutes={setMinutes} setSeconds={setSeconds} />
+                    {/* <Timer minutes={minutes} seconds={seconds} setMinutes={setMinutes} setSeconds={setSeconds} /> */}
                     <p className="pt-10 font-regular text-[#626262]">کد تایید ۴ رقمی ارسال شده به شماره زیر را وارد کنید</p>
-                    <div className="bg-gray-50 relative py-5 rounded-lg mt-7">
-                        <p className="text-center font-num text-[#626262]">{searchParams.get("phone")}</p>
+                    <div className="bg-white border border-[#626262] relative py-5 rounded-lg mt-7 ">
+                        <p className="text-center font-num text-[#626262]">{searchParams.get("mobile")}</p>
                         <span onClick={() => navigate(-1)}
                             className="absolute left-4 top-4 cursor-pointer">
                             <RiEdit2Fill size={24} className="text-[#3b3b3b]" />
@@ -41,10 +42,10 @@ const onSubmit = ()=>{
                     </div>
 
                     <span className="block mt-14">
-                        <ReactInputVerificationCode  placeholder="" length={4} value={value} />
+                        <ReactInputVerificationCode onChange={(val)=>setValue(val)}  placeholder="" length={4} value={value} />
                     </span>
 
-                    <Button onClick={onSubmit} name="تائید کد" containerClass="!mt-14" />
+                    <Button isLoading={isLoading} disabled={value.length !== 4}  onClick={onSubmit} name="تائید کد" containerClass="!mt-14" />
                 </div>
             </div>
             <div className="flex-1 hidden lg:flex bg-neutral-50">

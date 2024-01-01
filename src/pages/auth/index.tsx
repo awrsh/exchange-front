@@ -1,18 +1,19 @@
 import { useFormik } from "formik"
 import Input from "../../componets/common/Input"
 import Button from "../../componets/common/Button"
-import { initialValuesPhone } from "../../helpers/utils/initialValues"
-import { validationSchemaPhone } from "../../helpers/utils/validationSchema"
+import { initialValuesLogin } from "../../helpers/utils/initialValues"
+import { validationSchemaLogin } from "../../helpers/utils/validationSchema"
 import Logo from "../../assets/images/logo.webp"
 import Slide2 from "../../assets/images/slide2.jpeg"
-import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
+import useLoginMutation from "../../hook/mutation/auth/useLoginMutation"
 const Auth = () => {
-    const navigate = useNavigate()
+    const { mutate,isLoading} = useLoginMutation()
     const formik = useFormik({
-        initialValues: initialValuesPhone,
-        validationSchema: validationSchemaPhone,
+        initialValues: initialValuesLogin,
+        validationSchema: validationSchemaLogin,
         onSubmit: (values) => {
-            navigate(`/auth/verify?phone=${values.phone}`)
+            mutate(values)
         }
     })
     return (
@@ -25,9 +26,11 @@ const Auth = () => {
                         ورود  |  ثبت‌نام
                     </p>
                     <form onSubmit={formik.handleSubmit} className="mt-10">
-                        <Input type="tel" ltr placeholder="لطفا شماره تلفن خود را وارد کنید" formik={formik} name="phone" label="شماره تلفن" />
-                        <Button containerClass="!mt-7" name="ورود" />
+                        <Input type="tel" ltr placeholder="لطفا شماره تلفن خود را وارد کنید" formik={formik} name="mobile" label="شماره تلفن" />
+                        <Input  type="password" ltr placeholder="لطفا رمز عبور خود را وارد کنید" formik={formik} name="password" label="رمز عبور" />
+                        <Button isLoading={isLoading} containerClass="!mt-7" name="ورود" />
                     </form>
+                    <Link className="font-medium text-center block mt-4 text-xs" to={"/auth/register"} >تاکنون ثبت‌نام نکرده اید؟ <span className="font-bold underline text-int">ثبت نام</span></Link>
                 </div>
             </div>
             <div className="flex-1 hidden lg:flex bg-neutral-50">

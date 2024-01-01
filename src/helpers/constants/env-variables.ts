@@ -6,6 +6,6 @@ if (import.meta.env) {
     }
 }
 
-const mainUrl = "https://park.shabnamnikraftar.ir/";
+const mainUrl = "http://82.115.18.227:8000/api/v1";
 
 export { inDevEnvironment, mainUrl };

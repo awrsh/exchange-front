@@ -1,27 +1,24 @@
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
-import { useLocation } from "react-router-dom";
 import axios from "../services/utils/axios";
+import { getUser } from "../services/auth";
+import useAuthStore from "../stores/user-store";
 
 const useVerifyAuth = () => {
-    // const setAuthLoading = useAuthStore((s) => s.setAuthLoading);
-    // const setUser = useAuthStore((s) => s.setUser);
-    const [cookies, _, removeCookies] = useCookies(["token", "role"]);
-    const location = useLocation();
+    const {setUser} = useAuthStore()
+    const [cookies] = useCookies(["token"]);
     useEffect(() => {
-        if (location.pathname === "/auth") return;
         if (cookies.token) {
             const verifyUser = async () => {
                 // setAuthLoading(true);
-                axios.defaults.headers.common["Authorization"] = `Bearer ${cookies.token}`;
+                axios.defaults.headers.common["Authorization"] = `Token ${cookies.token}`;
                 try {
-                    // const { user } = await getUser();
-                    // setUser({ user });
+                    const user = await getUser();
+                    setUser({ user });
                 } catch (error: any) {
                     if (error?.response?.status === 401) {
-                        delete axios.defaults.headers.common["Authorization"];
-                        removeCookies("token", { path: "/" });
-                        removeCookies("role", { path: "/" });
+                        // delete axios.defaults.headers.common["Authorization"];
+                        // removeCookies("token", { path: "/" });
                     }
                 } finally {
                     // setAuthLoading(false);
