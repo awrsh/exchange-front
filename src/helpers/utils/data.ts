@@ -1,7 +1,7 @@
 export const header_menu = [
     {
-        name:"صحفه اصلی",
-        url:""
+        name:"صفحه اصلی",
+        url:"/"
     },
     {
         name:"بازار معاملات",
@@ -13,7 +13,7 @@ export const header_menu = [
     },
     {
         name:" خرید آسان",
-        url:""
+        url:"/buy"
     },
     {
         name:"سوالات متداول",
@@ -303,3 +303,115 @@ export const listCryptocurrencies = [
     { price: 862575, count: 63332, total: 460424, percent: 77 }
   ]
   
+
+
+  export const dataVerify = [
+    {
+      title: "سطح 1",
+      infoTitle: "اطلاعات مورد نیاز",
+      infoItems: [
+        { icon: 0 , text: "ثبت شماره تلفن همراه" },
+        { icon: 1, text: "ثبت و بارگزاری اطلاعات هویتی" },
+      ],
+      featuresTitle: "امکانات",
+      features: [
+        {
+          icon: 1,
+          title: "واریز تومانی",
+          amount: "25 میلیون تومان روزانه",
+        },
+        {
+          icon: 2,
+          title: "واریز تومانی",
+          amount: "25 میلیون تومان روزانه",
+        },
+        {
+          icon: 3,
+          title: "واریز تومانی",
+          amount: "25 میلیون تومان روزانه",
+        },
+        {
+          icon: 0,
+          title: "واریز تومانی",
+          amount: "25 میلیون تومان روزانه",
+        },
+        // Add more features as needed
+      ],
+    },
+    {
+      title: "سطح 2",
+      infoTitle: "اطلاعات مورد نیاز",
+      infoItems: [
+        { icon: 3, text: "ثبت اطلاعات محل سکونت" },
+        {
+          icon: 2,
+          text: "احراز هویت تصویری (روش هوشمند یا ارسال عکس تایید هویت)",
+        },
+      ],
+      featuresTitle: "امکانات",
+      features: [
+        {
+          icon:0,
+          title: "واریز تومانی",
+          amount: "25 میلیون تومان روزانه",
+        },
+        {
+          icon:0,
+          title: "برداشت تومانی",
+          amount: "300 میلیون تومان روزانه",
+        },
+        {
+          icon:0,
+          title: "واریز رمز ارز",
+          amount: "نامحدود  ",
+        },
+        {
+          icon:0,
+          title: "برداشت رمز ارز",
+          amount: "200 میلیون تومان روزانه",
+        },
+        // Add more features as needed
+      ],
+    },
+    {
+      title: "سطح 3",
+      infoTitle: "اطلاعات مورد نیاز",
+      infoItems: [
+        { icon:0, text: "شماره همراه به نام خودتان باشد" },
+        { icon:0, text: "گذشت حداقل یک ماه از سطح 2)" },
+        {
+          icon:0,
+          text: "حداقل برداشت مجموع (تومانیو رمزارز) 2.5 میلیارد در 30 روز گذشته",
+        },
+        {
+          icon:0,
+          text: "حداقل مجموع واریز تومانی 500 میلیون تومان",
+        },
+      ],
+      featuresTitle: "امکانات",
+      features: [
+        {
+          icon:0,
+          title: "واریز تومانی",
+          amount: "25 میلیون تومان روزانه",
+        },
+        {
+          icon:0,
+          title: "برداشت تومانی",
+          amount: "1 میلیارد تومان روزانه",
+        },
+        {
+          icon:0,
+          title: "واریز رمز ارز",
+          amount: "نامحدود  ",
+        },
+        {
+          icon:0,
+          title: "برداشت رمز ارز",
+          amount: "1 میلیارد تومان روزانه",
+        },
+        // Add more features as needed
+      ],
+    },
+    // Add more data objects as needed
+  ];

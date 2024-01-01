@@ -45,7 +45,7 @@
 }
 body {
     direction: rtl;
-    @apply bg-neutral-100
+    @apply bg-neutral-100 font-medium
 }
 
 

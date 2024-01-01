@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalContextProvider from "./context/GlobalContextProvider.tsx";
 import Pages from "./App.tsx";
 import "./styles/global.css";
+import Layout from "./componets/common/Layout.tsx";
 
 
 
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           {Pages.map((item, idx) => (
             <Route key={idx} path={item.path} element={item.element} />
           ))}
+
         </Routes>
       </GlobalContextProvider>
     </BrowserRouter>

@@ -31,7 +31,7 @@ const Auth = () => {
                 </div>
             </div>
             <div className="flex-1 hidden lg:flex bg-neutral-50">
-                <img className='object-cover h-full w-full rounded-xl' src={Slide2} alt='' />
+                <img className='object-cover h-full w-full rounded-0' src={Slide2} alt='' />
             </div>
         </div>
     )
