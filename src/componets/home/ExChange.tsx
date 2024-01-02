@@ -12,7 +12,7 @@ const ExChange = () => {
   return (
     <div className='bg-white rounded-xl pb-4'>
       <Tabs />
-      <div className='flex px-5 gap-10'>
+      <div className='flex flex-col xl:flex-row px-5 gap-5 lg:gap-10'>
         <div className='flex-1 '>
           <Input formik={formik} name='' label='قیمت' />
           <Input formik={formik} name='' label='مقدار' />

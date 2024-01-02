@@ -45,7 +45,7 @@
 }
 body {
     direction: rtl;
-    @apply bg-neutral-100
+    @apply bg-neutral-100 font-medium
 }
 
 .ltr{
@@ -126,4 +126,8 @@ body {
 
 .go3958317564{
     @apply font-bold text-xs
+}
+
+.hide-scroll::-webkit-scrollbar{
+display: none;
 }

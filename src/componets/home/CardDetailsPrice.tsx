@@ -9,7 +9,7 @@ const CardDetailsPrice = ({title,price,name,percent}:Props) => {
         <div className='flex-1 space-y-2'>
             <p className='flex items-center gap-2'>
                 <span className={`block w-2 h-2 rounded-full ${name?"bg-green-600":"bg-neutral-800"}`}></span>
-                <span className={` text-xs ${name?"text-green-600 font-num":"text-neutral-800 font-extrablack "}`}>{title ? title : name?.toLocaleString()}</span>
+                <span className={` text-xs whitespace-nowrap ${name?"text-green-600 font-num":"text-neutral-800 font-extrablack "}`}>{title ? title : name?.toLocaleString()}</span>
             </p>
             <p className='flex items-center gap-2'>
                 <span className='block w-2 h-2 rounded-full bg-green-600'></span>

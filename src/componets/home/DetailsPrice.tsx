@@ -2,7 +2,7 @@ import CardDetailsPrice from './CardDetailsPrice'
 
 const DetailsPrice = () => {
   return (
-    <div className='flex items-center'>
+    <div className='flex gap-10 items-center overflow-x-auto hide-scroll border-b'>
         <div className='flex-1'>
             <p className='font-bold'>USDT/ETH</p>
         </div>

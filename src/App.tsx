@@ -1,32 +1,35 @@
-import Auth from "./pages/auth"
-import Register from "./pages/auth/register"
-import Verify from "./pages/auth/verify"
-import Buy from "./pages/buy"
-import Home from "./pages/home"
-
+import Auth from "./pages/auth";
+import Register from "./pages/auth/register";
+import Verify from "./pages/auth/verify";
+import Buy from "./pages/buy";
+import Home from "./pages/home";
+import Verification from "./pages/verification/verification";
 
 const Pages = [
   {
-    path:"/",
-    element:<Home/>
+    path: "/",
+    element: <Home />,
   },
   {
-    path:"/buy",
-    element:<Buy/>
+    path: "/buy",
+    element: <Buy />,
   },
   {
-    path:"/auth",
-    element:<Auth/>
+    path: "/auth",
+    element: <Auth />,
   },
   {
-    path:"/auth/verify",
-    element:<Verify/>
+    path: "/auth/verify",
+    element: <Verify />,
   },
   {
-    path:"/auth/register",
-    element:<Register/>
+    path: "/auth/register",
+    element: <Register />,
   },
-]
+  {
+    path: "/verification",
+    element: <Verification />,
+  },
+];
 
-export default Pages
-
+export default Pages;

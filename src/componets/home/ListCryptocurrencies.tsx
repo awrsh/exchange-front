@@ -7,7 +7,7 @@ import CardListCryptocurrencies from "./CardListCryptocurrencies";
 const ListCryptocurrencies = () => {
     const [select, setSelect] = useState(0)
     return (
-        <div className="min-w-[300px] px-3 h-fit pb-4 bg-white  rounded-xl">
+        <div className="min-w-[300px] px-3  pb-4 bg-white  rounded-xl overflow-y-auto">
             <h1 className="font-medium text-xs text-center py-3">لیست رمز ارزها</h1>
             <div className="flex items-center p-2 bg-neutral-100 rounded-lg">
                 <input placeholder="جستجوی رمز ارز" className="bg-transparent font-regular text-neutral-800 text-xs w-full" />
