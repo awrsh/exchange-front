@@ -7,18 +7,12 @@ type Props = {
   sidebar?: boolean;
   header?: boolean;
 };
-export function Layout({ children, sidebar = true,header= true}: Props) {
+export function Layout({ children, sidebar = true, header = true }: Props) {
   return (
     <div>
-      {
-        header &&
-      <Header />
-      }
+      {header && <Header />}
       <div>
-        {
-          sidebar &&
-          <Sidebar />
-        }
+        {sidebar && <Sidebar />}
         {children}
       </div>
     </div>

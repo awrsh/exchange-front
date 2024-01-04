@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Confirm_icon,
   Valid_verify,

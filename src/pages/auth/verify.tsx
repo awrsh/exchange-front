@@ -12,8 +12,8 @@ const Verify = () => {
   const { mutate, isLoading } = useVerifyMutation()
   const navigate = useNavigate()
   const [value, setValue] = useState("");
-  const [minutes, setMinutes] = useState(2);
-  const [seconds, setSeconds] = useState(30);
+  // const [minutes, setMinutes] = useState(2);
+  // const [seconds, setSeconds] = useState(30);
   const [searchParams] = useSearchParams()
 
   const onSubmit = () => {

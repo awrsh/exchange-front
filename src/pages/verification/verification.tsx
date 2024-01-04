@@ -1,5 +1,5 @@
 import CardVerify from "../../componets/verificationTable/CardVerify";
-import VerfyTable from "../../componets/verificationTable/VerfyTable";
+import VerfyTable from "../../componets/verificationTable/VerifyTable";
 function Verification() {
   return (
     <>
