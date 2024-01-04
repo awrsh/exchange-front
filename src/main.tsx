@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalContextProvider from "./context/GlobalContextProvider.tsx";
 import Pages from "./App.tsx";
 import "./styles/global.css";
-import Layout from "./componets/common/Layout.tsx";
 
 
 
