@@ -15,7 +15,7 @@ const Information = () => {
                         <span className="font-bold text-[14px] text-neutral-600">مهدی رنجبر</span>
                         <div>
                             <label className="text-xs text-int font-regular" htmlFor="upload">تغیر تصویر</label>
-                            <input type="file" id="upload" name="upload" className="opacity-0 absolute -z-0" />
+                            <input type="file" id="upload" name="upload" className="opacity-0 absolute !w-0 -z-0" />
                         </div>
                     </div>
                 </div>

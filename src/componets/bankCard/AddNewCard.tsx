@@ -15,8 +15,8 @@ const AddNewCard = () => {
     return (
         <div className="bg-white flex  flex-col rounded-xl p-3">
             <p className="font-bold text-xl border-b border-neutral-200 pb-3">افزودن کارت بانکی جدید</p>
-            <div className="mt-5 flex gap-10 items-center">
-                <div className="flex-1 ">
+            <div className="mt-5 w-full flex flex-col-reverse gap-10 items-center">
+                <div className="flex-1 w-full">
                     <Input name="cardId" formik={formik} label="شماره کارت" />
                     <Input name="shaba" formik={formik} label="شماره شبا (بدون IR)" />
 
@@ -24,7 +24,7 @@ const AddNewCard = () => {
                     </p>
                     <Button containerClass="!mt-8 !mx-auto w-[120px]" name="ثبت کارت بانکی" />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 w-full">
                     <Card shaba={formik.values.shaba} cardId={formik.values.cardId}/>
                 </div>
             </div>

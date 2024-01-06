@@ -15,7 +15,7 @@ const InviteInformation = () => {
                 </div>
                 <div className="flex items-center w-full text-neutral-400 justify-between bg-neutral-100 p-3 rounded-lg">
                     <p className="font-bold text-[13px]">لینک دعوت</p>
-                    <p className="text-int font-num">trusttether.com/register?ref=LOJFFD</p>
+                    <p className="text-int font-num text-[10px] lg:text-[14px]">trusttether.com/register?ref=LOJFFD</p>
                     <IoCopy />
                 </div>
             </div>

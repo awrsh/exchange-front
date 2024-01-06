@@ -8,7 +8,7 @@ const InviteFriends = () => {
     <Layout>
       <div className="w-[95%] mx-auto">
         <h1 className="text-xl font-bold">دعوت دوستان</h1>
-        <div className="mt-7 pb-10 grid grid-cols-2 gap-y-10 gap-x-5">
+        <div className="mt-7 pb-10 grid lg:grid-cols-2 gap-y-10 gap-x-5">
           <InviteInformation />
           <YourReceipts />
           <FriendsTransaction/>

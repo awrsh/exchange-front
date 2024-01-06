@@ -9,7 +9,7 @@ const Profile = () => {
     <Layout>
       <div className="pb-10 w-[95%] mx-auto">
         <h1 className="text-xl font-bold">پروفایل</h1>
-        <div className="mt-6 grid grid-cols-2 gap-4">
+        <div className="mt-6 grid lg:grid-cols-2 gap-4">
           <Information />
           <NationwideAnnouncements />
           <LoginHistory />
