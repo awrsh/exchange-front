@@ -18,7 +18,7 @@ const Sidebar = () => {
         <div className=" flex flex-col mt-5 gap-2 px-2">
           {header_menu.map((menu, idx) => (
             <Link
-              className={`flex items-center w-full px-2  py-[0.7rem] gap-2 rounded-xl ${location.pathname === menu.url ? "bg-int text-white " : "text-neutral-500 "}`} to={menu.url} key={idx}>
+              className={`flex items-center w-full px-2  py-[0.7rem] gap-2 rounded-xl hover:bg-neutral-300 ${location.pathname === menu.url ? "bg-int text-white " : "text-neutral-500 "}`} to={menu.url} key={idx}>
               <menu.icon size={22} className="!min-w-6 !min-h-6" />
 
               <span className={` whitespace-nowrap  ${location.pathname === menu.url ? "font-bold text-[13px]" : " font-regular text-[13.5px]"} ${open ? "opacity-100" : "opacity-0 overflow-hidden hidden !w-0"}`}>{menu.name}</span>
@@ -43,7 +43,7 @@ const Sidebar = () => {
         <div className="flex flex-col mt-24 gap-2 px-2">
           {header_menu.map((menu, idx) => (
             <Link
-              className={`flex items-center w-full px-2  py-[0.7rem] gap-2 rounded-xl ${location.pathname === menu.url ? "bg-int text-white " : "text-neutral-500 "}`} to={menu.url} key={idx}>
+              className={`flex items-center w-full px-2  py-[0.7rem] gap-2 rounded-xl hover:bg-neutral-100 ${location.pathname === menu.url ? "bg-int text-white hover:bg-int " : "text-neutral-500 "}`} to={menu.url} key={idx}>
               <menu.icon size={22} className="!min-w-6 !min-h-6" />
 
               <span className={` whitespace-nowrap  ${location.pathname === menu.url ? "font-bold text-[13px]" : " font-regular text-[13.5px]"} ${open ? "opacity-100" : "opacity-0 overflow-hidden hidden !w-0"}`}>{menu.name}</span>
