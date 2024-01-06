@@ -12,7 +12,7 @@ const Sidebar = () => {
 
   return (
     <div>
-      <Drawer onClose={()=>setOpen(false)} className=" lg:hidden" anchor="right" open={open}>
+      <Drawer onClose={()=>setOpen(false)} className="!z-[9999] lg:hidden" anchor="right" open={open}>
         <div className="!min-w-[260px]">
           <img className="w-40 mx-auto mt-4" src={Logo}/>
         <div className=" flex flex-col mt-5 gap-2 px-2">

@@ -9,7 +9,7 @@ const History = () => {
             <div className="flex items-center gap-4">
                 {
                     tabs.map((tab, idx) => (
-                        <button onClick={() => setSelect(idx)} className={`text-[14px] transition-all duration-300 p-3 rounded-lg ${select === idx ? "bg-int text-white font-bold" : "font-regular bg-gray-100"}`} key={idx}>{tab}</button>
+                        <button onClick={() => setSelect(idx)} className={`text-[12px] lg:text-[14px] transition-all duration-300 p-3 rounded-lg ${select === idx ? "bg-int text-white font-bold" : "font-regular bg-gray-100"}`} key={idx}>{tab}</button>
                     ))
                 }
             </div>

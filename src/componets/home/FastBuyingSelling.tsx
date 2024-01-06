@@ -9,7 +9,7 @@ const FastBuyingSelling = () => {
         onSubmit:()=>{}
     })
   return (
-    <div className="bg-white p-3 rounded-xl space-y-10 flex-1 h-full">
+    <div className="bg-white p-3 w-full rounded-xl space-y-10 flex-1 h-full">
         <h6 className="font-bold">خرید و فروش سریع</h6>
         <Select formik={formik} placeholder="انتخاب ارز مورد نظر" name="a" options={[]}/>
         <Input formik={formik} name="b" subLabel="تومان" placeholder="مقدار بین 1 تا 20 میلیون"/>

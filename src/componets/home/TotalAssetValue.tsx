@@ -3,7 +3,7 @@ import { PieChart } from '@mui/x-charts/PieChart';
 
 const TotalAssetValue = () => {
     return (
-        <div className="flex-1 flex justify-center items-center bg-white p-3 rounded-xl space-y-10 h-full">
+        <div className="flex-1 flex flex-col lg:flex-row w-full justify-center items-center bg-white p-3 rounded-xl space-y-10 h-full">
             <div className="flex-1 flex flex-col items-center gap-4">
                 <div>
                     <p className="text-xl">ارزش کل داریی</p>

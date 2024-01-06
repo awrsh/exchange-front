@@ -10,7 +10,7 @@ export function Layout({ children, header = true }: Props) {
   return (
     <div >
       {header && <Header />}
-      <div className="lg:mr-[60px]  mt-10">
+      <div className="pb-20 lg:pb-0 lg:mr-[60px] mt-4 lg:mt-10">
         {children}
       </div>
     </div>
