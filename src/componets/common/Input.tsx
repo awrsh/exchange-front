@@ -78,7 +78,7 @@ const Input = ({
                         />
                         {icon_left}
                         {subLabel && (
-                            <p className="whitespace-nowrap bg-[#e1e1e1] h-full font-es-regular flex justify-center items-center w-[80px]">
+                            <p className="whitespace-nowrap bg-[#e1e1e1] h-full font-regular flex justify-center items-center w-[80px]">
                                 {subLabel}
                             </p>
                         )}

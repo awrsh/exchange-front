@@ -12,7 +12,7 @@ const Button = ({ name, disabled, className, type="submit", onClick, containerCl
     return (
         <ButtonMui  type={type} disabled={disabled} className={`!flex !justify-center  !text-white !items-center w-full h-[48px] !bg-int ${containerClass}`} onClick={onClick}>
             {
-                isLoading ? <CircularProgress size={24} color='inherit' /> : <span className={`font-bold  ${className}`}>{name}</span>
+                isLoading ? <CircularProgress size={24} color='inherit' /> : <span className={`font-bold text-[13px] ${className}`}>{name}</span>
             }
             
         </ButtonMui>

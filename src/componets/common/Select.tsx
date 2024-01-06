@@ -62,16 +62,19 @@ const Select = ({
     };
     return (
         <div className={`w-full ${className}`}>
-            <label className="pb-[4px] block font-medium text-[13px] text-[#3b3b3b]">
-                {label}:
-                {required && <span className="text-[#DF2040] text-sm">*</span>}
-            </label>
+            {
+                label &&
+                <label className="pb-[4px] block font-medium text-[13px] text-[#3b3b3b]">
+                    {label}:
+                    {required && <span className="text-[#DF2040] text-sm">*</span>}
+                </label>
+            }
             <ReactSelect
                 defaultValue={defaultValue}
                 isMulti={isMulti}
                 value={formik.values[name]}
                 isLoading={isLoading}
-                placeholder={<span className="!text-gray-400">{placeholder}</span>}
+                placeholder={<span className="!text-gray-400 font-regular">{placeholder}</span>}
                 styles={styles}
                 options={options}
                 onMenuScrollToBottom={onMenuScrollToBottom}
@@ -81,7 +84,7 @@ const Select = ({
                 onChange={onChange ? onChange : (value) => formik.setFieldValue(name, value)}
                 name={name}
                 isSearchable={isSearchable}
-                noOptionsMessage={() => <span className="text-xs font-medium">لیست خالی است</span>}
+                noOptionsMessage={() => <span className="text-xs !font-medium">لیست خالی است</span>}
                 isDisabled={isDisabled}
             />
             <span className="block font-artin-light mt-[1px] text-[11px] text-red-500 pr-1">

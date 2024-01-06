@@ -1,27 +1,61 @@
+import { RxDashboard } from "react-icons/rx";
+import { FaUser } from "react-icons/fa";
+import { FaClipboardList } from "react-icons/fa6";
+import { TbMessageSearch } from "react-icons/tb";
+import { RiBankCard2Fill } from "react-icons/ri";
+import { FaWallet } from "react-icons/fa6";
+import { BsClockHistory } from "react-icons/bs";
+
 export const header_menu = [
     {
         name:"صفحه اصلی",
-        url:"/"
+        url:"/",
+        icon:RxDashboard
     },
     {
-        name:"بازار معاملات",
-        url:""
+        name:"کیف پول من",
+        url:"/my-wallet",
+        icon:FaWallet
     },
     {
         name:"قیمت لحضه‌ای",
-        url:""
+       url:"/#",
+        icon:RxDashboard
+    },
+    {
+        name:"بازار حرفه‌ای",
+       url:"/exchange",
+        icon:RxDashboard
     },
     {
         name:" خرید آسان",
-        url:"/buy"
+        url:"/buy",
+        icon:RxDashboard
     },
     {
-        name:"سوالات متداول",
-        url:""
+        name:"تاریخچه معاملات",
+        url:"/transaction-history",
+        icon:BsClockHistory
     },
     {
         name:"دعوت دوستان",
-        url:""
+       url:"/invite-friends",
+        icon:FaClipboardList
+    },
+    {
+        name:"مدیریت حساب‌کاربری",
+       url:"/profile",
+        icon:FaUser
+    },
+    {
+        name:"تیکت‌ها",
+       url:"/tickets",
+        icon:TbMessageSearch
+    },
+    {
+        name:"کارت بانکی‌ها",
+       url:"/bank-card",
+        icon:RiBankCard2Fill
     },
 ]
 
@@ -415,3 +449,28 @@ export const listCryptocurrencies = [
     },
     // Add more data objects as needed
   ];
+
+
+
+  export const myWallet = [
+    {
+      src:"https://cryptologos.cc/logos/dogecoin-doge-logo.png",
+      name:"کیف پول تومانی",
+      inventory:0
+    },
+    {
+      src:"https://cryptologos.cc/logos/dogecoin-doge-logo.png",
+      name:"کیف پول تومانی",
+      inventory:0
+    },
+    {
+      src:"https://cryptologos.cc/logos/dogecoin-doge-logo.png",
+      name:"کیف پول تومانی",
+      inventory:0
+    },
+    {
+      src:"https://cryptologos.cc/logos/dogecoin-doge-logo.png",
+      name:"کیف پول تومانی",
+      inventory:0
+    },
+  ]

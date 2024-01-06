@@ -1,14 +1,54 @@
+import Profile from "./pages/Profile";
+import Tickets from "./pages/Tickets";
 import Auth from "./pages/auth";
 import Register from "./pages/auth/register";
 import Verify from "./pages/auth/verify";
+import BankCard from "./pages/BankCard";
 import Buy from "./pages/buy";
 import Home from "./pages/home";
+import InviteFriends from "./pages/inviteFriends";
+import MyWallet from "./pages/myWallet";
+import ProfessionalMarket from "./pages/professionalMarket";
+import TransactionHistory from "./pages/transactionHistory";
 import Verification from "./pages/verification/verification";
+import ExChangePage from "./pages/ExChange";
 
 const Pages = [
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: "/my-wallet",
+    element: <MyWallet />,
+  },
+  {
+    path: "/invite-friends",
+    element: <InviteFriends />,
+  },
+  {
+    path: "/exchange",
+    element: <ExChangePage />,
+  },
+  {
+    path: "/tickets",
+    element: <Tickets />,
+  },
+  {
+    path: "/bank-card",
+    element: <BankCard />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
+  },
+  {
+    path: "/transaction-history",
+    element: <TransactionHistory />,
+  },
+  {
+    path: "/professionalMarket",
+    element: <ProfessionalMarket />,
   },
   {
     path: "/buy",

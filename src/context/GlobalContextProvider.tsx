@@ -3,6 +3,7 @@ import { QueryClientProvider } from "react-query";
 import { Toaster } from 'react-hot-toast';
 import useConfigureQueryClient from "../hook/common/useConfigureQueryClient";
 import useVerifyAuth from "../global/useVerifyAuth";
+import Sidebar from "../componets/common/Sidebar";
 
 interface GlobalContextProviderProps {
     children?: ReactNode;
@@ -16,8 +17,9 @@ const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
 
     return (
         <QueryClientProvider client={queryClient}>
-            <>{children}</>
-            <Toaster position="top-center" toastOptions={{duration:9000}} />
+            {children}
+            <Sidebar />
+            <Toaster position="top-center" toastOptions={{ duration: 9000 }} />
         </QueryClientProvider>
     );
 };

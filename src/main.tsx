@@ -17,7 +17,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
             {Pages.map((item, idx) => (
               <Route key={idx} path={item.path} element={item.element} />
             ))}
-
           </Routes>
       </GlobalContextProvider>
     </BrowserRouter>

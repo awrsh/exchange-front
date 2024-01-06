@@ -1,18 +1,16 @@
 import React from "react";
 import Header from "./Header";
-import Sidebar from "./Sidebar";
 
 type Props = {
   children: React.ReactNode;
   sidebar?: boolean;
   header?: boolean;
 };
-export function Layout({ children, sidebar = true, header = true }: Props) {
+export function Layout({ children, header = true }: Props) {
   return (
-    <div>
+    <div >
       {header && <Header />}
-      <div>
-        {sidebar && <Sidebar />}
+      <div className="mr-[60px]  mt-10">
         {children}
       </div>
     </div>

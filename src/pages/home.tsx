@@ -1,22 +1,24 @@
 import Layout from '../componets/common/Layout'
-import Chart from '../componets/home/Chart'
-import ExChange from '../componets/home/ExChange'
-import ListCryptocurrencies from '../componets/home/ListCryptocurrencies'
-import Orders from '../componets/home/Orders'
+import CompleteRegistration from '../componets/home/CompleteRegistration'
+import FastBuyingSelling from '../componets/home/FastBuyingSelling'
+import History from '../componets/home/History'
+import TotalAssetValue from '../componets/home/TotalAssetValue'
 
 const Home = () => {
-    return (
-        <Layout sidebar={false}>
-            <div className='w-[95%] lg:h-screen pb-10 flex flex-col lg:flex-row gap-3 mx-auto mt-3'>
-                <ListCryptocurrencies />
-                <div className='flex-1 flex flex-col max-w-full overflow-auto hide-scroll space-y-3'>
-                    <Chart />
-                    <ExChange />
-                </div>
-                <Orders />
+  return (
+    <Layout>
+        <div className='p-3 px-7'>
+            <h1 className='font-bold text-xl'>داشبورد من</h1>
+            <div className='mt-5 h-[350px] flex items-center gap-10'>
+                <FastBuyingSelling/>
+                <TotalAssetValue/>
             </div>
-        </Layout>
-    )
+
+            <CompleteRegistration/>
+            <History/>
+        </div>
+    </Layout>
+  )
 }
 
 export default Home
