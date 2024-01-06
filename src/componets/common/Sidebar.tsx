@@ -1,5 +1,4 @@
 "use client"
-import Logo from "../../assets/images/logo.jpg"
 import { header_menu } from "../../helpers/utils/data";
 import { Link, useLocation } from "react-router-dom";
 import { CiLogout } from "react-icons/ci";
@@ -13,21 +12,9 @@ const Sidebar = () => {
     <div
       onMouseLeave={() => setOpen(false)}
       onMouseEnter={() => setOpen(true)}
-      className={`h-screen transition-all duration-300 bottom-0 fixed bg-white z-[9999] overflow-y-auto shadow  ${open ? "w-[240px]" : "w-[60px]"}`}>
+      className={`h-screen transition-all duration-300 bottom-0 fixed bg-white !z-50 overflow-y-auto shadow  ${open ? "w-[240px]" : "w-[60px]"}`}>
 
-
-      {
-
-        <div className="flex justify-center h-[100px] items-center">
-          {
-            open &&
-            <img className="w-32" src={Logo} />
-          }
-        </div>
-      }
-
-
-      <div className="flex flex-col gap-2 px-2">
+      <div className="flex flex-col mt-24 gap-2 px-2">
         {header_menu.map((menu, idx) => (
           <Link
             className={`flex items-center w-full px-2  py-[0.7rem] gap-2 rounded-xl ${location.pathname === menu.url ? "bg-int text-white " : "text-neutral-500 "}`} to={menu.url} key={idx}>

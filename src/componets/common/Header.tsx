@@ -9,7 +9,7 @@ const Header = () => {
   const [cookies] = useCookies(["token"]);
   
   return (
-    <div className="bg-white shadow-sm">
+    <div className="bg-white shadow-sm  relative !z-[9999]">
       <header className="flex justify-between items-center w-[95%] mx-auto py-4">
         <div>
           {
