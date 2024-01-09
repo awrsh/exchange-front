@@ -12,6 +12,7 @@ import ProfessionalMarket from "./pages/professionalMarket";
 import TransactionHistory from "./pages/transactionHistory";
 import Verification from "./pages/verification/verification";
 import ExChangePage from "./pages/ExChange";
+import CurrentPrice from "./pages/CurrentPrice";
 
 const Pages = [
   {
@@ -29,6 +30,10 @@ const Pages = [
   {
     path: "/exchange",
     element: <ExChangePage />,
+  },
+  {
+    path: "/current-price",
+    element: <CurrentPrice />,
   },
   {
     path: "/tickets",

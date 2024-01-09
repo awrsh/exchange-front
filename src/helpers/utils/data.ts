@@ -19,7 +19,7 @@ export const header_menu = [
   },
   {
     name: "قیمت لحضه‌ای",
-    url: "/#",
+    url: "/current-price",
     icon: RxDashboard
   },
   {
@@ -517,4 +517,56 @@ export const transactionsList = [
   { type: 'Buy', dateTime: '2024-01-09T08:30:00', amountInToman: 50000000, transactionId: '123456789', creditCard: '**** **** **** 1234', status: 'Completed' },
   { type: 'Sell', dateTime: '2024-01-10T15:45:00', amountInToman: 30000000, transactionId: '987654321', creditCard: '**** **** **** 5678', status: 'Pending' },
   { type: 'Transfer', dateTime: '2024-01-11T12:15:00', amountInToman: 10000000, transactionId: '654321789', creditCard: 'N/A', status: 'Failed' },
+];
+
+
+
+export const informationCurrentPrice = [
+  {
+    title:"بیشترین سود",
+    icon:"https://cryptologos.cc/logos/dogecoin-doge-logo.png",
+    nameFn:"ادن لوپ",
+    name:"ELT",
+    price:0,
+    precent:122.64,
+    buy:0,
+    sell:0
+  },
+  {
+    title:"بیشترین ضرر",
+    icon:"https://cryptologos.cc/logos/dogecoin-doge-logo.png",
+    nameFn:"نوترینو یو اس دی",
+    name:"USDN",
+    price:0,
+    precent:-89.15,
+    buy:0,
+    sell:0
+  },
+  {
+    title:"بیشترین حجم معامله",
+    icon:"https://cryptologos.cc/logos/dogecoin-doge-logo.png",
+    nameFn:"تتر",
+    name:"USDT",
+    price:51479,
+    precent:3,
+    buy:51479,
+    sell:51129
+  },
+  {
+    title:"جدیدترین ارز",
+    icon:"https://cryptologos.cc/logos/dogecoin-doge-logo.png",
+    nameFn:"پیت نتورک",
+    name:"PYTH",
+    price:0,
+    precent:0,
+    buy:0,
+    sell:0
+  },
+]
+
+export const tabsCurrentPrice = ["همه ارز‌ها","مورد علاقه",'پرسودترین',"گرانترین","جدیدترین","ارزانترین","پر ضررترین","فن توکن","وب3","متاورس"]
+export const  currenciesList1 = [
+  { interest: 'علاقه‌مندی', name: 'Bitcoin', usdPrice: 35000, tomanPrice: 3500000000, change24h: 5, chart: '[نمودار]' },
+  { interest: 'علاقه‌مندی', name: 'Ethereum', usdPrice: 2500, tomanPrice: 250000000, change24h: -3, chart: '[نمودار]' },
+  { interest: 'علاقه‌مندی', name: 'Cardano', usdPrice: 1.5, tomanPrice: 150000, change24h: 2, chart: '[نمودار]' },
 ];
