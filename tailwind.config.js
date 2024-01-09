@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        "int": "#009b87",
+        "int": "#338eff",
         "ashy": "#3b3b3b",
       },
       fontFamily: {
