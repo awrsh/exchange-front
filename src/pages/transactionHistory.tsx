@@ -1,6 +1,8 @@
 import { useState } from "react"
 import Layout from "../componets/common/Layout"
 import Table from "../componets/common/Table"
+import { StyledTableCell, StyledTableRow } from "../helpers/utils/mui"
+import { cryptoTransactions, transactionsList } from "../helpers/utils/data"
 
 const TransactionHistory = () => {
     const [select, setSelect] = useState(0)
@@ -16,8 +18,37 @@ const TransactionHistory = () => {
                         ))}
                     </div>
                     <div className="mt-6">
-                        {select === 0 && <Table header={["نام ارز","نوع","تاریخ ثبت","مبلغ(تومان)","مقدار","وضعیت","جزئیات"]} length={0} />}
-                        {select === 1 && <Table header={["نوع","تاریخ‌وزمان","مبلغ(تومان)","شناسه تراکنش","کارت پرداختی","وضعیت"]} length={0} />}
+                        {select === 0 && <Table header={["نام ارز", "نوع", "تاریخ ثبت", "مبلغ(تومان)", "مقدار", "وضعیت", "جزئیات"]}  >
+                            {
+                                cryptoTransactions.map((crypto, idx) => (
+                                    <StyledTableRow key={idx}>
+                                        <StyledTableCell align="center" >{crypto.name} </StyledTableCell>
+                                        <StyledTableCell align="center" >{crypto.type === "Buy" ? "خرید" : "فروش"} </StyledTableCell>
+                                        <StyledTableCell align="center" >{new Date(crypto.registrationDate).toLocaleDateString("fa-IR")} </StyledTableCell>
+                                        <StyledTableCell className="!font-num" align="center" >{crypto.amountInToman.toLocaleString()} </StyledTableCell>
+                                        <StyledTableCell className="!font-num" align="center" >{crypto.quantity} </StyledTableCell>
+                                        <StyledTableCell align="center" >{crypto.status === "Completed" ? <span className="text-green-500 font-bold">تکمیل شده</span> : crypto.status === "Pending" ? <span className="text-yellow-500 font-bold">در حال انتظار</span> : <span className="text-red-500 font-bold">ناموفق</span>} </StyledTableCell>
+                                        <StyledTableCell align="center" >
+                                            <button className="text-int">مشاهده</button>
+                                        </StyledTableCell>
+                                    </StyledTableRow>
+                                ))
+                            }
+                        </Table>}
+                        {select === 1 && <Table header={["نوع", "تاریخ‌وزمان", "مبلغ(تومان)", "شناسه تراکنش", "کارت پرداختی", "وضعیت"]}  >
+                            {
+                                transactionsList.map((crypto, idx) => (
+                                    <StyledTableRow key={idx}>
+                                        <StyledTableCell align="center">{crypto.type === "Buy" ? "خرید" : crypto.type === "Sell" ? "فروش" : "تبدیل"}</StyledTableCell>
+                                        <StyledTableCell align="center">{new Date(crypto.dateTime).toLocaleString("fa-IR")}</StyledTableCell>
+                                        <StyledTableCell align="center" className="!font-num">{crypto.amountInToman.toLocaleString()} <span className="text-[10px]">تومان</span></StyledTableCell>
+                                        <StyledTableCell align="center" className="!font-num">{crypto.transactionId}</StyledTableCell>
+                                        <StyledTableCell align="center" className="!font-num">{crypto.creditCard}</StyledTableCell>
+                                        <StyledTableCell align="center" >{crypto.status === "Completed" ? <span className="text-green-500 font-bold">تکمیل شده</span> : crypto.status === "Pending" ? <span className="text-yellow-500 font-bold">در حال انتظار</span> : <span className="text-red-500 font-bold">ناموفق</span>} </StyledTableCell>
+                                    </StyledTableRow>
+                                ))
+                            }
+                        </Table>}
                     </div>
                 </div>
             </div>

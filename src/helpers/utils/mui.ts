@@ -17,12 +17,13 @@ export const StyledTableCell = styled(TableCell)(() => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: "#e1e1e1",
         color: "#626262",
-        fontFamily: "es-bold",
+        fontFamily: "bold",
         whiteSpace: "nowrap",
+    
     },
     [`&.${tableCellClasses.body}`]: {
-        fontSize: 10,
-        fontFamily: "es-regular",
+        fontSize: 13,
+        fontFamily: "regular" ,
         color: "#222222",
         borderColor: "transparent",
     },

@@ -498,3 +498,23 @@ export const menuBottom = [
     icon: RxDashboard
   },
 ]
+
+
+export const cryptoList = [
+  { id: 0, name: 'Toman', nameFn:"تومان", symbol: 'IRT', withdrawableAmount: 0, url: 'https://cryptologos.cc/logos/dogecoin-doge-logo.png' },
+  { id: 1, name: 'Bitcoin', nameFn:"بیت کوین", symbol: 'BTC', withdrawableAmount: 10, url: 'https://cryptologos.cc/logos/dogecoin-doge-logo.png' },
+  { id: 2, name: 'Ethereum',nameFn:"اتریوم",symbol: 'ETH', withdrawableAmount: 20, url: 'https://cryptologos.cc/logos/dogecoin-doge-logo.png' },
+  { id: 3, name: 'Ripple', nameFn:"ریپل", symbol: 'XRP', withdrawableAmount: 15, url: 'https://cryptologos.cc/logos/dogecoin-doge-logo.png' },
+];
+
+export const cryptoTransactions = [
+  { id: 1, name: 'Bitcoin', type: 'Buy', registrationDate: '2024-01-09', amountInToman: 50000000, quantity: 0.05, status: 'Completed', details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+  { id: 2, name: 'Ethereum', type: 'Sell', registrationDate: '2024-01-10', amountInToman: 30000000, quantity: 0.2, status: 'Pending', details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
+  { id: 3, name: 'Ripple', type: 'Buy', registrationDate: '2024-01-11', amountInToman: 10000000, quantity: 50, status: 'Failed', details: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' },
+];
+
+export const transactionsList = [
+  { type: 'Buy', dateTime: '2024-01-09T08:30:00', amountInToman: 50000000, transactionId: '123456789', creditCard: '**** **** **** 1234', status: 'Completed' },
+  { type: 'Sell', dateTime: '2024-01-10T15:45:00', amountInToman: 30000000, transactionId: '987654321', creditCard: '**** **** **** 5678', status: 'Pending' },
+  { type: 'Transfer', dateTime: '2024-01-11T12:15:00', amountInToman: 10000000, transactionId: '654321789', creditCard: 'N/A', status: 'Failed' },
+];
