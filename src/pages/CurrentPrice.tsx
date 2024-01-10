@@ -32,7 +32,7 @@ const CurrentPrice = () => {
           <div className="flex-1 gap-4 flex justify-between items-center overflow-hidden">
 
             {tabsCurrentPrice.map((tab, idx) => (
-              <button onClick={() => setSelect(idx)} className={` font-bold flex-1 text-xs h-11 rounded-xl transition-all duration-500 ${select === idx ? "bg-int text-white" : "bg-neutral-200"}`} key={idx}>{tab}</button>
+              <button onClick={() => setSelect(idx)} className={` font-bold flex-1 text-xs h-11 rounded-xl transition-all duration-500 ${select === idx ? "bg-int text-white" : "bg-white"}`} key={idx}>{tab}</button>
             ))}
           </div>
         </div>
@@ -57,7 +57,7 @@ const CurrentPrice = () => {
                     <p className="font-num">{Number(crypto.change24h) >= 0 ? <span className="text-green-500">%{crypto.change24h}</span> : <span className="text-red-500 block [direction:ltr]">%{crypto.change24h}</span>}</p>
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <Sparklines data={[5, 10, 5, 20, 8, 15]} limit={5} >
+                    <Sparklines data={crypto.chart} limit={5} >
                       <SparklinesLine color="blue" />
                     </Sparklines>
 

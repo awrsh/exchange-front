@@ -9,10 +9,11 @@ import Paper from "@mui/material/Paper";
 import { CircularProgress } from "@mui/material";
 const StyledTableCell = styled(TableCell)(() => ({
     [`&.${tableCellClasses.head}`]: {
-        backgroundColor: "#e1e1e1",
+        backgroundColor: "#fff",
         color: "#626262",
         fontFamily: "bold",
         whiteSpace: "nowrap",
+        borderColor: "transparent",
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 10,
@@ -47,7 +48,7 @@ export default function Table({
             <div className="lg:border relative rounded-tr-lg lg:rounded-lg overflow-hidden">
                 <TableContainer sx={{ position: "relative" }} component={Paper}>
                     <TableMui>
-                        <TableHead>
+                        <TableHead >
                             <TableRow>
                                 {header.map((name, i) => (
                                     <StyledTableCell className="!text-[13px]" key={i} align="center">

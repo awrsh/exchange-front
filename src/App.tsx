@@ -13,6 +13,7 @@ import TransactionHistory from "./pages/transactionHistory";
 import Verification from "./pages/verification/verification";
 import ExChangePage from "./pages/ExChange";
 import CurrentPrice from "./pages/CurrentPrice";
+import RialAction from "./pages/RialAction";
 
 const Pages = [
   {
@@ -42,6 +43,10 @@ const Pages = [
   {
     path: "/bank-card",
     element: <BankCard />,
+  },
+  {
+    path: "/rial-action",
+    element: <RialAction />,
   },
   {
     path: "/profile",
