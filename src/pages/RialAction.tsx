@@ -4,7 +4,7 @@ import TomanDeposit from "../componets/RialAction/TomanDeposit"
 import { useState } from "react"
 
 const RialAction = () => {
-  const [select, setSelect] = useState(0)
+  const [select] = useState(0)
   const tabs = ["واریز تومانی", "واریز شناسه", "برداشت تومانی"]
 
   return (
