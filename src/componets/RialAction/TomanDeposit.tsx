@@ -1,7 +1,6 @@
 import { useFormik } from 'formik'
 import Input from '../common/Input'
 import { CiWarning } from 'react-icons/ci'
-import SelectCart from './SelectCart'
 import Select from '../common/Select'
 import Button from '../common/Button'
 
