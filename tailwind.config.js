@@ -4,11 +4,14 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode:"class",
   theme: {
     extend: {
       colors: {
         "int": "#338eff",
         "ashy": "#3b3b3b",
+        "dark-int":"",
+        "dark-color":""
       },
       fontFamily: {
         "bold": "bold",

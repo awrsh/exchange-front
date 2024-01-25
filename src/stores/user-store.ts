@@ -6,7 +6,7 @@ import { User } from "../types/Auth";
 
 
 interface AuthStore {
-    user: User | null | any;
+    user: User | null;
     setUser:({user}:{user:User | null | any})=> void
 }
 

@@ -3,20 +3,25 @@ import CompleteRegistration from '../componets/home/CompleteRegistration'
 import History from '../componets/home/History'
 import Information from '../componets/home/Information'
 import TotalAssetValue from '../componets/home/TotalAssetValue'
+import useAuthStore from '../stores/user-store'
 
 const Home = () => {
+  const { user } = useAuthStore()
   return (
     <Layout>
-        <div className='w-[95%] mx-auto'>
-            <h1 className='font-bold text-xl'>داشبورد من</h1>
-            <div className='mt-5  lg:h-[350px] flex flex-col lg:flex-row items-center gap-10'>
-              <Information/>
-                <TotalAssetValue/>
-            </div>
-
-            <CompleteRegistration/>
-            <History/>
+      <div className='w-[95%] mx-auto'>
+        {
+          user?.authentication_status === "level_0" &&
+          <CompleteRegistration />
+        }
+        <h1 className='font-bold mt-5 text-xl'>داشبورد من</h1>
+        <div className='mt-5  lg:h-[350px] flex flex-col lg:flex-row items-center gap-10'>
+          <Information />
+          <TotalAssetValue />
         </div>
+
+        <History />
+      </div>
     </Layout>
   )
 }

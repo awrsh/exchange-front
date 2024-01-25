@@ -1,6 +1,9 @@
 import { useState } from "react"
+import useAuthStore from "../../stores/user-store"
+import { Link } from "react-router-dom"
 
 const Information = () => {
+    const { user } = useAuthStore()
     const [select, setSelect] = useState(0)
     const tabs = ["تومان", "USDT", "BTC"]
     return (
@@ -9,13 +12,21 @@ const Information = () => {
                 <div className="flex items-center  gap-2">
                     <img className="w-10 h-10 rounded-full" src="https://ffiri.ir/files/fa/news/1402/10/19/114275_457.jpg" />
                     <div className="space-y-2">
-                        <p className="text-[14px]">آرش زرندی</p>
-                        <p className="font-num text-[12px] text-neutral-600">09379291249</p>
+                        <p className="text-[14px]">{user?.first_name} {user?.last_name}</p>
+                        <p className="font-num text-[12px] text-neutral-600">{user?.mobile}</p>
                     </div>
                 </div>
                 <div className="space-y-2">
-                    <p className="text-[14px] font-bold">احراز هویت</p>
-                    <p className="font-regular text-center block bg-[#e5faf3] py-1 rounded-lg text-[#34b288]   text-[12px]">پیشرفته</p>
+                    <p className="text-[14px] font-bold text-zinc-800">وضعیت کاربر</p>
+                    {
+                        user?.authentication_status === "level_0" ?
+                            <Link className="p-1 px-2 rounded-lg mt-2 block bg-red-500 border border-[#F8A5AA] text-[12px] text-white" to="/ver">
+                                احراز هویت
+                            </Link> :
+                            <p className="font-regular text-center block bg-[#e5faf3] py-1 rounded-lg text-[#34b288]   text-[12px]">
+                                {/* {user?.authentication_status === "level_0" ? "احراز هویت" : user?.authentication_status === "level_2" ? "" : ""} */}
+                            </p>
+                    }
                 </div>
             </div>
             <div className="flex items-center justify-between mt-2">

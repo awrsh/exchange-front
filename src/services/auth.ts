@@ -1,5 +1,5 @@
 import { routes } from "../helpers/api/routes";
-import { getRoute } from "../helpers/utils/services";
+import { generateFormData, getRoute } from "../helpers/utils/services";
 import { typeLogin, typeRegister, typeVerify } from "../types/Auth";
 import { ResponseVerify } from "../types/Auth/ResponseVerify";
 import client from "./utils/client";
@@ -20,4 +20,9 @@ export const login = async (data:typeLogin) => {
 export const verify = async (data:typeVerify) => {
     const url = getRoute({ route: routes.auth.verify });
     return await client<ResponseVerify>({ url ,method:"POST", data});
+};
+export const updateUser = async (data:any,id:number | undefined) => {
+    const formData = generateFormData(data)
+    const url = getRoute({ route: `${routes.auth.update}/${id}/` });
+    return await client<ResponseVerify>({ url ,method:"PUT", ...formData});
 };

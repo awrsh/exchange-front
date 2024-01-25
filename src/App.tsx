@@ -14,6 +14,7 @@ import Verification from "./pages/verification/verification";
 import ExChangePage from "./pages/ExChange";
 import CurrentPrice from "./pages/CurrentPrice";
 import RialAction from "./pages/RialAction";
+import Form from "./componets/verificationTable/Form";
 
 const Pages = [
   {
@@ -79,6 +80,10 @@ const Pages = [
   {
     path: "/verification",
     element: <Verification />,
+  },
+  {
+    path: "/verification/:id",
+    element: <Form />,
   },
 ];
 

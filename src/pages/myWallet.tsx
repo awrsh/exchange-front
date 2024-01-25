@@ -64,14 +64,14 @@ const MyWallet = () => {
                                             </div>
                                         </StyledTableCell>
                                         <StyledTableCell className="space-x-2 ">
-                                            <button className="text-int">برداشت</button>
+                                            <button className="text-white bg-green-600 px-3 py-2 rounded-lg border">برداشت</button>
 
-                                            <button className="text-int !mx-2">واریز</button>
+                                            <button className="text-white bg-green-600 px-3 py-2 rounded-lg border !mx-2">واریز</button>
                                             {
                                                 idx !== 0 &&
                                                 <>
-                                                    <button className="text-int">خرید آسان</button>
-                                                    <button className="text-int">معامله</button>
+                                                    <button className="text-white bg-green-600 px-3 py-2 rounded-lg border">خرید آسان</button>
+                                                    <button className="text-white bg-green-600 px-3 py-2 rounded-lg border">معامله</button>
                                                 </>
                                             }
 

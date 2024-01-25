@@ -12,7 +12,7 @@ const useLoginMutation = () => {
       navigate(`/auth/verify?mobile=${variables.mobile}`)
     },
     onError:(error:any)=>{
-      errorToast(error.response.data.error.description)
+      errorToast(error?.response?.data?.error?.description)
     }
   })
 }

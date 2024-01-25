@@ -1,13 +1,25 @@
+import { CircularProgress } from "@mui/material";
+import useGetAuthorityLevels from "../../hook/query/authority/useGetAuthorityLevels";
 import CardVerify from "../../componets/verificationTable/CardVerify";
-import VerfyTable from "../../componets/verificationTable/VerifyTable";
 function Verification() {
+  const { data, isLoading } = useGetAuthorityLevels()
   return (
-    <>
-      <div className="px-10 py-[15px] ">
-        <CardVerify />
-        <VerfyTable />
-      </div>
-    </>
+    <div>
+      {
+        isLoading ? <CircularProgress />
+          :
+          <div className="px-10 w-[90%] mx-auto py-[15px] ">
+            <div className="flex justify-between ">
+              {
+                data?.map((authority,idx)=>(
+                  <CardVerify authority={authority} key={idx}/>
+                ))
+              }
+            </div>
+            {/* <VerfyTable /> */}
+          </div>
+      }
+    </div>
   );
 }
 

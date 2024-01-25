@@ -4,10 +4,29 @@ import { MdDarkMode } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import UserProfile from "./UserProfile";
+import { themeContext } from "../../context/ThemeContextProvider";
+import { useContext, useEffect } from "react";
 
 const Header = () => {
   const [cookies] = useCookies(["token"]);
-  
+  const { theme, setTheme } = useContext(themeContext);
+  useEffect(() => {
+    if (window.matchMedia(`(prefers-color-scheme:dark)`)) {
+      setTheme("dark")
+    } else {
+      setTheme("light")
+    }
+  }, [])
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark")
+    } else {
+      document.documentElement.classList.remove("dark")
+    }
+  }, [theme])
+  const handleThemeSwitch = () => {
+    setTheme(theme === "dark" ? "light" : "dark")
+  }
   return (
     <div className="bg-white shadow-sm  relative !z-[9999]">
       <header className="flex justify-between items-center w-[95%] mx-auto py-4">
@@ -30,7 +49,7 @@ const Header = () => {
             <span className="font-bold text-neutral-800 text-xs">دانلود اپلیکیشن</span>
             <HiDownload size="18" className="text-ashy" />
           </button>
-          <button className="w-9 h-9 rounded-full flex justify-center items-center border">
+          <button onClick={handleThemeSwitch} className="w-9 h-9 rounded-full flex justify-center items-center border">
             <MdDarkMode size="20" className="text-ashy" />
           </button>
         </div>

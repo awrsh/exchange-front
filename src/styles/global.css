@@ -38,14 +38,17 @@
     src: url("../assets/fonts/num.ttf");
 }
 
+
 @layer utilities {
     .layout{
         @apply w-[90%] mx-auto
     }
 }
+
+
 body {
     direction: rtl;
-    @apply bg-neutral-100 font-medium
+    @apply bg-neutral-100 font-medium dark:bg-zinc-900
 }
 
 .ltr{

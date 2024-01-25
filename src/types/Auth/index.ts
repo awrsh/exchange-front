@@ -23,7 +23,7 @@ export type typeVerify = {
     date_joined: string;
     uid: string;
     mobile: string;
-    authentication_status: string;
+    authentication_status: "level_0" | "level_1" | "level_2" | "level_3";
     national_code: string;
     gender: string;
     birth_date: string;
