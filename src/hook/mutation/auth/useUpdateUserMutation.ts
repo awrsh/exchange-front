@@ -6,7 +6,7 @@ import useAuthStore from '../../../stores/user-store'
 const useUpdateUserMutation = () => {
     const {user} = useAuthStore()
   return useMutation(async (data:any) => await updateUser(data,user?.id),{
-    onSuccess:(data,variables)=>{
+    onSuccess:()=>{
      
     },
     onError:(error:any)=>{

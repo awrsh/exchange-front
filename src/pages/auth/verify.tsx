@@ -6,6 +6,7 @@ import Button from "../../componets/common/Button";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Slide2 from "../../assets/images/slide2.jpeg"
 import useVerifyMutation from "../../hook/mutation/auth/useVerifyMutation";
+import WithoutToken from "../../hoc/WithoutToken";
 
 
 const Verify = () => {
@@ -54,4 +55,4 @@ const Verify = () => {
   )
 };
 
-export default Verify;
+export default WithoutToken()(Verify)

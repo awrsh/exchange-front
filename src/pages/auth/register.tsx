@@ -8,6 +8,7 @@ import { initialValuesRegister } from "../../helpers/utils/initialValues"
 import Button from "../../componets/common/Button"
 import { validationSchemaRegister } from "../../helpers/utils/validationSchema"
 import useRegisterMutation from "../../hook/mutation/auth/useRegisterMutation"
+import WithoutToken from "../../hoc/WithoutToken"
 
 const Register = () => {
     const {mutate,isLoading} = useRegisterMutation()
@@ -47,4 +48,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default WithoutToken()(Register) 

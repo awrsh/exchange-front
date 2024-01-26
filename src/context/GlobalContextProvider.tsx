@@ -5,6 +5,7 @@ import useConfigureQueryClient from "../hook/common/useConfigureQueryClient";
 import useVerifyAuth from "../global/useVerifyAuth";
 import Sidebar from "../componets/common/Sidebar";
 import { useLocation } from "react-router-dom";
+import VerifyAuth from "../componets/common/VerifyAuth";
 
 interface GlobalContextProviderProps {
     children?: ReactNode;
@@ -23,6 +24,7 @@ const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
                 !location.pathname.startsWith("/auth") &&
                 <Sidebar />
             }
+            <VerifyAuth/>
             <Toaster position="top-center" toastOptions={{ duration: 9000 }} />
         </QueryClientProvider>
     );

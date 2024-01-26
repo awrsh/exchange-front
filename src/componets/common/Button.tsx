@@ -6,11 +6,12 @@ interface Props {
     containerClass?: string;
     disabled?: boolean;
     isLoading?: boolean;
-    type?: "submit" | "button" | "reset" 
+    type?: "submit" | "button" | "reset";
+    sx?:any
 }
-const Button = ({ name, disabled, className, type="submit", onClick, containerClass ,isLoading }: Props) => {
+const Button = ({ name, sx,disabled, className, type="submit", onClick, containerClass ,isLoading }: Props) => {
     return (
-        <ButtonMui  type={type} disabled={disabled} className={`!flex !justify-center  !text-white !items-center w-full h-[48px] !bg-int ${containerClass}`} onClick={onClick}>
+        <ButtonMui sx={sx}  type={type} disabled={disabled} className={`!flex !justify-center  !text-white !items-center w-full h-[48px] !bg-int ${containerClass}`} onClick={onClick}>
             {
                 isLoading ? <CircularProgress size={24} color='inherit' /> : <span className={`font-bold text-[13px] ${className}`}>{name}</span>
             }

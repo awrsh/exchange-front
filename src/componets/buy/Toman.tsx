@@ -4,9 +4,13 @@ import { useFormik } from 'formik'
 import Input from '../common/Input'
 import CustomSlider from '../common/CustomSlider'
 import Button from '../common/Button'
+import useAuthStore from '../../stores/user-store'
+import useGlobalStore from '../../stores/global-store'
 
 
 const Toman = () => {
+    const {toggleVerifyAuth} = useGlobalStore()
+    const {user} = useAuthStore()
     const tabs = ["خرید", "فروش"]
     const [select, setSelect] = useState(0)
     const formik = useFormik({
@@ -15,6 +19,14 @@ const Toman = () => {
         },
         onSubmit: () => { }
     })
+
+
+      
+    const onClick = () => {
+        if (user?.authentication_status === "level_0") {
+            toggleVerifyAuth()
+        }
+    }
 
 
     const array = [
@@ -102,7 +114,7 @@ const Toman = () => {
                         <p className='font-num'>0</p>
                     </div>
                 </div>
-                <Button name='خرید'/>
+                <Button onClick={onClick} name='خرید'/>
             </form>
         </div>
     )

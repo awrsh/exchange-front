@@ -80,7 +80,7 @@ const CardVerify = ({ authority }: Props) => {
                         </div>
                     </div>
                 </div>
-                <Button onClick={() => navigate(`/verification/${authority.id}`)} name='تکمیل اطلاعات' containerClass='!mb-3 !w-[90%] !mx-auto' />
+                <Button onClick={() => navigate(`/verification/level1`)} name='تکمیل اطلاعات' containerClass='!mb-3 !w-[90%] !mx-auto' />
             </div>
         </div>
     )

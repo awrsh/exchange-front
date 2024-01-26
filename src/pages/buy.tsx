@@ -2,9 +2,11 @@ import { useState } from "react"
 import Toman from "../componets/buy/Toman"
 import Layout from "../componets/common/Layout"
 
+
 const Buy = () => {
     const [select, setSelect] = useState(0)
     const tabs = ["تومانIRT", "تترUSDT"]
+  
     return (
         <Layout>
             <div className="min-h-[80vh] flex justify-center items-center">

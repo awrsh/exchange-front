@@ -7,6 +7,7 @@ import Logo from "../../assets/images/logo.webp"
 import Slide2 from "../../assets/images/slide2.jpeg"
 import { Link } from "react-router-dom"
 import useLoginMutation from "../../hook/mutation/auth/useLoginMutation"
+import WithoutToken from "../../hoc/WithoutToken"
 const Auth = () => {
     const { mutate,isLoading} = useLoginMutation()
     const formik = useFormik({
@@ -40,4 +41,4 @@ const Auth = () => {
     )
 }
 
-export default Auth
+export default WithoutToken()(Auth)
