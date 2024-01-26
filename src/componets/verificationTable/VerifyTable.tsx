@@ -1,5 +1,5 @@
 
-function Index() {
+export function Index() {
   const data = [
     {
       level: "واریز روزانه تومان",
