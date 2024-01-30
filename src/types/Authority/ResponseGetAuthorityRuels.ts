@@ -17,5 +17,5 @@ interface FormObject {
 
 export interface ResponseGetAuthorityRuels {
     result: string;
-    objects: FormObject[];
+    object: FormObject;
 }

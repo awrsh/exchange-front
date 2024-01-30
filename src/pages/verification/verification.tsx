@@ -3,7 +3,9 @@ import useGetAuthorityLevels from "../../hook/query/authority/useGetAuthorityLev
 import CardVerify from "../../componets/verificationTable/CardVerify";
 import VerifyTable from "../../componets/verificationTable/VerifyTable";
 import Layout from "../../componets/common/Layout";
+import useAuthStore from "../../stores/user-store";
 function Verification() {
+  const {user} = useAuthStore()
   const { data, isLoading } = useGetAuthorityLevels();
   return (
     <div>
@@ -15,7 +17,7 @@ function Verification() {
             <div className="px-10  mx-auto py-[15px] ">
               <div className="flex gap-[150px] ">
                 {data?.map((authority, idx) => (
-                  <CardVerify authority={authority} key={idx} />
+                  <CardVerify level={user?.user_level === idx} authority={authority} key={idx} />
                 ))}
               </div>
               <VerifyTable />

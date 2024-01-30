@@ -1,11 +1,11 @@
 import { useMutation } from 'react-query'
 import { errorToast } from '../../../helpers/utils/error'
-import {  updateUser } from '../../../services/auth'
 import { useParams } from 'react-router-dom'
+import { verifyAccount } from '../../../services/auth';
 
-const useUpdateUserMutation = () => {
+const useVerifyAccountMutation = () => {
   const { id } = useParams();
-  return useMutation(async (data:any) => await updateUser(data,Number(id)),{
+  return useMutation(async (data:any) => await verifyAccount({...data,rule_id:Number(id)}),{
     onSuccess:()=>{
      
     },
@@ -15,4 +15,4 @@ const useUpdateUserMutation = () => {
   })
 }
 
-export default useUpdateUserMutation
+export default useVerifyAccountMutation

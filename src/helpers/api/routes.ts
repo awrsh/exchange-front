@@ -4,7 +4,7 @@ export const routes = {
         register: "/auth/register/",
         login: "/auth/login/",
         verify: "/auth/otp/verify/",
-        verify_account:"/auth/verify",
+        verify_account:"/auth/verify/",
     },
     authority: {
         levels: "authority/levels/",

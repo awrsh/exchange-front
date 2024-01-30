@@ -2,6 +2,7 @@ import DatePickerLib from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import TimePicker from "react-multi-date-picker/plugins/time_picker";
+import { converDatePer } from "../../helpers/utils/convert";
 
 interface Props {
     formik: any;
@@ -27,13 +28,14 @@ const Datepicker = ({
 
 
     function handleChange(value: any) {
-        formik.setFieldValue(name, value);
+       const date = converDatePer(value)
+        formik.setFieldValue(name, date);
     }
     return (
         <div className={className}>
             {label && (
                 <label className="pb-[4px] block font-medium text-[13px] text-[#3b3b3b]">
-                    {label}
+                    {label}:
                     {required && <span className="text-[#DF2040] text-sm">*</span>}
                 </label>
             )}
@@ -52,6 +54,7 @@ const Datepicker = ({
                     fixMainPosition
                     placeholder="روز/ماه/سال"
                     shadow={false}
+                    
                 />
             </div>
             <span className="font-es-regular pt-2 text-[10px] pr-1 inline-block text-red-600">

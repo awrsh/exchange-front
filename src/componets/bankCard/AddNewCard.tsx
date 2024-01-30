@@ -1,9 +1,6 @@
 import { useFormik } from "formik"
-import Input from "../common/Input"
-import { RiErrorWarningLine } from "react-icons/ri";
 import Button from "../common/Button";
 import Card from "./Card";
-import { BankIcon } from 'react-ir-banks-logo';
 import useAddCreditCard from "../../hook/mutation/creditcard/useAddCreditcard";
 import { useEffect } from "react";
 import { validationSchemaCreditcard } from "../../helpers/utils/validationSchema";
@@ -21,9 +18,6 @@ const AddNewCard = () => {
             mutate({ ...values, iban: `IR${values.iban}` })
         }
     })
-
-    const onFindBankName = (e: any) => {
-    }
 
     useEffect(() => {
         if (isSuccess) {

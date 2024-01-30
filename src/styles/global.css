@@ -91,18 +91,18 @@ body {
 }
 
 .rmdp-today span{
-    @apply !text-int 
+    @apply !text-white 
 }
 
 
 .rmdp-selected span{
-    @apply !text-int 
+    @apply !text-white 
 }
 .rmdp-container {
-    @apply !w-full !bg-gray-50 border border-[#e1e1e1] rounded-lg !shadow-none
+    @apply !w-full !bg-[#f5f5f5] border border-[#e1e1e1] rounded-lg !shadow-none
 }
 .rmdp-container input{
-  @apply !font-regular rounded-xl !h-11 !w-full !bg-gray-50  !shadow-none  border-gray-50
+  @apply !font-regular rounded-xl !h-11 !w-full !bg-[#f5f5f5]  !shadow-none  border-gray-50
 }
 .rmdp-input:focus{
     @apply !border-hidden
