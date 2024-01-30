@@ -23,6 +23,6 @@ export const verify = async (data:typeVerify) => {
 };
 export const updateUser = async (data:any,id:number | undefined) => {
     const formData = generateFormData(data)
-    const url = getRoute({ route: `${routes.auth.update}/${id}/` });
+    const url = getRoute({ route: `${routes.auth.verify_account}/${id}/` });
     return await client<ResponseVerify>({ url ,method:"PUT", ...formData});
 };

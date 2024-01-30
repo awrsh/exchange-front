@@ -78,7 +78,7 @@ const CardVerify = ({ authority }: Props) => {
           </div>
         </div>
         <Button
-          onClick={() => navigate(`/verification/level1`)}
+          onClick={() => navigate(`/verification/${authority.id}`)}
           name="تکمیل اطلاعات"
           containerClass="!mb-3 !w-[90%] !mx-auto"
         />

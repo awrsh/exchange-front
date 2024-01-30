@@ -11,7 +11,7 @@ export const getAuthorityLevels = async () => {
     const url = getRoute({ route: routes.authority.levels });
     return await client<AuthorityLevels[]>({ url });
 };
-export const getAuthorityRuels = async () => {
-    const url = getRoute({ route: `${routes.authority.ruels}` });
+export const getAuthorityRuels = async (id:string) => {
+    const url = getRoute({ route: `${routes.authority.ruels}/${id}` });
     return await client<ResponseGetAuthorityRuels>({ url });
 };

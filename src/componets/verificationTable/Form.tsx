@@ -5,8 +5,10 @@ import { useFormik } from "formik"
 import Upload from "../common/Upload"
 import Button from "../common/Button"
 import useUpdateUserMutation from "../../hook/mutation/auth/useUpdateUserMutation"
+import { useParams } from "react-router-dom"
 
 const Form = () => {
+
   const {mutate,isLoading} = useUpdateUserMutation()
   const { data } = useGetAuthorityRuels()
   const formik = useFormik({

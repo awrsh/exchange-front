@@ -6,6 +6,6 @@ if (import.meta.env) {
     }
 }
 
-const mainUrl = "http://82.115.18.227:8000/api/v1";
+const mainUrl = "https://bitasia.ir/api/v1";
 
 export { inDevEnvironment, mainUrl };

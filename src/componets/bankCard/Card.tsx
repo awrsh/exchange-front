@@ -36,6 +36,11 @@ const Card = ({ shaba, cardId }: Props) => {
                     <span>{newShaba[16] ?? "X"}</span>
                     <span>{newShaba[17] ?? "X"}</span>
                     <span>{newShaba[18] ?? "X"}</span>
+                    <span>{newShaba[19] ?? "X"}</span>
+                    <span>{newShaba[20] ?? "X"}</span>
+                    <span>{newShaba[21] ?? "X"}</span>
+                    <span>{newShaba[22] ?? "X"}</span>
+                    <span>{newShaba[23] ?? "X"}</span>
                 </div>
             </div>
             <div className="flex items-center justify-between">
@@ -58,6 +63,12 @@ const Card = ({ shaba, cardId }: Props) => {
                         <span>{newCardId[9]??"X"}</span>
                         <span>{newCardId[10]??"X"}</span>
                         <span>{newCardId[11]??"X"}</span>
+                    </p>
+                    <p>
+                        <span>{newCardId[12]??"X"}</span>
+                        <span>{newCardId[13]??"X"}</span>
+                        <span>{newCardId[14]??"X"}</span>
+                        <span>{newCardId[15]??"X"}</span>
                     </p>
                   
                 </div>

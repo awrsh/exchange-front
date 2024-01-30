@@ -1,11 +1,11 @@
 import { useMutation } from 'react-query'
 import { errorToast } from '../../../helpers/utils/error'
 import {  updateUser } from '../../../services/auth'
-import useAuthStore from '../../../stores/user-store'
+import { useParams } from 'react-router-dom'
 
 const useUpdateUserMutation = () => {
-    const {user} = useAuthStore()
-  return useMutation(async (data:any) => await updateUser(data,user?.id),{
+  const { id } = useParams();
+  return useMutation(async (data:any) => await updateUser(data,Number(id)),{
     onSuccess:()=>{
      
     },

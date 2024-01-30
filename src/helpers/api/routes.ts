@@ -4,10 +4,11 @@ export const routes = {
         register: "/auth/register/",
         login: "/auth/login/",
         verify: "/auth/otp/verify/",
-        update:"/users/update",
+        verify_account:"/auth/verify",
     },
     authority: {
         levels: "authority/levels/",
         ruels:"/authority/rules"
-    }
+    },
+    creditcard:"/creditcard/"
 }

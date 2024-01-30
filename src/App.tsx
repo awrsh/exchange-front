@@ -82,7 +82,7 @@ const Pages = [
     element: <Verification />,
   },
   {
-    path: "/verification/level1",
+    path: "/verification/:id",
     element: <Form />,
   },
 ];

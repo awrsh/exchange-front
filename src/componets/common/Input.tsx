@@ -22,7 +22,8 @@ interface Props {
     placeholderRtl?: boolean;
     min?: number;
     max?: number,
-    isError?: boolean
+    isError?: boolean;
+    maxLength?: number;
 }
 const Input = ({
     label,
@@ -44,6 +45,7 @@ const Input = ({
     disabled,
     placeholderRtl = true,
     isError = true,
+    maxLength
 }: Props) => {
 
 
@@ -68,7 +70,7 @@ const Input = ({
                             type={type}
                             disabled={disabled}
                             name={name}
-
+maxLength={maxLength}
                             className={`bg-transparent w-full text-[12px] text-black font-num   outline-none placeholder:text-[#9e9e9e] ${placeholderRtl ? "placeholder:text-right" : "placeholder:text-left"} ${ltr ? "ltr" : ""
                                 }`}
                             placeholder={placeholder}
