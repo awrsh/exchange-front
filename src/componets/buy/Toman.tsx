@@ -95,12 +95,12 @@ const Toman = () => {
 
                 <CustomSlider />
 
-                <div className='flex items-center justify-between p-3 rounded-xl bg-[#f5f5f5]'>
+                <div className='flex items-center justify-between p-3 rounded-xl bg-[#f5f5f5] dark:bg-slate-300'>
                     <p className='font-bold text-neutral-800'>مجموع </p>
                     <p className='font-bold text-zinc-400'>BTC <span className='font-num font-extrabold mx-3 text-neutral-800'>2,000,000</span></p>
                 </div>
 
-                <div className='flex items-center justify-between p-3 my-5 rounded-xl bg-[#f5f5f5]'>
+                <div className='flex items-center justify-between p-3 my-5 rounded-xl bg-[#f5f5f5] dark:bg-slate-300'>
                     <div className='flex flex-col items-center gap-3'>
                         <p className='font-extrabold text-neutral-800'>مبلغ‌کل</p>
                         <p className='font-num'>0</p>

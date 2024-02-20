@@ -14,7 +14,7 @@ const InviteInformation = () => {
                     <p className="text-int font-num ">454545</p>
                     <IoCopy />
                 </div>
-                <div className="flex items-center w-full text-neutral-400 justify-between bg-neutral-100 p-3 rounded-lg">
+                <div className="flex items-center w-full text-neutral-400 justify-between bg-neutral-100 dark:bg-slate-300  p-3 rounded-lg">
                     <p className="font-bold text-[13px] dark:text-zinc-500">لینک دعوت</p>
                     <p className="text-int font-num text-[10px] lg:text-[14px]">bitasia.com/register?ref=LOJFFD</p>
                     <IoCopy />

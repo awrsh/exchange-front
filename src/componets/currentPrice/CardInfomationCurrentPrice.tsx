@@ -3,7 +3,7 @@ interface Props {
 }
 const CardInfomationCurrentPrice = ({ crypto }: Props) => {
     return (
-        <div className="flex-1 relative p-2 group cursor-pointer bg-white rounded-lg overflow-hidden">
+        <div className="flex-1 relative p-2 group cursor-pointer bg-white bg-dark rounded-lg overflow-hidden">
             <div className="">
                 <p className="text-[13px]">{crypto.title}</p>
                 <p className="flex items-center justify-center py-3 text-neutral-900  gap-1 text-[13px]">

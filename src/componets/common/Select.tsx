@@ -1,5 +1,6 @@
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
 import ReactSelect, { FormatOptionLabelMeta, GetOptionLabel } from "react-select";
+import { themeContext } from "../../context/ThemeContextProvider";
 interface Props {
     options: any[];
     formik: any;
@@ -40,11 +41,12 @@ const Select = ({
     isSearchable = false,
     formatOptionLabel
 }: Props) => {
+    const {theme} = useContext(themeContext)
     const styles = {
         control: (base: any, state: any) => ({
             ...base,
             border: state.isFocused ? 0 : formik.errors[name!]?.id ? "1px solid #ef4444" : 0,
-            backgroundColor: backgroundColor,
+            backgroundColor: theme === "dark"?"#CBD5E1": backgroundColor,
             height: isMulti ? "fit-content" : "46.58px",
             borderRadius: "8px",
             fontSize: "12px !important",

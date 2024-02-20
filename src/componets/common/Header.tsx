@@ -19,6 +19,7 @@ const Header = () => {
   }, [theme])
 
   const handleThemeSwitch = () => {
+    localStorage.setItem("theme", theme === "dark" ? "light" : "dark")
     setTheme(theme === "dark" ? "light" : "dark")
   }
   return (
