@@ -9,7 +9,6 @@ import Paper from "@mui/material/Paper";
 import { CircularProgress } from "@mui/material";
 const StyledTableCell = styled(TableCell)(() => ({
     [`&.${tableCellClasses.head}`]: {
-        backgroundColor: "#fff",
         color: "#626262",
         fontFamily: "bold",
         whiteSpace: "nowrap",
@@ -43,15 +42,15 @@ export default function Table({
     length,
 }: PropsTable) {
     return (
-        <div className="flex-1">
+        <div className="flex-1 dark:!bg-dark">
             {title && <p className="font-es-regular text-[#3b3b3b] pb-4 pr-1">{title}</p>}
             <div className="lg:border relative rounded-tr-lg lg:rounded-lg overflow-hidden">
-                <TableContainer sx={{ position: "relative" }} component={Paper}>
+                <TableContainer className="" sx={{ position: "relative",background:"inherit" }} component={Paper}>
                     <TableMui>
-                        <TableHead >
-                            <TableRow>
+                        <TableHead className="dark:!bg-slate-500 " >
+                            <TableRow >
                                 {header.map((name, i) => (
-                                    <StyledTableCell className="!text-[13px]" key={i} align="center">
+                                    <StyledTableCell className="!text-[13px] dark:!text-white" key={i} align="center">
                                         {name}
                                     </StyledTableCell>
                                 ))}

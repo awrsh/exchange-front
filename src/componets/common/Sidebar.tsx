@@ -12,38 +12,38 @@ const Sidebar = () => {
 
   return (
     <div>
-      <Drawer onClose={()=>setOpen(false)} className="!z-[9999] lg:hidden" anchor="right" open={open}>
+      <Drawer onClose={() => setOpen(false)} className="!z-[9999] lg:hidden " anchor="right" open={open}>
         <div className="!min-w-[260px]">
-          <img className="w-40 mx-auto mt-4" src={Logo}/>
-        <div className=" flex flex-col mt-5 gap-2 px-2">
-          {header_menu.map((menu, idx) => (
-            <Link
-              className={`flex items-center w-full px-2  py-[0.7rem] gap-2 rounded-xl hover:bg-neutral-300 ${location.pathname === menu.url ? "bg-int text-white " : "text-neutral-500 "}`} to={menu.url} key={idx}>
-              <menu.icon size={22} className="!min-w-6 !min-h-6" />
+          <img className="w-40 mx-auto mt-4" src={Logo} />
+          <div className=" flex flex-col mt-5 gap-2 px-2">
+            {header_menu.map((menu, idx) => (
+              <Link
+                className={`flex items-center w-full px-2  py-[0.7rem] gap-2 rounded-xl hover:bg-neutral-300 ${location.pathname === menu.url ? "bg-int text-white " : "text-neutral-500 "}`} to={menu.url} key={idx}>
+                <menu.icon size={22} className="!min-w-6 !min-h-6" />
 
-              <span className={` whitespace-nowrap  ${location.pathname === menu.url ? "font-bold text-[13px]" : " font-regular text-[13.5px]"} ${open ? "opacity-100" : "opacity-0 overflow-hidden hidden !w-0"}`}>{menu.name}</span>
+                <span className={` whitespace-nowrap  ${location.pathname === menu.url ? "font-bold text-[13px]" : " font-regular text-[13.5px]"} ${open ? "opacity-100" : "opacity-0 overflow-hidden hidden !w-0"}`}>{menu.name}</span>
 
-            </Link>
-          ))}
-          <button className="flex items-center py-[0.7rem] text-red-500 gap-2 px-2">
-            <CiLogout size={24} />
-            {
-              open &&
-              <span className={` whitespace-nowrap font-regular text-[14px] ${open ? "opacity-100" : "opacity-0 overflow-hidden hidden !w-0"}`}>خروج از حساب کاربری</span>
-            }
-          </button>
-        </div>
+              </Link>
+            ))}
+            <button className="flex items-center py-[0.7rem] text-red-500 gap-2 px-2">
+              <CiLogout size={24} />
+              {
+                open &&
+                <span className={` whitespace-nowrap font-regular text-[14px] ${open ? "opacity-100" : "opacity-0 overflow-hidden hidden !w-0"}`}>خروج از حساب کاربری</span>
+              }
+            </button>
+          </div>
         </div>
       </Drawer>
       <div
         onMouseLeave={() => setOpen(false)}
         onMouseEnter={() => setOpen(true)}
-        className={`hidden lg:block h-screen transition-all duration-300 bottom-0 fixed bg-white !z-50 overflow-y-auto shadow  ${open ? "w-[240px]" : "w-[60px] hidden"}`}>
+        className={`hidden lg:block h-screen transition-all duration-300 bottom-0 fixed bg-white bg-dark !z-50 overflow-y-auto shadow  ${open ? "w-[240px]" : "w-[60px] hidden"}`}>
 
         <div className="flex flex-col mt-24 gap-2 px-2">
           {header_menu.map((menu, idx) => (
             <Link
-              className={`flex items-center w-full px-2  py-[0.7rem] gap-2 rounded-xl hover:bg-neutral-100 ${location.pathname === menu.url ? "bg-int text-white hover:bg-int " : "text-neutral-500 "}`} to={menu.url} key={idx}>
+              className={`flex items-center w-full px-2  py-[0.7rem] gap-2 rounded-xl hover:bg-neutral-100 dark:hover:bg-slate-400 ${location.pathname === menu.url ? "bg-int text-white hover:bg-int " : "text-neutral-500 "}`} to={menu.url} key={idx}>
               <menu.icon size={22} className="!min-w-6 !min-h-6" />
 
               <span className={` whitespace-nowrap  ${location.pathname === menu.url ? "font-bold text-[13px]" : " font-regular text-[13.5px]"} ${open ? "opacity-100" : "opacity-0 overflow-hidden hidden !w-0"}`}>{menu.name}</span>

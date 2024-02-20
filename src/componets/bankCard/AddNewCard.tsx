@@ -26,7 +26,7 @@ const AddNewCard = () => {
     }, [isSuccess])
 
     return (
-        <div className="bg-white flex  flex-col rounded-xl p-3">
+        <div className="bg-white bg-dark flex  flex-col rounded-xl p-3">
             <p className="font-bold text-xl border-b border-neutral-200 pb-3">افزودن کارت بانکی جدید</p>
             <div className="mt-5 w-full flex flex-col-reverse lg:flex-row gap-10 items-center">
                 <div className="flex-1 w-full">

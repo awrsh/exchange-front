@@ -11,24 +11,18 @@ const Header = () => {
   const [cookies] = useCookies(["token"]);
   const { theme, setTheme } = useContext(themeContext);
   useEffect(() => {
-    if (window.matchMedia(`(prefers-color-scheme:dark)`)) {
-      setTheme("dark")
-    } else {
-      setTheme("light")
-    }
-  }, [])
-  useEffect(() => {
-    if (theme === "dark") {
+   if (theme === "dark") {
       document.documentElement.classList.add("dark")
     } else {
       document.documentElement.classList.remove("dark")
     }
   }, [theme])
+
   const handleThemeSwitch = () => {
     setTheme(theme === "dark" ? "light" : "dark")
   }
   return (
-    <div className="bg-white shadow-sm  relative !z-[9999]">
+    <div className="bg-white bg-dark shadow-sm  relative !z-[9999]">
       <header className="flex justify-between items-center w-[95%] mx-auto py-4">
         <div>
           {
@@ -46,7 +40,7 @@ const Header = () => {
         <div className="flex items-center  gap-3">
 
           <button className="hidden lg:flex items-center text-neutral-600 rounded-xl gap-1 p-2 border">
-            <span className="font-bold text-neutral-800 text-xs">دانلود اپلیکیشن</span>
+            <span className="font-bold  text-xs">دانلود اپلیکیشن</span>
             <HiDownload size="18" className="text-ashy" />
           </button>
           <button onClick={handleThemeSwitch} className="w-9 h-9 rounded-full flex justify-center items-center border">

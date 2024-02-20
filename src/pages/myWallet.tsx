@@ -16,14 +16,14 @@ const MyWallet = () => {
         <Layout>
             <div className="pb-10 w-[95%] mx-auto">
                 <h1 className="text-xl font-bold">کیف پول‌ها</h1>
-                <div className="bg-white p-4 mt-7 rounded-xl">
+                <div className="bg-white dark:bg-dark p-4 mt-7 rounded-xl">
                     <Inventory />
                     <Input icon_left={<BsSearch />} placeholder="نام ارز دیجیتال جستجو کنید" formik={formik} className="mt-5 w-[300px]" />
                     <div className="mt-4 pb-5">
                         <Table header={["نام رمز ارز", "موجودی رمز ارز", "مبلغ قابل برداشت", ""]}>
                             {
                                 cryptoList.map((crypto, idx) => (
-                                    <StyledTableRow key={idx}>
+                                    <StyledTableRow className="style-table-row" key={idx}>
                                         <StyledTableCell width={200} align="center">
                                             <div className="flex items-center justify-start  gap-1">
                                                 <img className="w-7 h-7 rounded-full" src={crypto.url} />

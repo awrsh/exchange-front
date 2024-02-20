@@ -19,7 +19,7 @@ const ExChange = () => {
     }
 }
   return (
-    <div className='bg-white rounded-xl pb-4'>
+    <div className='bg-white bg-dark rounded-xl pb-4'>
       <Tabs />
       <div className='flex flex-col xl:flex-row px-5 gap-5 lg:gap-10'>
         <div className='flex-1 '>

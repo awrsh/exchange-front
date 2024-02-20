@@ -16,7 +16,7 @@ const Lists = () => {
             <div>
                 <div className="flex  my-3 border-b-2">
                     {["تومان", "تتر"].map((name, idx) => (
-                        <button onClick={() => setSelect(idx)} className={`border-b-2 w-[60px]  font-bold pb-2 text-xs ${select === idx ? "border-int text-neutral-800" : "border-transparent text-zinc-600"}`} key={idx}>{name}</button>
+                        <button onClick={() => setSelect(idx)} className={`border-b-2 w-[60px]  font-bold pb-2 text-xs ${select === idx ? "border-int text-neutral-800 dark:text-white" : "border-transparent text-zinc-600"}`} key={idx}>{name}</button>
                     ))}
                 </div>
 

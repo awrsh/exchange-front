@@ -7,7 +7,7 @@ interface contextType {
 
 export const themeContext = createContext<any | contextType>({});
 const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState("");
 
     return <themeContext.Provider value={{ theme, setTheme }}>{children}</themeContext.Provider>;
 };

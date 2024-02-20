@@ -3,17 +3,17 @@ import { FiBell } from "react-icons/fi";
 
 const NationwideAnnouncements = () => {
     return (
-        <div className="bg-white flex  flex-col rounded-xl p-3 h-[500px]">
+        <div className="bg-white bg-dark flex  flex-col rounded-xl p-3 h-[500px]">
             <p className="font-bold text-xl border-b border-neutral-200 pb-3"> اطلاعیه های سراسری</p>
             <div className="mt-5">
-                <Accordion className="!shadow-none !rounded-xl border group border-neutral-300">
+                <Accordion  className="!shadow-none  !rounded-xl border group border-neutral-300 dark:!bg-slate-300">
                     <AccordionSummary
                         // expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                     >
                         <div className="flex gap-2 items-center">
-                            <span className="w-11 h-11  bg-neutral-100 transition-all duration-300 group-hover:text-white group-hover:bg-green-600 flex justify-center items-center rounded-full">
+                            <span className="w-11 h-11  bg-neutral-100 dark:bg-slate-400 transition-all duration-300 group-hover:text-white group-hover:bg-green-600 flex justify-center items-center rounded-full">
                                 <FiBell size={20} />
                             </span>
                             <div className="space-y-1">

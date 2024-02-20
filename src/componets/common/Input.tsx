@@ -53,7 +53,7 @@ const Input = ({
         <>
             <div className={`flex-1 ${className}`}>
                 {label && (
-                    <label className="pb-[4px] block font-medium text-[13px] text-[#3b3b3b]">
+                    <label className="pb-[4px] block font-medium text-[13px] ">
                         <span className="font-es-bold ml-1">{count}</span>
                         {label}:
                         {required && <span className="text-[#DF2040] text-sm">*</span>}

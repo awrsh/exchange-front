@@ -5,7 +5,6 @@ import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 export const StyledTableRow = styled(TableRow)(() => ({
     position: "relative",
     "&:nth-of-type(odd)": {
-        backgroundColor: "#f7f7f7",
     },
     // hide last border
     "&:last-child td, &:last-child th": {
@@ -15,8 +14,7 @@ export const StyledTableRow = styled(TableRow)(() => ({
 
 export const StyledTableCell = styled(TableCell)(() => ({
     [`&.${tableCellClasses.head}`]: {
-        backgroundColor: "#e1e1e1",
-        color: "#626262",
+   
         fontFamily: "bold",
         whiteSpace: "nowrap",
     
@@ -24,7 +22,6 @@ export const StyledTableCell = styled(TableCell)(() => ({
     [`&.${tableCellClasses.body}`]: {
         fontSize: 13,
         fontFamily: "regular" ,
-        color: "#222222",
         borderColor: "transparent",
     },
 }));

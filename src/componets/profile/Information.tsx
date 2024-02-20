@@ -8,14 +8,14 @@ const Information = () => {
     let options = { year: "numeric", month: "long", day: "numeric" };
     const { user } = useAuthStore()
     return (
-        <div className="bg-white flex  flex-col rounded-xl p-3 h-[500px]">
+        <div className="bg-white bg-dark flex  flex-col rounded-xl p-3 h-[500px]">
             <p className="font-bold text-xl border-b border-neutral-200 pb-3">اطلاعات حساب</p>
             {/* image & fullname & change img */}
             <div className="flex items-center py-4 justify-between border-b border-neutral-200">
                 <div className="flex items-center gap-2">
                     <img className="rounded-full w-14 h-14" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/The_Undertaker_US_Marine_Visit_2019_%28cropped%292.jpg/220px-The_Undertaker_US_Marine_Visit_2019_%28cropped%292.jpg" />
                     <div className="flex items-center flex-col">
-                        <span className="font-bold text-[14px] text-neutral-600">{user?.first_name} {user?.last_name}</span>
+                        <span className="font-bold text-[14px] ">{user?.first_name} {user?.last_name}</span>
                         <div>
                             <label className="text-xs text-int font-regular" htmlFor="upload">تغیر تصویر</label>
                             <input type="file" id="upload" name="upload" className="opacity-0 absolute !w-0 -z-0" />
