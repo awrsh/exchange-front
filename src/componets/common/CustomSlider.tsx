@@ -72,7 +72,7 @@ const CustomSlider = ({color="#52af77"}:Props) => {
         },
       ];
     return (
-        <div className='mt-1'>
+        <div className='mt-3'>
             <PrettoSlider
                 valueLabelDisplay="auto"
                 aria-label="pretto slider"

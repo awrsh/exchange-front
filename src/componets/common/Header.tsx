@@ -6,6 +6,7 @@ import { useCookies } from "react-cookie";
 import UserProfile from "./UserProfile";
 import { themeContext } from "../../context/ThemeContextProvider";
 import { useContext, useEffect } from "react";
+import Notfecation from "./Notfecation";
 
 const Header = () => {
   const [cookies] = useCookies(["token"]);
@@ -23,7 +24,7 @@ const Header = () => {
     setTheme(theme === "dark" ? "light" : "dark")
   }
   return (
-    <div className="bg-white bg-dark shadow-sm  relative !z-[9999]">
+    <div className="bg-white bg-dark shadow-sm  relative !z-[99]">
       <header className="flex justify-between items-center w-[95%] mx-auto py-4">
         <div>
           {
@@ -38,12 +39,13 @@ const Header = () => {
           }
         </div>
 
-        <div className="flex items-center  gap-3">
+        <div className="flex items-center  gap-5">
 
           <button className="hidden lg:flex items-center text-neutral-600 rounded-xl gap-1 p-2 border">
             <span className="font-bold  text-xs">دانلود اپلیکیشن</span>
             <HiDownload size="18" className="text-ashy" />
           </button>
+          <Notfecation/>
           <button onClick={handleThemeSwitch} className="w-9 h-9 rounded-full flex justify-center items-center border">
             <MdDarkMode size="20" className="text-ashy" />
           </button>

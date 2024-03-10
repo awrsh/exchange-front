@@ -2,14 +2,14 @@ import { orders } from "../../helpers/utils/data"
 
 const Orders = () => {
     return (
-        <div className="min-w-[300px]  overflow-y-auto px-4 pb-4 bg-white bg-dark rounded-xl">
+        <div className="min-w-[300px] h-full overflow-y-auto px-4 pb-4 bg-white bg-dark rounded-xl">
             <h1 className="font-medium text-xs text-center py-3">سفارشات</h1>
             <div className="flex items-center mt-3 border-b pb-1 text-zinc-600 justify-between font-medium text-xs text-center">
                 <p className="flex-1">قیمت</p>
                 <p className="flex-1">مقدار</p>
                 <p className="flex-1">کل</p>
             </div>
-            <div>
+            <div className="h-[45%] overflow-y-auto">
                 <span className="block border mt-4 py-1 text-red-600 text-center font-num rounded-xl">725,534,756</span>
                 <div className="space-y-1 mt-3">
                     {orders.map((order, idx) => (
@@ -24,7 +24,7 @@ const Orders = () => {
                     ))}
                 </div>
             </div>
-            <div>
+            <div className="h-[45%] overflow-y-auto">
                 <span className="block border mt-4 py-1 text-green-600 text-center font-num rounded-xl">725,534,756</span>
                 <div className="space-y-1 mt-3">
                     {orders.map((order, idx) => (
