@@ -1,5 +1,5 @@
 import { BsSearch, BsStar } from "react-icons/bs"
-import { currenciesList1, tabsCurrentPrice } from "../../helpers/utils/data"
+import {informationCurrentPrice, tabsCurrentPrice } from "../../helpers/utils/data"
 import { StyledTableCell, StyledTableRow } from "../../helpers/utils/mui"
 import Table from "../common/Table"
 import { Sparklines, SparklinesLine } from "react-sparklines"
@@ -23,6 +23,8 @@ const ListCurrency = () => {
             toggleVerifyAuth()
         }
     }
+
+
     return (
         <>
             <div className="mt-5 flex items-center gap-5">
@@ -35,27 +37,30 @@ const ListCurrency = () => {
                 </div>
             </div>
             <div className="mt-5">
-                <Table header={["علاقه‌مندی", "نام ارز", "قیمت لحضه‌ای(دلار)", "قیمت لحضه‌ای(تومان)", "تغیرات (24 ساعت)", "نمودار قیمت", "عملیات"]}>
+                <Table header={["علاقه‌مندی", "نام ارز", "قیمت لحظه‌ای(دلار)", "قیمت لحظه‌ای(تومان)", "تغیرات (24 ساعت)", "نمودار قیمت", "عملیات"]}>
                     {
-                        currenciesList1.map((crypto, idx) => (
-                            <StyledTableRow key={idx}>
+                        informationCurrentPrice.map((crypto, idx) => {
+                            if (!crypto?.price_info?.price) return
+                            if (Number(crypto?.price_info?.price) === 0) return
+                            return <StyledTableRow key={idx}>
                                 <StyledTableCell width={100} align="center">
                                     <BsStar className="mx-auto" size={17} />
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
-                                    <p className="font-bold">{crypto.name}</p>
+                                    <p className="font-bold">{crypto.title}</p>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
-                                    <p className="font-num">${crypto.usdPrice.toLocaleString()}</p>
+                                    <p className="font-num">$ {Number(crypto.price_info_usdt.price).toLocaleString()}</p>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
-                                    <p className="font-num">{crypto.tomanPrice.toLocaleString()} <span className="text-[10px]">تومان</span></p>
+                                    <p className="font-num">{Number(crypto.price_info.price).toLocaleString()} <span className="text-[10px]">تومان</span></p>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
-                                    <p className="font-num">{Number(crypto.change24h) >= 0 ? <span className="text-green-500">%{crypto.change24h}</span> : <span className="text-red-500 block [direction:ltr]">%{crypto.change24h}</span>}</p>
+                                    <p className="font-num">{Number(crypto.price_info.change) >= 0 ? <span className="text-green-500">% {crypto.price_info.change}</span> : <span className="text-red-500 block [direction:ltr]">% {crypto.price_info.change}</span>}</p>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
-                                    <Sparklines data={crypto.chart} limit={5} >
+                                    {/* @ts-ignore */}
+                                    <Sparklines data={crypto.alias} limit={5} >
                                         <SparklinesLine color="blue" />
                                     </Sparklines>
 
@@ -66,7 +71,7 @@ const ListCurrency = () => {
                                     </div>
                                 </StyledTableCell>
                             </StyledTableRow>
-                        ))
+                        })
                     }
                 </Table>
             </div>

@@ -10,5 +10,6 @@ export const routes = {
         levels: "authority/levels/",
         ruels:"/authority/rules"
     },
-    creditcard:"/creditcard/"
+    creditcard:"/creditcard/",
+    currencies:"/v1/mkt/currencies/"
 }

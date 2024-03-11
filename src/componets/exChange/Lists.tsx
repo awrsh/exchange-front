@@ -1,6 +1,6 @@
-import  { useState } from 'react'
+import { useState } from 'react'
 import { RiSearch2Line } from 'react-icons/ri'
-import { listCryptocurrencies, ltistAccordingToTether } from '../../helpers/utils/data'
+import { informationCurrentPrice, listCryptocurrencies, ltistAccordingToTether } from '../../helpers/utils/data'
 import CardListCryptocurrencies from '../home/CardListCryptocurrencies'
 
 const Lists = () => {
@@ -30,9 +30,14 @@ const Lists = () => {
                         select === 0 &&
                         <div className="flex flex-col gap-4 mt-2">
                             {
-                                listCryptocurrencies.map((crypto, idx) => (
-                                    <CardListCryptocurrencies key={idx} crypto={crypto} />
-                                ))
+                                informationCurrentPrice.map((crypto, idx) => {
+                                    if(!crypto?.price_info?.price) return
+                                    if(Number(crypto?.price_info?.price) === 0) return
+                                    return (
+                                        // @ts-ignore
+                                        <CardListCryptocurrencies key={idx} crypto={crypto} />
+                                    )
+                                })
                             }
                         </div>
                     }
@@ -40,10 +45,14 @@ const Lists = () => {
                         select === 1 &&
                         <div className="flex flex-col gap-4 mt-2">
                             {
-                                ltistAccordingToTether.map((crypto, idx) => (
-                                    // @ts-ignore
-                                    <CardListCryptocurrencies key={idx} crypto={crypto} />
-                                ))
+                                informationCurrentPrice.map((crypto, idx) => {
+                                    if(!crypto?.price_info?.price) return
+                                    if(Number(crypto?.price_info?.price) === 0) return
+                                    return (
+                                        // @ts-ignore
+                                        <CardListCryptocurrencies key={idx} crypto={crypto} />
+                                    )
+                                })
                             }
                         </div>
                     }

@@ -6,6 +6,7 @@ import CustomSlider from '../common/CustomSlider'
 import Button from '../common/Button'
 import useAuthStore from '../../stores/user-store'
 import useGlobalStore from '../../stores/global-store'
+import { informationCurrentPrice } from '../../helpers/utils/data'
 
 
 const Toman = () => {
@@ -56,10 +57,10 @@ const Toman = () => {
         },
     ]
 
-    const formatOptionLabel = ({ name, imgUrl }: any) => {
+    const formatOptionLabel = ({ title, image }: any) => {
         return <div className='flex items-center gap-2'>
-            <img className='w-6 h-6 rounded-full' src={imgUrl} />
-            <span className='text-xs font-bold'>{name}</span>
+            <img className='w-6 h-6 rounded-full' src={image} />
+            <span className='text-xs font-bold'>{title}</span>
         </div>
     }
 
@@ -73,12 +74,12 @@ const Toman = () => {
             </div>
             <form className='mt-5'>
                 <Select
-                    getOptionLabel={(option) => option.name}
-                    getOptionValue={(option) => option.price}
+                    getOptionLabel={(option) => option.title}
+                    getOptionValue={(option) => option.title}
                     formatOptionLabel={formatOptionLabel}
                     formik={formik}
                     name='crypto'
-                    options={array}
+                    options={informationCurrentPrice}
                     label='لطفا رمز ارز خود را انتخاب کنید'
                 />
                 <Input

@@ -5,3 +5,6 @@ export const Authority = {
 export const CreditCard = {
     GETALLCREDITCARD:"get-Credit"
 }
+export const Currencies = {
+    CURRENCIES:"/v1/mkt/currencies/"
+}
