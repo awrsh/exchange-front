@@ -8,6 +8,7 @@ import { User } from "../types/Auth";
 interface AuthStore {
     user: User | null;
     setUser:({user}:{user:User | null | any})=> void
+    removeUser:()=> void
 }
 
 const useAuthStore = create<AuthStore>()(
@@ -19,6 +20,11 @@ const useAuthStore = create<AuthStore>()(
                     state.user = user;
                 });
             },
+            removeUser:()=>{
+                set((state)=>{
+                    state.user = null
+                })
+            }
            
         }))
     )

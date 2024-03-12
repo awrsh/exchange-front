@@ -6,12 +6,17 @@ import { useNavigate } from 'react-router-dom'
 
 const useRegisterMutation = () => {
   const navigate = useNavigate()
-  return useMutation(async (data:typeRegister) => await register(data),{
-    onSuccess:(data)=>{
-      successToast(data.message)
-      navigate("/auth")
+  return useMutation(async (data: typeRegister) => await register(data), {
+    onSuccess: (data) => {
+      if (data?.result === "error") {
+        errorToast(data?.error?.description)
+        return
+      } else {
+        successToast(data.message)
+        navigate("/auth")
+      }
     },
-    onError:(error:any)=>{
+    onError: (error: any) => {
       errorToast(error?.response?.data?.error?.description)
     }
   })

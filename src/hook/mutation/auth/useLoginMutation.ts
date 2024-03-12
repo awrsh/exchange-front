@@ -6,12 +6,17 @@ import { login } from '../../../services/auth'
 
 const useLoginMutation = () => {
   const navigate = useNavigate()
-  return useMutation(async (data:typeLogin) => await login(data),{
-    onSuccess:(data,variables)=>{
-      successToast(data.message)
-      navigate(`/auth/verify?mobile=${variables.mobile}`)
+  return useMutation(async (data: typeLogin) => await login(data), {
+    onSuccess: (data, variables) => {
+      if (data?.result === "error") {
+        errorToast(data?.error?.description)
+        return
+      } else {
+        successToast(data.message)
+        navigate(`/auth/verify?mobile=${variables.mobile}`)
+      }
     },
-    onError:(error:any)=>{
+    onError: (error: any) => {
       errorToast(error?.response?.data?.error?.description)
     }
   })

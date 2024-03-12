@@ -49,7 +49,7 @@ export default function Notfecation() {
 
     return (
         <Stack>
-            <div>
+            <div className='flex'>
                 <button
                     ref={anchorRef}
                     id="composition-button"

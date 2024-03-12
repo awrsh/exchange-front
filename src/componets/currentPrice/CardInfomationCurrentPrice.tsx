@@ -25,11 +25,11 @@ const CardInfomationCurrentPrice = ({ currency }: Props) => {
              transition-all duration-300 w-full ">
                 <div className="flex justify-between items-center text-xs font-bold text-neutral-600">
                     <p>قیمت خرید</p>
-                    <p className="font-num">{currency?.price_info?.market_value?.toLocaleString()} تومان</p>
+                    <p className="font-num">{Number(Number(currency?.price_info?.price) - 100000).toLocaleString()} تومان</p>
                 </div>
                 <div className="flex justify-between items-center text-xs font-bold text-neutral-600">
                     <p>قیمت فروش</p>
-                    <p className="font-num">{currency?.price_info?.market_amount?.toLocaleString()} تومان</p>
+                    <p className="font-num">{Number(Number(currency?.price_info?.price) + 100000).toLocaleString()} تومان</p>
                 </div>
             </div>
         </div>

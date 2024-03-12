@@ -7,9 +7,10 @@ import { useNavigate } from "react-router-dom";
 
 const useVerifyAuth = () => {
     const navigate = useNavigate()
-    const {setUser} = useAuthStore()
+    const {setUser,removeUser} = useAuthStore()
     const [cookies,_,removeCookies] = useCookies(["token"]);
     useEffect(() => {
+        console.log(cookies.token,"ytytytyytytyttyytytty")
         if (cookies.token) {
             const verifyUser = async () => {
                 // setAuthLoading(true);
@@ -30,9 +31,9 @@ const useVerifyAuth = () => {
             verifyUser();
         } else {
             navigate("/auth")
-            // delete axios.defaults.headers.common["Authorization"];
-            // removeCookies("token", { path: "/" });
-            // removeUser();
+            delete axios.defaults.headers.common["Authorization"];
+            removeCookies("token", { path: "/" });
+            removeUser();
         }
     }, [cookies.token]);
 };

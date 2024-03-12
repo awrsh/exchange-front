@@ -10,7 +10,7 @@ const CurrentPrice = () => {
   console.log(data)
   return (
     <Layout>
-      <div className="w-[95%] mx-auto">
+      <div className="w-[95%] mx-auto mb-10">
         <h1 className="text-xl font-bold">قیمت ارز های دیجیتال</h1>
         <div className="mt-7 flex justify-between overflow-auto items-end  gap-4 ">
 
