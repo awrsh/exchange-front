@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { RiSearch2Line } from 'react-icons/ri'
-import { informationCurrentPrice, listCryptocurrencies, ltistAccordingToTether } from '../../helpers/utils/data'
+import { informationCurrentPrice } from '../../helpers/utils/data'
 import CardListCryptocurrencies from '../home/CardListCryptocurrencies'
 
 const Lists = () => {

@@ -30,32 +30,6 @@ const Toman = () => {
     }
 
 
-    const array = [
-        {
-            name: "Ethereum",
-            imgUrl: "https://cryptologos.cc/logos/ethereum-eth-logo.png",
-            price: 3000,
-            percent: -1.8,
-        },
-        {
-            name: "Bitcoin",
-            imgUrl: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
-            price: 50000,
-            percent: 2.5,
-        },
-        {
-            name: "Cardano",
-            imgUrl: "https://cryptologos.cc/logos/cardano-ada-logo.png",
-            price: 2.5,
-            percent: 3.2,
-        },
-        {
-            name: "Polkadot",
-            imgUrl: "https://cryptologos.cc/logos/polkadot-new-dot-logo.png",
-            price: 30,
-            percent: 1.8,
-        },
-    ]
 
     const formatOptionLabel = ({ title, image }: any) => {
         return <div className='flex items-center gap-2'>

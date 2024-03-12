@@ -7,6 +7,7 @@ import useListCurrenciesQuery from "../hook/query/currencies/useListCurrenciesQu
 
 const CurrentPrice = () => {
   const { data } = useListCurrenciesQuery()
+  console.log(data)
   return (
     <Layout>
       <div className="w-[95%] mx-auto">
