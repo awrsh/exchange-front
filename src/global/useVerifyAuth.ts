@@ -10,7 +10,6 @@ const useVerifyAuth = () => {
     const {setUser,removeUser} = useAuthStore()
     const [cookies,_,removeCookies] = useCookies(["token"]);
     useEffect(() => {
-        console.log(cookies.token,"ytytytyytytyttyytytty")
         if (cookies.token) {
             const verifyUser = async () => {
                 // setAuthLoading(true);

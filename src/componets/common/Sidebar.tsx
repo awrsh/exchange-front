@@ -1,15 +1,24 @@
 "use client"
 import { header_menu, menuBottom } from "../../helpers/utils/data";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CiLogout } from "react-icons/ci";
 import { useState } from "react";
 import { TfiMoreAlt } from "react-icons/tfi";
 import { Drawer } from "@mui/material";
 import Logo from "../../assets/images/logo.jpg"
+import useAuthStore from "../../stores/user-store";
+import { useCookies } from "react-cookie";
 const Sidebar = () => {
+  const navigate = useNavigate()
+  const [cookies,_,removeCookies] = useCookies(["token"]);
+  const { removeUser } = useAuthStore()
   const [open, setOpen] = useState(false)
   const location = useLocation()
-
+  const logout = () => {
+    removeUser()
+    removeCookies(cookies.token)
+    navigate("/auth")
+  }
   return (
     <div>
       <Drawer onClose={() => setOpen(false)} className="!z-40 lg:hidden " anchor="right" open={open}>
@@ -25,7 +34,7 @@ const Sidebar = () => {
 
               </Link>
             ))}
-            <button className="flex items-center py-[0.7rem] text-red-500 gap-2 px-2">
+            <button onClick={logout} className="flex items-center py-[0.7rem] text-red-500 gap-2 px-2">
               <CiLogout size={24} />
               {
                 open &&
@@ -50,7 +59,7 @@ const Sidebar = () => {
 
             </Link>
           ))}
-          <button className="flex items-center py-[0.7rem] text-red-500 gap-2 px-2">
+          <button onClick={logout} className="flex items-center py-[0.7rem] text-red-500 gap-2 px-2">
             <CiLogout size={24} />
             {
               open &&
