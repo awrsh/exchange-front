@@ -3,7 +3,7 @@ import Input from "../../componets/common/Input"
 import Button from "../../componets/common/Button"
 import { initialValuesLogin } from "../../helpers/utils/initialValues"
 import { validationSchemaLogin } from "../../helpers/utils/validationSchema"
-import Logo from "../../assets/images/logo.webp"
+import Logo from "../../assets/images/logo.svg"
 import Slide2 from "../../assets/images/Login-cuate.png"
 import { Link } from "react-router-dom"
 import useLoginMutation from "../../hook/mutation/auth/useLoginMutation"
@@ -21,7 +21,7 @@ const Auth = () => {
         <div className="flex  h-screen max-h-screen overflow-hidden">
             <div className="flex-1 h-full flex flex-col  justify-center ">
                 <div className="w-[90%] md:w-[80%] mx-auto">
-                    {/* <img src={Logo} alt="" className="w-32 h-32 mb-10 mx-auto" /> */}
+                    <img src={Logo} alt="" className="w-36 h-36  mx-auto" />
                     <h1 className="font-extrabold text-2xl">با بهترین قیمت و سرعت بالا معامله کنید</h1>
                     <p className="font-bold pt-4 text-xl">
                         ورود  |  ثبت‌نام
@@ -35,7 +35,7 @@ const Auth = () => {
                 </div>
             </div>
             <div className="flex-1 hidden lg:flex bg-neutral-50 items-center justify-center">
-                <img className='object-cover h-full w-[70%] h-[70%] rounded-0' src={Slide2} alt='' />
+                <img className='object-cover  w-[70%] h-[70%] rounded-0' src={Slide2} alt='' />
             </div>
         </div>
     )
