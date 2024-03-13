@@ -4,7 +4,7 @@ import { RiEdit2Fill } from "react-icons/ri";
 import ReactInputVerificationCode from "react-input-verification-code";
 import Button from "../../componets/common/Button";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import Slide2 from "../../assets/images/slide2.jpeg"
+import Slide2 from "../../assets/images/Sign in-pana.png"
 import useVerifyMutation from "../../hook/mutation/auth/useVerifyMutation";
 import WithoutToken from "../../hoc/WithoutToken";
 
@@ -23,8 +23,8 @@ const Verify = () => {
 
   return (
     <div className="flex gap-10 h-screen max-h-screen overflow-hidden">
-      <div className="flex-1">
-        <div className="mt-10 w-[90%] md:w-[80%] mx-auto">
+      <div className="flex-1 flex items-center justify-center">
+        <div className=" w-[90%] md:w-[80%] mx-auto">
           <span
             onClick={() => navigate(-1)}
             className="w-12 h-12 cursor-pointer rounded-lg flex justify-center items-center bg-gray-50 hover:bg-gray-100"
@@ -48,9 +48,9 @@ const Verify = () => {
           <Button isLoading={isLoading} disabled={value.length !== 4} onClick={onSubmit} name="تائید کد" containerClass="!mt-14" />
         </div>
       </div>
-      <div className="flex-1 hidden lg:flex bg-neutral-50">
-        <img className='object-cover h-full w-full rounded-xl' src={Slide2} alt='' />
-      </div>
+      <div className="flex-1 hidden lg:flex bg-neutral-50 items-center justify-center">
+                <img className='object-cover h-full w-[70%] h-[70%] rounded-0' src={Slide2} alt='' />
+            </div>
     </div>
   )
 };
