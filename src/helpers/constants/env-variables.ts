@@ -6,7 +6,7 @@ if (import.meta.env) {
     }
 }
 
-const mainUrl = "https://bitasia.ir/api/v1";
+const mainUrl = "https://dashboard.bitasia.ir/api/v1";
 const mainUrl_bitpin = "https://api.bitpin.ir/";
 
 export { inDevEnvironment, mainUrl,mainUrl_bitpin };

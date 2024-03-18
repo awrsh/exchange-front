@@ -16,7 +16,7 @@ const Sidebar = () => {
   const location = useLocation()
   const logout = () => {
     removeUser()
-    removeCookies(cookies.token)
+    removeCookies("token" , {path:"/"})
     navigate("/auth")
   }
   return (
