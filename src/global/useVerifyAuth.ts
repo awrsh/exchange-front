@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const useVerifyAuth = () => {
     const navigate = useNavigate()
-    const {setUser,removeUser} = useAuthStore()
+    const {setUser} = useAuthStore()
     const [cookies,_,removeCookies] = useCookies(["token"]);
     useEffect(() => {
         if (cookies.token) {
