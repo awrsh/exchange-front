@@ -185,10 +185,6 @@ export const listCryptocurrencies = [
 ];
 
 
-
-
-
-
 export const ltistAccordingToTether = [
   {
     name: "Litecoin",
