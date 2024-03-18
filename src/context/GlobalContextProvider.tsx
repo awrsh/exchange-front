@@ -4,7 +4,6 @@ import { Toaster } from 'react-hot-toast';
 import useConfigureQueryClient from "../hook/common/useConfigureQueryClient";
 import useVerifyAuth from "../global/useVerifyAuth";
 import Sidebar from "../componets/common/Sidebar";
-import { useLocation } from "react-router-dom";
 import VerifyAuth from "../componets/common/VerifyAuth";
 import { useCookies } from "react-cookie";
 
@@ -16,14 +15,13 @@ const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
     const queryClient = useConfigureQueryClient();
     const [cookies] = useCookies(["token"]);
 
-    const location = useLocation()
     useVerifyAuth();
 
     return (
         <QueryClientProvider client={queryClient}>
             {children}
             {
-                // !location.pathname.startsWith("/auth") && cookies.token &&
+                !location.pathname.startsWith("/auth") && cookies.token &&
                 <Sidebar />
             }
             {
