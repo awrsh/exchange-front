@@ -35,7 +35,7 @@ const ExChange = () => {
             <p className='text-xs'>دریافتی شما</p>
             <p className='text-xs text-gray-700'>0 BTC</p>
           </div>
-          <Button onClick={onClick} containerClass='!bg-green-600 !mt-4' name='خرید' />
+          <Button onClick={onClick} containerClass='!bg-[#22c55e] !mt-4' name='خرید' />
         </div>
         <div className='flex-1'>
           <Input formik={formik} name='' label='قیمت' />
