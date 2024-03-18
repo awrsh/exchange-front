@@ -11,6 +11,8 @@ import { useCookies } from "react-cookie";
 const Sidebar = () => {
   const navigate = useNavigate()
   const [cookies,_,removeCookies] = useCookies(["token"]);
+  console.log(cookies);
+  
   const { removeUser } = useAuthStore()
   const [open, setOpen] = useState(false)
   const location = useLocation()
