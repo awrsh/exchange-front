@@ -9,7 +9,7 @@ const Lists = () => {
     return (
         <>
             <h1 className="font-medium text-xs text-center py-3">لیست رمز ارزها</h1>
-            <div className="flex items-center p-2 bg-neutral-100 rounded-lg">
+            <div className="flex items-center p-2 bg-neutral-100 dark:bg-block rounded-lg">
                 <input placeholder="جستجوی رمز ارز" className="bg-transparent font-regular text-neutral-800 text-xs w-full" />
                 <RiSearch2Line className="text-ashy" size={25} />
             </div>

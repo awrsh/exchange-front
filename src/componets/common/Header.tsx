@@ -24,7 +24,7 @@ const Header = () => {
     setTheme(theme === "dark" ? "light" : "dark")
   }
   return (
-    <div className="bg-white bg-dark shadow-sm  relative !z-[99]">
+    <div className="bg-white bg-dark dark:bg-block shadow-sm  relative !z-[99]">
       <header className="flex justify-between items-center w-[95%] mx-auto py-4">
         <div>
           {
@@ -32,8 +32,8 @@ const Header = () => {
               <UserProfile />
               <span className="text-sm font-bold">مهدی شریفلو</span>
             </div> :
-              <Link to={"/auth"} className="flex items-center text-neutral-600 rounded-xl gap-2 p-2 border">
-                <span className="font-bold text-neutral-800 text-sm">ورود/ثبت‌نام</span>
+              <Link to={"/auth"} className="flex items-center text-neutral-600 dark:text-white rounded-xl gap-2 p-2 border">
+                <span className="font-bold  text-sm">ورود/ثبت‌نام</span>
                 <FaUserAlt className="text-ashy" />
               </Link>
           }

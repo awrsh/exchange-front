@@ -31,13 +31,13 @@ const Information = () => {
             </div>
             <div className="flex items-center justify-between mt-2">
                 <p className="flex-1">کارمزد معامله‌ها</p>
-                <div className="flex-1 bg-[#f4f7fb] dark:bg-slate-300 h-12 px-1 rounded-xl flex justify-between items-center">
+                <div className="flex-1 bg-[#f4f7fb] dark:bg-block h-12 px-1 rounded-xl flex justify-between items-center">
                     {tabs.map((tab, idx) => (
                         <button onClick={() => setSelect(idx)} className={`text-center w-full h-10 rounded-xl text-[12px] transition-all duration-500 ${select === idx ? "bg-white dark:bg-slate-500" : ""}`} key={idx}>{tab}</button>
                     ))}
                 </div>
             </div>
-            <div className="bg-[#f4f7fb] dark:bg-slate-300 mt-10 flex justify-between p-2 rounded-lg">
+            <div className="bg-[#f4f7fb] dark:bg-block mt-10 flex justify-between p-2 rounded-lg">
                 <div className="space-y-5 flex flex-col justify-center items-center">
                     <p className="text-int text-[12px] font-bold">سطح کارمزد شما</p>
                     <p className="font-num text-[12px] bg-int rounded-lg text-white text-xs px-3 py-1">سطح  1</p>

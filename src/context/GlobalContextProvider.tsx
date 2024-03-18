@@ -23,7 +23,7 @@ const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
         <QueryClientProvider client={queryClient}>
             {children}
             {
-                !location.pathname.startsWith("/auth") && cookies.token &&
+                // !location.pathname.startsWith("/auth") && cookies.token &&
                 <Sidebar />
             }
             {

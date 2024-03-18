@@ -47,7 +47,7 @@ const Sidebar = () => {
       <div
         onMouseLeave={() => setOpen(false)}
         onMouseEnter={() => setOpen(true)}
-        className={`hidden lg:block h-screen transition-all duration-300 bottom-0 fixed bg-white bg-dark !z-50 overflow-y-auto shadow  ${open ? "w-[240px]" : "w-[60px] hidden"}`}>
+        className={`hidden lg:block h-screen transition-all duration-300 bottom-0 fixed bg-white dark:bg-block !z-50 overflow-y-auto shadow  ${open ? "w-[240px]" : "w-[60px] hidden"}`}>
 
         <div className="flex flex-col mt-24 gap-2 px-2">
           {header_menu.map((menu, idx) => (
