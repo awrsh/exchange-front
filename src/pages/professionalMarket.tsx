@@ -3,6 +3,7 @@ import Chart from '../componets/home/Chart'
 import ExChange from '../componets/home/ExChange'
 import ListCryptocurrencies from '../componets/home/ListCryptocurrencies'
 import Orders from '../componets/home/Orders'
+import WithTokenCkeck from '../hook/common/WithTokenCkeck'
 
 const ProfessionalMarket = () => {
     return (
@@ -19,4 +20,4 @@ const ProfessionalMarket = () => {
     )
 }
 
-export default ProfessionalMarket
+export default WithTokenCkeck()(ProfessionalMarket)

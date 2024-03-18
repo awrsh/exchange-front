@@ -29,10 +29,7 @@ const useVerifyAuth = () => {
             };
             verifyUser();
         } else {
-            navigate("/auth")
-            delete axios.defaults.headers.common["Authorization"];
-            removeCookies("token", { path: "/" });
-            removeUser();
+           
         }
     }, [cookies.token]);
 };

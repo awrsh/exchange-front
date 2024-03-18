@@ -3,6 +3,7 @@ import Button from "../componets/common/Button"
 import Layout from "../componets/common/Layout"
 import Table from "../componets/common/Table"
 import CreateTickets from "../componets/tickets/CreateTickets"
+import WithTokenCkeck from "../hook/common/WithTokenCkeck"
 
 const Tickets = () => {
     const [open, setOpen] = useState(false)
@@ -22,4 +23,4 @@ const Tickets = () => {
     )
 }
 
-export default Tickets
+export default WithTokenCkeck()(Tickets) 

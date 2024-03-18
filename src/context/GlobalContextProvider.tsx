@@ -6,6 +6,7 @@ import useVerifyAuth from "../global/useVerifyAuth";
 import Sidebar from "../componets/common/Sidebar";
 import { useLocation } from "react-router-dom";
 import VerifyAuth from "../componets/common/VerifyAuth";
+import { useCookies } from "react-cookie";
 
 interface GlobalContextProviderProps {
     children?: ReactNode;
@@ -13,6 +14,8 @@ interface GlobalContextProviderProps {
 
 const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
     const queryClient = useConfigureQueryClient();
+    const [cookies] = useCookies(["token"]);
+
     const location = useLocation()
     useVerifyAuth();
 
@@ -20,8 +23,11 @@ const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
         <QueryClientProvider client={queryClient}>
             {children}
             {
-                !location.pathname.startsWith("/auth") &&
+                !location.pathname.startsWith("/auth") && cookies.token &&
                 <Sidebar />
+            }
+            {
+                
             }
             <VerifyAuth/>
             <Toaster position="top-center" toastOptions={{ duration: 9000 }} />

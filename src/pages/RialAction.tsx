@@ -2,6 +2,7 @@ import Note from "../componets/RialAction/Note"
 import Layout from "../componets/common/Layout"
 import TomanDeposit from "../componets/RialAction/TomanDeposit"
 import { useState } from "react"
+import WithTokenCkeck from "../hook/common/WithTokenCkeck"
 
 const RialAction = () => {
   const [select] = useState(0)
@@ -32,4 +33,4 @@ const RialAction = () => {
   )
 }
 
-export default RialAction
+export default WithTokenCkeck()(RialAction) 

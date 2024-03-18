@@ -3,6 +3,7 @@ import CompleteRegistration from '../componets/home/CompleteRegistration'
 import History from '../componets/home/History'
 import Information from '../componets/home/Information'
 import TotalAssetValue from '../componets/home/TotalAssetValue'
+import WithTokenCkeck from '../hook/common/WithTokenCkeck'
 import useAuthStore from '../stores/user-store'
 
 const Home = () => {
@@ -26,4 +27,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default WithTokenCkeck()(Home)

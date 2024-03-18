@@ -1,6 +1,7 @@
 import AddNewCard from "../componets/bankCard/AddNewCard"
 import Banks from "../componets/bankCard/Banks"
 import Layout from "../componets/common/Layout"
+import WithTokenCkeck from "../hook/common/WithTokenCkeck"
 
 const BankCard = () => {
   return (
@@ -13,4 +14,4 @@ const BankCard = () => {
   )
 }
 
-export default BankCard
+export default WithTokenCkeck()(BankCard) 

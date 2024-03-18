@@ -3,6 +3,7 @@ import Layout from "../componets/common/Layout"
 import Table from "../componets/common/Table"
 import { StyledTableCell, StyledTableRow } from "../helpers/utils/mui"
 import { cryptoTransactions, transactionsList } from "../helpers/utils/data"
+import WithTokenCkeck from "../hook/common/WithTokenCkeck"
 
 const TransactionHistory = () => {
     const [select, setSelect] = useState(0)
@@ -56,4 +57,4 @@ const TransactionHistory = () => {
     )
 }
 
-export default TransactionHistory
+export default WithTokenCkeck()(TransactionHistory)

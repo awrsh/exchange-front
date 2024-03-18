@@ -9,6 +9,7 @@ type Props = {
   containerClass?:string
 };
 export function Layout({ children, header = true,className,containerClass }: Props) {
+  
   return (
     <div className={containerClass}>
       {header && <Header />}
@@ -19,4 +20,4 @@ export function Layout({ children, header = true,className,containerClass }: Pro
   );
 }
 
-export default Layout;
+export default Layout ;

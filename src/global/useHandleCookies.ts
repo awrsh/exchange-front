@@ -11,10 +11,10 @@ const useHandleCookies = () => {
    const navigate = useNavigate()
     useEffect(() => {
         if (!cookies.token) {
-            delete axios.defaults.headers.common["Authorization"];
-            removeCookies("token", { path: "/" });
-            removeUser();
-            navigate("/auth")
+            // delete axios.defaults.headers.common["Authorization"];
+            // removeCookies("token", { path: "/" });
+            // removeUser();
+            // navigate("/auth")
         }
     }, [cookies.token]);
 };

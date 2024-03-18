@@ -3,6 +3,7 @@ import Information from "../componets/profile/Information"
 import LoginHistory from "../componets/profile/LoginHistory"
 import NationwideAnnouncements from "../componets/profile/NationwideAnnouncements"
 import SupportTickets from "../componets/profile/SupportTickets"
+import WithTokenCkeck from "../hook/common/WithTokenCkeck"
 
 const Profile = () => {
   return (
@@ -20,4 +21,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default WithTokenCkeck()(Profile) 

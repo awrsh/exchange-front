@@ -6,6 +6,7 @@ import Inventory from "../componets/my-wallet/inventory"
 import { cryptoList } from "../helpers/utils/data"
 import { StyledTableCell, StyledTableRow } from "../helpers/utils/mui"
 import { BsSearch } from "react-icons/bs"
+import WithTokenCkeck from "../hook/common/WithTokenCkeck"
 
 const MyWallet = () => {
     const formik = useFormik({
@@ -87,4 +88,4 @@ const MyWallet = () => {
     )
 }
 
-export default MyWallet
+export default WithTokenCkeck()(MyWallet) 
