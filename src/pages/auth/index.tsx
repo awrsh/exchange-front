@@ -21,7 +21,7 @@ const Auth = () => {
         <div className="flex  h-screen max-h-screen overflow-hidden">
             <div className="flex-1 h-full flex flex-col  justify-center ">
                 <div className="w-[90%] md:w-[80%] mx-auto">
-                    <img src={Logo} alt="" className="w-36 h-36  mx-auto" />
+                    <img src={Logo} alt="" className="w-60 h-60  mx-auto" />
                     <h1 className="font-extrabold text-2xl">با بهترین قیمت و سرعت بالا معامله کنید</h1>
                     <p className="font-bold pt-4 text-xl">
                         ورود  |  ثبت‌نام
