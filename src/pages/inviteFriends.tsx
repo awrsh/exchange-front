@@ -3,7 +3,6 @@ import FriendsInvited from "../componets/invite-friends/FriendsInvited"
 import FriendsTransaction from "../componets/invite-friends/FriendsTransaction"
 import InviteInformation from "../componets/invite-friends/InviteInformation"
 import YourReceipts from "../componets/invite-friends/YourReceipts"
-import WithTokenCkeck from "../hook/common/WithTokenCkeck"
 
 const InviteFriends = () => {
   return (
