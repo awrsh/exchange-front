@@ -1,5 +1,5 @@
 import { FaUserAlt } from "react-icons/fa";
-import { HiDownload } from "react-icons/hi";
+// import { HiDownload } from "react-icons/hi";
 import { MdDarkMode } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
