@@ -29,4 +29,4 @@ const InviteFriends = () => {
   )
 }
 
-export default WithTokenCkeck()(InviteFriends) 
+export default InviteFriends 
