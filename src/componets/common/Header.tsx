@@ -1,5 +1,5 @@
 import { FaUserAlt } from "react-icons/fa";
-import { HiDownload } from "react-icons/hi";
+// import { HiDownload } from "react-icons/hi";
 import { MdDarkMode } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
@@ -40,11 +40,11 @@ const Header = () => {
         </div>
 
         <div className="flex items-center  gap-5">
-
+{/* 
           <button className="hidden lg:flex items-center text-neutral-600 rounded-xl gap-1 p-2 border">
             <span className="font-bold  text-xs">دانلود اپلیکیشن</span>
             <HiDownload size="18" className="text-ashy" />
-          </button>
+          </button> */}
           <Notfecation/>
           <button onClick={handleThemeSwitch} className="w-9 h-9 rounded-full flex justify-center items-center border">
             <MdDarkMode size="20" className="text-ashy" />
