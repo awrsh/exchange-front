@@ -5,6 +5,10 @@ import { TbMessageSearch } from "react-icons/tb";
 import { RiBankCard2Fill } from "react-icons/ri";
 import { FaWallet } from "react-icons/fa6";
 import { BsClockHistory } from "react-icons/bs";
+import { MdCurrencyExchange } from "react-icons/md";
+import { TbExchange } from "react-icons/tb";
+import { GrCurrency } from "react-icons/gr";
+
 
 export const header_menu = [
   {
@@ -20,17 +24,17 @@ export const header_menu = [
   {
     name: "قیمت لحضه‌ای",
     url: "/current-price",
-    icon: RxDashboard
+    icon: GrCurrency
   },
   {
     name: "بازار حرفه‌ای",
     url: "/exchange",
-    icon: RxDashboard
+    icon: MdCurrencyExchange
   },
   {
     name: " خرید آسان",
     url: "/buy",
-    icon: RxDashboard
+    icon: TbExchange
   },
   {
     name: "تاریخچه معاملات",
