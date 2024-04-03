@@ -6,5 +6,9 @@ export const CreditCard = {
     GETALLCREDITCARD:"get-Credit"
 }
 export const Currencies = {
-    CURRENCIES:"/v1/mkt/currencies/"
+    CURRENCIES:"/v1/mkt/currencies/",
+    NETWORKS:"networks"
+}
+export const Order = {
+    ALL_ORDERS:"/order"
 }

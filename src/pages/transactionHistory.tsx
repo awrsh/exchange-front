@@ -2,10 +2,12 @@ import { useState } from "react"
 import Layout from "../componets/common/Layout"
 import Table from "../componets/common/Table"
 import { StyledTableCell, StyledTableRow } from "../helpers/utils/mui"
-import { cryptoTransactions, transactionsList } from "../helpers/utils/data"
+import { transactionsList } from "../helpers/utils/data"
 import WithTokenCkeck from "../hook/common/WithTokenCkeck"
+import useGetOrderQuery from "../hook/query/order/useGetOrderQuery"
 
 const TransactionHistory = () => {
+    const {data,isLoading} = useGetOrderQuery()
     const [select, setSelect] = useState(0)
     const tabs = ['معاملات تکمیل شده', "واریز های ریالی", "واریز های ارزی", "برداشت های ریالی", "برداشت های ارزی", "معاملات حرفه‌ای", "معاملات حرفه‌ای باز"]
     return (
@@ -19,19 +21,19 @@ const TransactionHistory = () => {
                         ))}
                     </div>
                     <div className="mt-6">
-                        {select === 0 && <Table header={["نام ارز", "نوع", "تاریخ ثبت", "مبلغ(تومان)", "مقدار", "وضعیت", "جزئیات"]}  >
+                        {select === 0 && <Table length={data?.objects?.length} isLoaidng={isLoading} header={["نام ارز", "نوع", "تاریخ ثبت", "مبلغ(تومان)", "مقدار", "وضعیت"]}  >
                             {
-                                cryptoTransactions.map((crypto, idx) => (
+                                data?.objects.map((order, idx) => (
                                     <StyledTableRow className="style-table-row" key={idx}>
-                                        <StyledTableCell className="dark:!text-white" align="center" >{crypto.name} </StyledTableCell>
-                                        <StyledTableCell className="dark:!text-white" align="center" >{crypto.type === "Buy" ? "خرید" : "فروش"} </StyledTableCell>
-                                        <StyledTableCell className="dark:!text-white" align="center" >{new Date(crypto.registrationDate).toLocaleDateString("fa-IR")} </StyledTableCell>
-                                        <StyledTableCell  className="!font-num dark:!text-white" align="center" >{crypto.amountInToman.toLocaleString()} </StyledTableCell>
-                                        <StyledTableCell  className="!font-num dark:!text-white" align="center" >{crypto.quantity} </StyledTableCell>
-                                        <StyledTableCell className="dark:!text-white" align="center" >{crypto.status === "Completed" ? <span className="text-green-500 font-bold">تکمیل شده</span> : crypto.status === "Pending" ? <span className="text-yellow-500 font-bold">در حال انتظار</span> : <span className="text-red-500 font-bold">ناموفق</span>} </StyledTableCell>
-                                        <StyledTableCell className="dark:!text-white" align="center" >
+                                        <StyledTableCell className="dark:!text-white" align="center" >{order.currency_id.title} </StyledTableCell>
+                                        <StyledTableCell className="dark:!text-white" align="center" >{order.type === "deposit" ? "خرید" : "فروش"} </StyledTableCell>
+                                        <StyledTableCell className="dark:!text-white" align="center" >-</StyledTableCell>
+                                        <StyledTableCell  className="!font-num dark:!text-white" align="center" >{Number(order.amount).toLocaleString()} </StyledTableCell>
+                                        <StyledTableCell  className="!font-num dark:!text-white" align="center" >jjjj </StyledTableCell>
+                                        <StyledTableCell className="dark:!text-white" align="center" >{order.status === "success" ? <span className="text-green-500 font-bold">تکمیل شده</span> : order.status === "cancel" ?  <span className="text-red-500 font-bold">ناموفق</span>:<span className="text-yellow-500 font-bold">در حال انتظار</span>} </StyledTableCell>
+                                        {/* <StyledTableCell className="dark:!text-white" align="center" >
                                             <button className="text-int">مشاهده</button>
-                                        </StyledTableCell>
+                                        </StyledTableCell> */}
                                     </StyledTableRow>
                                 ))
                             }

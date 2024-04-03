@@ -6,23 +6,25 @@ import CustomSlider from '../common/CustomSlider'
 import Button from '../common/Button'
 import useAuthStore from '../../stores/user-store'
 import useGlobalStore from '../../stores/global-store'
-import { informationCurrentPrice } from '../../helpers/utils/data'
+import useGetCuurencyListQuery from '../../hook/query/currency/useGetCuurencyListQuery'
+import NetworkSelectbox from '../common/NetworkSelectbox'
 
 
 const Toman = () => {
-    const {toggleVerifyAuth} = useGlobalStore()
-    const {user} = useAuthStore()
+    const { data, isLoading } = useGetCuurencyListQuery()
+    const { toggleVerifyAuth } = useGlobalStore()
+    const { user } = useAuthStore()
     const tabs = ["خرید", "فروش"]
     const [select, setSelect] = useState(0)
-    const formik = useFormik({
+    const formik = useFormik<any>({
         initialValues: {
-            crypto: { label: "", value: "" }
+            crypto: null
         },
         onSubmit: () => { }
     })
 
 
-      
+
     const onClick = () => {
         if (user?.authentication_status === "level_0") {
             toggleVerifyAuth()
@@ -33,11 +35,13 @@ const Toman = () => {
 
     const formatOptionLabel = ({ title, image }: any) => {
         return <div className='flex items-center gap-2'>
-            <img className='w-6 h-6 rounded-full' src={image} />
+            {
+                image &&
+                <img className='w-6 h-6 rounded-full' src={image} />
+            }
             <span className='text-xs font-bold'>{title}</span>
         </div>
     }
-
 
     return (
         <div className='mt-3'>
@@ -48,14 +52,19 @@ const Toman = () => {
             </div>
             <form className='mt-5'>
                 <Select
+                    isLoading={isLoading}
                     getOptionLabel={(option) => option.title}
                     getOptionValue={(option) => option.title}
                     formatOptionLabel={formatOptionLabel}
                     formik={formik}
                     name='crypto'
-                    options={informationCurrentPrice}
+                    options={data?.objects!}
                     label='لطفا رمز ارز خود را انتخاب کنید'
                 />
+                {
+                    formik.values.crypto?.price_info_amount ?
+                        <NetworkSelectbox formik={formik}/> : null
+                }
                 <Input
                     className='mt-2'
                     name=''
@@ -89,7 +98,7 @@ const Toman = () => {
                         <p className='font-num'>0</p>
                     </div>
                 </div>
-                <Button onClick={onClick} name='خرید'/>
+                <Button onClick={onClick} name='خرید' />
             </form>
         </div>
     )

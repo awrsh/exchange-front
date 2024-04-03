@@ -2,12 +2,10 @@
 import Layout from "../componets/common/Layout"
 import CardInfomationCurrentPrice from "../componets/currentPrice/CardInfomationCurrentPrice"
 import ListCurrency from "../componets/currentPrice/ListCurrency"
-import { informationCurrentPrice } from "../helpers/utils/data"
-import useListCurrenciesQuery from "../hook/query/currencies/useListCurrenciesQuery"
+import useGetCuurencyListQuery from "../hook/query/currency/useGetCuurencyListQuery"
 
 const CurrentPrice = () => {
-  const { data } = useListCurrenciesQuery()
-  console.log(data)
+  const { data } = useGetCuurencyListQuery()
   return (
     <Layout>
       <div className="w-[95%] mx-auto mb-10">
@@ -15,10 +13,7 @@ const CurrentPrice = () => {
         <div className="mt-7 flex justify-between overflow-auto items-end  gap-4 ">
 
           {
-            informationCurrentPrice?.map((currency) => {
-              if(!currency?.price_info?.price) return
-              if(Number(currency?.price_info?.price) === 0) return
-              // @ts-ignore
+            data?.objects?.map((currency) => {
               return <CardInfomationCurrentPrice key={currency.id} currency={currency} />
             })
           }

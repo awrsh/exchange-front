@@ -1,5 +1,5 @@
 import { BsSearch, BsStar } from "react-icons/bs"
-import {informationCurrentPrice, tabsCurrentPrice } from "../../helpers/utils/data"
+import { tabsCurrentPrice } from "../../helpers/utils/data"
 import { StyledTableCell, StyledTableRow } from "../../helpers/utils/mui"
 import Table from "../common/Table"
 import { Sparklines, SparklinesLine } from "react-sparklines"
@@ -8,8 +8,11 @@ import { useState } from "react"
 import { useFormik } from "formik"
 import useGlobalStore from "../../stores/global-store"
 import useAuthStore from "../../stores/user-store"
+import useGetCuurencyListQuery from "../../hook/query/currency/useGetCuurencyListQuery"
 
 const ListCurrency = () => {
+    const { data } = useGetCuurencyListQuery()
+
     const { toggleVerifyAuth } = useGlobalStore()
     const { user } = useAuthStore()
     const [select, setSelect] = useState(0)
@@ -39,28 +42,29 @@ const ListCurrency = () => {
             <div className="mt-5">
                 <Table header={["علاقه‌مندی", "نام ارز", "قیمت لحظه‌ای(دلار)", "قیمت لحظه‌ای(تومان)", "تغیرات (24 ساعت)", "نمودار قیمت", "عملیات"]}>
                     {
-                        informationCurrentPrice.map((crypto, idx) => {
-                            if (!crypto?.price_info?.price) return
-                            if (Number(crypto?.price_info?.price) === 0) return
+                        data?.objects?.map((crypto, idx) => {
                             return <StyledTableRow key={idx}>
                                 <StyledTableCell width={100} align="center">
                                     <BsStar className="mx-auto" size={17} />
                                 </StyledTableCell>
-                                <StyledTableCell align="center">
-                                    <p className="font-bold">{crypto.title}</p>
+                                <StyledTableCell width={140} align="center">
+                                    <div className="flex  gap-2">
+                                        <img src={crypto.image} className="w-8 h-8 rounded-full"/>
+                                        <p className="font-bold">{crypto.title}</p>
+                                    </div>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
-                                    <p className="font-num">$ {Number(crypto.price_info_usdt.price).toLocaleString()}</p>
+                                    <p className="font-num">$ {Number(crypto.price_info_usdt_amount).toLocaleString()}</p>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
-                                    <p className="font-num">{Number(crypto.price_info.price).toLocaleString()} <span className="text-[10px]">تومان</span></p>
+                                    <p className="font-num">{Number(crypto.price_info_amount).toLocaleString()} <span className="text-[10px]">تومان</span></p>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
-                                    <p className="font-num">{Number(crypto.price_info.change) >= 0 ? <span className="text-green-500">% {crypto.price_info.change}</span> : <span className="text-red-500 block [direction:ltr]">% {crypto.price_info.change}</span>}</p>
+                                    <p className="font-num">{Number(crypto.price_info_change) >= 0 ? <span className="text-green-500">% {crypto.price_info_change}</span> : <span className="text-red-500 block [direction:ltr]">% {crypto.price_info_change}</span>}</p>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
                                     {/* @ts-ignore */}
-                                    <Sparklines data={crypto.alias} limit={5} >
+                                    <Sparklines data={[]} limit={5} >
                                         <SparklinesLine color="blue" />
                                     </Sparklines>
 
