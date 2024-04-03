@@ -15,6 +15,7 @@ import ExChangePage from "./pages/ExChange";
 import CurrentPrice from "./pages/CurrentPrice";
 import RialAction from "./pages/RialAction";
 import Form from "./componets/verificationTable/Form";
+import Action from "./pages/Action";
 
 const Pages = [
   {
@@ -32,6 +33,10 @@ const Pages = [
   {
     path: "/exchange",
     element: <ExChangePage />,
+  },
+  {
+    path: "/action",
+    element: <Action />,
   },
   {
     path: "/current-price",

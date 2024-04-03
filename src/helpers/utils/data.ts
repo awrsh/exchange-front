@@ -566,3 +566,27 @@ export const note_settlement_procedure_Rial_withdrawals = [
   },
 
 ]
+
+
+export const amounts = [
+  {
+    value: 5000000,
+    label: "5 میلیون تومان"
+  },
+  {
+    value: 10000000,
+    label: "10 میلیون تومان"
+  },
+  {
+    value: 15000000,
+    label: "15 میلیون تومان"
+  },
+  {
+    value: 20000000,
+    label: "20 میلیون تومان"
+  },
+  {
+    value: 25000000,
+    label: "25 میلیون تومان"
+  },
+]

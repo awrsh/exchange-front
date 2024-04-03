@@ -12,6 +12,9 @@ export const validationSchemaRegister = Yup.object({
     passwordConfirmation: Yup.string().required("فیلد اجباری می باشد")
         .oneOf([Yup.ref('password'), null!], 'تکرار رمز عبور اشتباه است')
 })
+export const validationSchemaRial = Yup.object({
+    amount:Yup.string().required("فیلد اجباری است"),
+})
 
 
 

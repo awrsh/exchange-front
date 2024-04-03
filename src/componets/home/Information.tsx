@@ -1,7 +1,7 @@
 import { useState } from "react"
 import useAuthStore from "../../stores/user-store"
 import { Link } from "react-router-dom"
-
+import userImage from "../../assets/images/user.jpg"
 const Information = () => {
     const { user } = useAuthStore()
     const [select, setSelect] = useState(0)
@@ -10,7 +10,7 @@ const Information = () => {
         <div className="flex-1 w-full bg-white h-full rounded-xl p-3 bg-dark">
             <div className="border-b flex justify-between items-center pb-3 border-neutral-200">
                 <div className="flex items-center  gap-2">
-                    <img className="w-10 h-10 rounded-full" src="https://ffiri.ir/files/fa/news/1402/10/19/114275_457.jpg" />
+                <img className="w-10 h-10 object-cover rounded-full" src={user?.avatar_image?user.avatar_image:userImage}/>
                     <div className="space-y-2">
                         <p className="text-[14px]">{user?.first_name} {user?.last_name}</p>
                         <p className="font-num text-[12px] text-neutral-600">{user?.mobile}</p>
