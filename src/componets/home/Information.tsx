@@ -10,7 +10,7 @@ const Information = () => {
         <div className="flex-1 w-full bg-white h-full rounded-xl p-3 bg-dark">
             <div className="border-b flex justify-between items-center pb-3 border-neutral-200">
                 <div className="flex items-center  gap-2">
-                <img className="w-10 h-10 object-cover rounded-full" src={user?.avatar_image?user.avatar_image:userImage}/>
+                    <img className="w-10 h-10 object-cover rounded-full" src={user?.avatar_image ? user.avatar_image : userImage} />
                     <div className="space-y-2">
                         <p className="text-[14px]">{user?.first_name} {user?.last_name}</p>
                         <p className="font-num text-[12px] text-neutral-600">{user?.mobile}</p>
@@ -24,7 +24,7 @@ const Information = () => {
                                 احراز هویت
                             </Link> :
                             <p className="font-regular text-center block bg-[#e5faf3] py-1 rounded-lg text-[#34b288]   text-[12px]">
-                                {/* {user?.authentication_status === "level_0" ? "احراز هویت" : user?.authentication_status === "level_2" ? "" : ""} */}
+                                {user?.authentication_status === "level_۱" ? "احراز هویت" : user?.authentication_status === "level_2" ? "" : ""}
                             </p>
                     }
                 </div>

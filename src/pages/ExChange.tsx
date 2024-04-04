@@ -11,7 +11,7 @@ const ExChangePage = () => {
               <SlideListCurrency/>
             <div className='w-[98%] lg:h-[92.5vh] pb-10 flex flex-col lg:flex-row gap-3 mx-auto'>
                 <ListCryptocurrencies />
-                <div className='flex-1 flex flex-col h-full max-w-full overflow-auto hide-scroll space-y-3'>
+                <div className='flex-1 pb-16 flex flex-col h-full max-w-full overflow-auto hide-scroll space-y-3'>
                     <Chart />
                     <ExChange />
                 </div>

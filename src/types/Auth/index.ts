@@ -27,7 +27,7 @@ export interface User {
     uid: string;
     mobile: string;
     user_level: number;
-    authentication_status: "level_0" | "level_1" | "level_2" | "level_3" | "pending";
+    authentication_status:"level_0"| "level_۱" | "level_1" | "level_2" | "level_3" | "pending";
     national_code: string;
     gender: string;
     birth_date: string;
