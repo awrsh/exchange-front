@@ -63,7 +63,7 @@ const Toman = () => {
                 />
                 {
                     formik.values.crypto?.price_info_amount ?
-                        <NetworkSelectbox formik={formik}/> : null
+                        <NetworkSelectbox formik={formik} /> : null
                 }
                 <Input
                     className='mt-2'
@@ -71,11 +71,17 @@ const Toman = () => {
                     label='قیمت'
                     formik={formik}
                 />
-                <Input
-                    name=''
-                    label='مقدار'
-                    formik={formik}
-                />
+
+                {
+                    select === 1 ?
+                        <Input
+                            className='mt-2'
+                            name=''
+                            label='آدرس ولت'
+                            formik={formik}
+                        />
+                        : null
+                }
 
                 <CustomSlider />
 
@@ -98,7 +104,7 @@ const Toman = () => {
                         <p className='font-num'>0</p>
                     </div>
                 </div>
-                <Button onClick={onClick} name={select=== 0?"خرید":"فروش"} />
+                <Button onClick={onClick} name={select === 0 ? "خرید" : "فروش"} />
             </form>
         </div>
     )
