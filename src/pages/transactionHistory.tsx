@@ -2,14 +2,14 @@ import { useState } from "react"
 import Layout from "../componets/common/Layout"
 import Table from "../componets/common/Table"
 import { StyledTableCell, StyledTableRow } from "../helpers/utils/mui"
-import { transactionsList } from "../helpers/utils/data"
 import WithTokenCkeck from "../hook/common/WithTokenCkeck"
 import useGetOrderQuery from "../hook/query/order/useGetOrderQuery"
+import RialHistory from "../componets/transactionHistory/RialHistory"
 
 const TransactionHistory = () => {
     const {data,isLoading} = useGetOrderQuery()
     const [select, setSelect] = useState(0)
-    const tabs = ['معاملات تکمیل شده', "واریز های ریالی", "واریز های ارزی", "برداشت های ریالی", "برداشت های ارزی", "معاملات حرفه‌ای", "معاملات حرفه‌ای باز"]
+    const tabs = ['معاملات معمولی', "واریز های تومانی"]
     return (
         <Layout>
             <div className="w-[95%] mx-auto">
@@ -38,20 +38,7 @@ const TransactionHistory = () => {
                                 ))
                             }
                         </Table>}
-                        {select === 1 && <Table header={["نوع", "تاریخ‌وزمان", "مبلغ(تومان)", "شناسه تراکنش", "کارت پرداختی", "وضعیت"]}  >
-                            {
-                                transactionsList.map((crypto, idx) => (
-                                    <StyledTableRow key={idx}>
-                                        <StyledTableCell className="dark:!text-white" align="center">{crypto.type === "Buy" ? "خرید" : crypto.type === "Sell" ? "فروش" : "تبدیل"}</StyledTableCell>
-                                        <StyledTableCell className="dark:!text-white" align="center">{new Date(crypto.dateTime).toLocaleString("fa-IR")}</StyledTableCell>
-                                        <StyledTableCell align="center" className="!font-num dark:!text-white">{crypto.amountInToman.toLocaleString()} <span className="text-[10px]">تومان</span></StyledTableCell>
-                                        <StyledTableCell align="center" className="!font-num dark:!text-white">{crypto.transactionId}</StyledTableCell>
-                                        <StyledTableCell align="center" className="!font-num dark:!text-white">{crypto.creditCard}</StyledTableCell>
-                                        <StyledTableCell className="dark:!text-white" align="center" >{crypto.status === "Completed" ? <span className="text-green-500 font-bold">تکمیل شده</span> : crypto.status === "Pending" ? <span className="text-yellow-500 font-bold">در حال انتظار</span> : <span className="text-red-500 font-bold">ناموفق</span>} </StyledTableCell>
-                                    </StyledTableRow>
-                                ))
-                            }
-                        </Table>}
+                        {select === 1 && <RialHistory/> }
                     </div>
                 </div>
             </div>

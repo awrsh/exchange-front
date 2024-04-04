@@ -12,3 +12,6 @@ export const Currencies = {
 export const Order = {
     ALL_ORDERS:"/order"
 }
+export const Idp = {
+    RIAL_HISTORY:"rial-history"
+}

@@ -22,7 +22,7 @@ export const header_menu = [
     icon: FaWallet
   },
   {
-    name: "قیمت لحضه‌ای",
+    name: "قیمت لحظه‌ای",
     url: "/current-price",
     icon: GrCurrency
   },

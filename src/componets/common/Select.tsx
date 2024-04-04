@@ -88,6 +88,7 @@ const Select = ({
                 isSearchable={isSearchable}
                 noOptionsMessage={() => <span className="text-xs !font-medium">لیست خالی است</span>}
                 isDisabled={isDisabled}
+                menuPosition="fixed"
             />
             <span className="block font-artin-light mt-[1px] text-[11px] text-red-500 pr-1">
                 {formik.errors[name!]?.id ? formik.errors[name!]?.id : null}

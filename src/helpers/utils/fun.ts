@@ -10,3 +10,16 @@ export const createObjects = (data: any) => {
     });
     return newObjectsByKey
 };
+
+
+
+// Function to format the string
+export function formatCardNumber(str:string) {
+    // Split the string into groups of 4 characters
+    const groups = str.match(/.{1,4}/g);
+  
+    // Join the groups with a hyphen
+    const formattedString = groups?.join("-");
+  
+    return formattedString;
+  }
