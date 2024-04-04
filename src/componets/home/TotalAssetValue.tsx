@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom"
 import { PieChart } from '@mui/x-charts/PieChart';
-import useAuthStore from "../../stores/user-store";
 
 const TotalAssetValue = () => {
-    const {user} = useAuthStore()
     return (
         <div className="flex-1 flex flex-col lg:flex-row w-full justify-center items-center bg-white p-3 rounded-xl space-y-10 h-full bg-dark">
             <div className="flex-1 flex flex-col items-center gap-4">

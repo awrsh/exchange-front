@@ -10,6 +10,7 @@ import useAuthStore from "../../stores/user-store";
 import { useCookies } from "react-cookie";
 const Sidebar = () => {
   const navigate = useNavigate()
+  // @ts-ignore
   const [cookies,_,removeCookies] = useCookies(["token"]);
   const { removeUser } = useAuthStore()
   const [open, setOpen] = useState(false)
