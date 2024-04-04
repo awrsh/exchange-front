@@ -17,7 +17,7 @@ const Buy = () => {
                         ))}
                     </div>
 
-                    <Toman />
+                    <Toman  />
                 </div>
             </div>
         </Layout>

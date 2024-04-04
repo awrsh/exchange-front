@@ -98,7 +98,7 @@ const Toman = () => {
                         <p className='font-num'>0</p>
                     </div>
                 </div>
-                <Button onClick={onClick} name='خرید' />
+                <Button onClick={onClick} name={select=== 0?"خرید":"فروش"} />
             </form>
         </div>
     )
