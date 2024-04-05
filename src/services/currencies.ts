@@ -10,7 +10,7 @@ export const listCurrencies = async () => {
     return await client_bitpin<Currency[]>({ url });
 };
 
-export const getCurrency = async (show_in_dashboard:boolean) => {
+export const getCurrency = async (show_in_dashboard?:boolean) => {
     const url = getRoute({ route: `/currencies/?${show_in_dashboard?"for_dashboard=true":""}` });
     return await client<{objects:Currency[]}>({ url });
 };
