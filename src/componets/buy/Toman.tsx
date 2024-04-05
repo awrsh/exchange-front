@@ -7,7 +7,6 @@ import Button from '../common/Button'
 import useAuthStore from '../../stores/user-store'
 import useGlobalStore from '../../stores/global-store'
 import useGetCuurencyListQuery from '../../hook/query/currency/useGetCuurencyListQuery'
-import NetworkSelectbox from '../common/NetworkSelectbox'
 
 
 const Toman = () => {
@@ -61,10 +60,7 @@ const Toman = () => {
                     options={data?.objects!}
                     label='لطفا رمز ارز خود را انتخاب کنید'
                 />
-                {
-                    formik.values.crypto?.price_info_amount ?
-                        <NetworkSelectbox formik={formik} /> : null
-                }
+              
                 <Input
                     className='mt-2'
                     name=''
@@ -72,17 +68,7 @@ const Toman = () => {
                     formik={formik}
                 />
 
-                {
-                    select === 1 ?
-                        <Input
-                            className='mt-2'
-                            name=''
-                            label='آدرس ولت'
-                            formik={formik}
-                        />
-                        : null
-                }
-
+               
                 <CustomSlider />
 
                 <div className='flex items-center justify-between p-3 rounded-xl bg-[#f5f5f5] dark:bg-slate-300'>

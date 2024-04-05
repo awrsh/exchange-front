@@ -10,8 +10,13 @@ import useLoginMutation from "../../hook/mutation/auth/useLoginMutation"
 import WithoutToken from "../../hoc/WithoutToken"
 import ForgetPassword from "../../componets/common/ForgetPassword"
 import { useState } from "react"
+import useSetTitleDocument from "../../hook/common/useSetTitleDocument"
+import { GoEye ,GoEyeClosed} from "react-icons/go";
+
 const Auth = () => {
+    useSetTitleDocument({title:"ورود / بین آسیا"})
     const [open, setOpen] = useState(false)
+    const [show, setShow] = useState(false)
     const { mutate, isLoading } = useLoginMutation()
     const formik = useFormik({
         initialValues: initialValuesLogin,
@@ -20,6 +25,10 @@ const Auth = () => {
             mutate(values)
         }
     })
+
+    const onShow = ()=>{
+        setShow(!show)
+    }
     return (
         <>
             <div className="flex  h-screen max-h-screen overflow-hidden">
@@ -32,7 +41,7 @@ const Auth = () => {
                         </p>
                         <form onSubmit={formik.handleSubmit} className="mt-10">
                             <Input type="tel" ltr placeholder="لطفا شماره تلفن خود را وارد کنید" formik={formik} name="mobile" label="شماره تلفن" />
-                            <Input type="password" ltr placeholder="لطفا رمز عبور خود را وارد کنید" formik={formik} name="password" label="رمز عبور" />
+                            <Input icon_left={show?<GoEye className="cursor-pointer text-gray-600" onClick={onShow} size={20}/>:<GoEyeClosed className="cursor-pointer text-gray-600" onClick={onShow} size={20}/>} type={show?"text":"password"} ltr placeholder="لطفا رمز عبور خود را وارد کنید" formik={formik} name="password" label="رمز عبور" />
                             <button type="button" onClick={() => setOpen(true)} className="text-xs text-blue-500">فراموشی رمز عبور</button>
                             <Button isLoading={isLoading} containerClass="!mt-7" name="ورود" />
                         </form>

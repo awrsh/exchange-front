@@ -4,9 +4,11 @@ import History from '../componets/home/History'
 import Information from '../componets/home/Information'
 import TotalAssetValue from '../componets/home/TotalAssetValue'
 import WithTokenCkeck from '../hook/common/WithTokenCkeck'
+import useSetTitleDocument from '../hook/common/useSetTitleDocument'
 import useAuthStore from '../stores/user-store'
 
 const Home = () => {
+  useSetTitleDocument({title:"پنل کاربری"})
   const { user } = useAuthStore()
   return (
     <Layout>

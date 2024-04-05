@@ -4,7 +4,7 @@ import Table from "../componets/common/Table"
 import { StyledTableCell, StyledTableRow } from "../helpers/utils/mui"
 import WithTokenCkeck from "../hook/common/WithTokenCkeck"
 import useGetOrderQuery from "../hook/query/order/useGetOrderQuery"
-import RialHistory from "../componets/transactionHistory/RialHistory"
+import RialHistory from "../componets/common/RialHistory"
 
 const TransactionHistory = () => {
     const {data,isLoading} = useGetOrderQuery()

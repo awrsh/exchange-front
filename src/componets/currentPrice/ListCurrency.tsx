@@ -30,7 +30,7 @@ const ListCurrency = () => {
 
     return (
         <>
-            <div className="mt-5 flex items-center gap-5">
+            <div className="mt-5 sticky top-1 z-50 bg-white rounded-xl px-3 shadow-sm py-2 flex items-center gap-5">
                 <Input icon_left={<BsSearch />} className="!max-w-[400px] mt-2" inputdivClass="bg-white" placeholder="جستجوی ارز" formik={formik} />
                 <div className="flex-1 gap-4 flex justify-between items-center overflow-hidden">
 
@@ -54,7 +54,7 @@ const ListCurrency = () => {
                                     </div>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
-                                    <p className="font-num">$ {Number(crypto.price_info_usdt_amount).toLocaleString()}</p>
+                                    <p className="font-medium">$ {Number(crypto.price_info_usdt_amount).toLocaleString()}</p>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
                                     <p className="font-num">{Number(crypto.price_info_price).toLocaleString()} <span className="text-[10px]">تومان</span></p>

@@ -4,8 +4,10 @@ import Chart from "../componets/home/Chart"
 import ExChange from "../componets/home/ExChange"
 import ListCryptocurrencies from "../componets/home/ListCryptocurrencies"
 import Orders from "../componets/home/Orders"
+import useSetTitleDocument from "../hook/common/useSetTitleDocument"
 
 const ExChangePage = () => {
+    useSetTitleDocument({title:"بازار حرفه‌ای"})
     return (
         <Layout containerClass="h-screen relative overflow-hidden" className="lg:!mt-3 lg:!pb-3">
               <SlideListCurrency/>

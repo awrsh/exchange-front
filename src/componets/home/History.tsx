@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Table from "../common/Table"
+import RialHistory from "../common/RialHistory"
 
 const History = () => {
     const tabs = ["معاملات ارزی", "تاریخچه معاملات"]
@@ -16,7 +17,7 @@ const History = () => {
 
             <div className="mt-5">
                 {select === 0 ? <Table length={0} header={["نوع", "نام ارز", "تاریخ ثبت", "مبلغ تومانی سفارش", "تعداد ارز", "پرشده", "وضعیت"]} /> : null}
-                {select === 1 ? <Table length={0} header={["نوع درخواست", "تاریخ ثبت", "ارز", "تعداد", "وضعیت", "عملیات"]} /> : null}
+                {select === 1 ? <RialHistory/> : null}
             </div>
         </div>
     )

@@ -35,7 +35,8 @@ export interface User {
     birth_card_image: string;
     avatar_image: string;
     last_login: string;
-    wallets: Wallet[]
+    wallets: Wallet[];
+    total_ir_balance?:string
 }
 
 

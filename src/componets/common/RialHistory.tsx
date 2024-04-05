@@ -1,14 +1,17 @@
 import { formatCardNumber } from "../../helpers/utils/fun"
 import { StyledTableCell, StyledTableRow } from "../../helpers/utils/mui"
 import useIdpRialPaymentHistory from "../../hook/query/idp/useIdpRialPaymentHistory"
-import Table from "../common/Table"
+import Table from "./Table"
 
 const RialHistory = () => {
     const {isLoading,data}  = useIdpRialPaymentHistory()
+    // @ts-ignore
+    const sortedData = data?.object.sort((a:any, b:any) => new Date(b.write_date) - new Date(a.write_date));
+
     return (
         <Table isLoaidng={isLoading} length={data?.object?.length} header={["نوع", "تاریخ‌وزمان", "مبلغ(تومان)", "شناسه تراکنش", "کارت پرداختی", "وضعیت"]}  >
             {
-                data?.object.map((crypto, idx) => (
+                sortedData?.map((crypto, idx) => (
                     <StyledTableRow key={idx}>
                         <StyledTableCell className="dark:!text-white" align="center">واریز</StyledTableCell>
                         <StyledTableCell className="dark:!text-white" align="center">{new Date(crypto.write_date).toLocaleString("fa-IR")}</StyledTableCell>
