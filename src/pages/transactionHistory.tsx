@@ -21,6 +21,7 @@ const TransactionHistory = () => {
                             <button onClick={() => setSelect(idx)} key={idx} className={`text-[13px] whitespace-nowrap transition-all duration-300 p-3 rounded-lg ${select === idx ? "bg-int text-white font-bold" : "font-regular bg-gray-100 dark:bg-slate-400"}`}>{tab}</button>
                         ))}
                     </div>
+                    
                     <div className="mt-6">
                         {select === 0 && <Table length={data?.objects?.length} isLoaidng={isLoading} header={["نام ارز", "نوع", "تاریخ ثبت", "مبلغ(تومان)", "مقدار", "وضعیت"]}  >
                             {
