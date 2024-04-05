@@ -7,7 +7,7 @@ import useSetTitleDocument from "../hook/common/useSetTitleDocument"
 const Buy = () => {
     useSetTitleDocument({title:"خرید و فروش"})
     const [select, setSelect] = useState(0)
-    const tabs = ["تومانIRT", "تترUSDT"]
+    const tabs = ["تومانIRT"]
   
     return (
         <Layout>

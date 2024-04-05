@@ -14,7 +14,7 @@ import useSetTitleDocument from "../../hook/common/useSetTitleDocument"
 import { GoEye ,GoEyeClosed} from "react-icons/go";
 
 const Auth = () => {
-    useSetTitleDocument({title:"ورود / بین آسیا"})
+    useSetTitleDocument({title:"ورود / بیت آسیا"})
     const [open, setOpen] = useState(false)
     const [show, setShow] = useState(false)
     const { mutate, isLoading } = useLoginMutation()

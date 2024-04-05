@@ -1,7 +1,7 @@
 import React from "react";
 interface Props {
     label?: string;
-    value?: string;
+    value?: string | number;
     onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
     icon?: JSX.Element;
     placeholder?: string;
@@ -55,13 +55,13 @@ const Input = ({
                 {label && (
                     <label className="pb-[4px] block font-medium text-[13px] ">
                         <span className="font-es-bold ml-1">{count}</span>
-                        {label}:
+                        {label}
                         {required && <span className="text-[#DF2040] text-sm">*</span>}
                     </label>
                 )}
                 <div className="flex items-center gap-3">
                     <div
-                        className={`border-[1px] flex-1  border-[#e1e1e1]  overflow-hidden  h-[44px] bg-[#f5f5f5] dark:bg-slate-300 gap-3 rounded-lg flex items-center ${disabled?"bg-gray-50":""} ${subLabel ? "pr-2" : "px-2"
+                        className={`border-[1px] flex-1  border-[#e1e1e1]  overflow-hidden  h-[44px] bg-[#f5f5f5] dark:bg-slate-300 gap-3 rounded-lg flex items-center ${disabled ? "bg-gray-50" : ""} ${subLabel ? "pr-2" : "px-2"
                             } ${formik && formik?.touched[name!] && formik?.errors[name!] ? "border-red-500" : "border-gray_deep "
                             } ${inputdivClass}`}
                     >
@@ -70,7 +70,7 @@ const Input = ({
                             type={type}
                             disabled={disabled}
                             name={name}
-maxLength={maxLength}
+                            maxLength={maxLength}
                             className={`bg-transparent w-full text-[12px] text-black font-num  dark:placeholder:text-zinc-500 outline-none placeholder:text-[#9e9e9e] ${placeholderRtl ? "placeholder:text-right" : "placeholder:text-left"} ${ltr ? "ltr" : ""
                                 }`}
                             placeholder={placeholder}
@@ -80,7 +80,7 @@ maxLength={maxLength}
                         />
                         {icon_left}
                         {subLabel && (
-                            <p className="whitespace-nowrap bg-[#e1e1e1] h-full font-regular flex justify-center items-center w-[80px]">
+                            <p className="whitespace-nowrap  text-[14px] text-blue-500 h-full font-regular flex justify-center items-center w-[60px]">
                                 {subLabel}
                             </p>
                         )}

@@ -49,7 +49,7 @@ const Verify = () => {
         </div>
       </div>
       <div className="flex-1 hidden lg:flex bg-neutral-50 items-center justify-center">
-                <img className='object-cover h-full w-[70%] h-[70%] rounded-0' src={Slide2} alt='' />
+                <img className='object-cover w-[70%] h-[70%] rounded-0' src={Slide2} alt='' />
             </div>
     </div>
   )

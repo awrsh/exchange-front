@@ -9,9 +9,10 @@ import { useFormik } from "formik"
 import useGlobalStore from "../../stores/global-store"
 import useAuthStore from "../../stores/user-store"
 import useGetCuurencyListQuery from "../../hook/query/currency/useGetCuurencyListQuery"
+import { Link } from "react-router-dom"
 
 const ListCurrency = () => {
-    const { data } = useGetCuurencyListQuery()
+    const { data,isLoading } = useGetCuurencyListQuery()
 
     const { toggleVerifyAuth } = useGlobalStore()
     const { user } = useAuthStore()
@@ -40,17 +41,17 @@ const ListCurrency = () => {
                 </div>
             </div>
             <div className="mt-5">
-                <Table header={["علاقه‌مندی", "نام ارز", "قیمت لحظه‌ای(دلار)", "قیمت لحظه‌ای(تومان)", "تغیرات (24 ساعت)", "نمودار قیمت", "عملیات"]}>
+                <Table isLoaidng={isLoading} header={["علاقه‌مندی", "نام ارز", "قیمت لحظه‌ای(دلار)", "قیمت لحظه‌ای(تومان)", "تغیرات (24 ساعت)", "نمودار قیمت", "عملیات"]}>
                     {
                         data?.objects?.map((crypto, idx) => {
                             return <StyledTableRow key={idx}>
                                 <StyledTableCell width={100} align="center">
                                     <BsStar className="mx-auto" size={17} />
                                 </StyledTableCell>
-                                <StyledTableCell width={140} align="center">
-                                    <div className="flex  gap-2">
-                                        <img src={crypto.image} className="w-8 h-8 rounded-full"/>
-                                        <p className="font-bold">{crypto.title}</p>
+                                <StyledTableCell width={200} align="center">
+                                    <div className="flex items-center  justify-center  gap-2">
+                                        <img src={crypto.image} className="w-8 h-8  rounded-full"/>
+                                        <p className="font-bold text-start w-[100px]">{crypto.title}</p>
                                     </div>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
@@ -70,8 +71,10 @@ const ListCurrency = () => {
 
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
-                                    <div>
-                                        <button onClick={onClick} className="text-int">خرید و فروش</button>
+                                    <div className="flex items-center justify-center gap-5">
+                                        <Link to={"/buy"} onClick={onClick} className="text-int"> آسان </Link>
+                                        <span className="text-gray-400">|</span>
+                                        <Link to={"/exchange"} onClick={onClick} className="text-int">معامله</Link>
                                     </div>
                                 </StyledTableCell>
                             </StyledTableRow>

@@ -17,7 +17,8 @@ const Toman = () => {
     const [select, setSelect] = useState(0)
     const formik = useFormik<any>({
         initialValues: {
-            crypto: null
+            crypto: null,
+            count: null
         },
         onSubmit: () => { }
     })
@@ -60,15 +61,35 @@ const Toman = () => {
                     options={data?.objects!}
                     label='لطفا رمز ارز خود را انتخاب کنید'
                 />
-              
+
+                <Input
+                    isOnChange
+                    disabled
+                    className='mt-5'
+                    name=''
+                    label='مبلغ کل (تومان)'
+                    formik={formik}
+                    subLabel='همه'
+                    value={formik.values.crypto?.price && formik.values?.count?formik.values.crypto.price:""}
+                />
+                <Input
+                    isOnChange
+                    disabled
+                    className='mt-5'
+                    name=''
+                    label='موجودی شما'
+                    formik={formik}
+                    value={user?.total_ir_balance}
+                    subLabel='تومان'
+                />
                 <Input
                     className='mt-2'
-                    name=''
-                    label='قیمت'
+                    name='count'
+                    label={`مقدار ${formik.values?.crypto?.title ? `(${formik.values?.crypto?.title_fa})` : ""}`}
                     formik={formik}
                 />
 
-               
+
                 <CustomSlider />
 
                 <div className='flex items-center justify-between p-3 rounded-xl bg-[#f5f5f5] dark:bg-slate-300'>

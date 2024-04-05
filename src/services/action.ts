@@ -8,3 +8,7 @@ export const createRialPayment = async (data:{card_number:string,amount:number})
     const url = getRoute({ route: "/idp/create_rial_payment/" });
     return await client<{url:string}>({ url,method:"POST",data });
 };
+export const withdreawPayment = async (data:{card_number:string,amount:number}) => {
+    const url = getRoute({ route: "/idp/rial_withdraw/" });
+    return await client<{url:string}>({ url,method:"POST",data });
+};
