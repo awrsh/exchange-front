@@ -12,7 +12,7 @@ import { Autoplay } from 'swiper/modules';
 import useGetCuurencyListQuery from '../../hook/query/currency/useGetCuurencyListQuery';
 
 export default function SlideListCurrency() {
-    const { data, isLoading } = useGetCuurencyListQuery()
+    const { data, isLoading } = useGetCuurencyListQuery(true)
     return (
         isLoading ? null :
             <div className='flex items-center w-[98%] rounded-xl mb-3  mx-auto justify-center bg-white dark:bg-block h-[60px] z-50 shadow'>

@@ -4,12 +4,13 @@ import Table from "../componets/common/Table"
 import { StyledTableCell, StyledTableRow } from "../helpers/utils/mui"
 import WithTokenCkeck from "../hook/common/WithTokenCkeck"
 import useGetOrderQuery from "../hook/query/order/useGetOrderQuery"
-import RialHistory from "../componets/common/RialHistory"
+import DepositRialHistory from "../componets/common/DepositRialHistory"
+import WithdrawRialHistory from "../componets/common/WithdrawRialHistory"
 
 const TransactionHistory = () => {
     const {data,isLoading} = useGetOrderQuery()
     const [select, setSelect] = useState(0)
-    const tabs = ['معاملات معمولی', "واریز های تومانی"]
+    const tabs = ['معاملات معمولی', "واریز های تومانی","برداشت های تومانی"]
     return (
         <Layout>
             <div className="w-[95%] mx-auto">
@@ -38,7 +39,8 @@ const TransactionHistory = () => {
                                 ))
                             }
                         </Table>}
-                        {select === 1 && <RialHistory/> }
+                        {select === 1 && <DepositRialHistory/> }
+                        {select === 2 && <WithdrawRialHistory/> }
                     </div>
                 </div>
             </div>

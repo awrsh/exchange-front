@@ -1,10 +1,10 @@
 import { formatCardNumber } from "../../helpers/utils/fun"
 import { StyledTableCell, StyledTableRow } from "../../helpers/utils/mui"
-import useIdpRialPaymentHistory from "../../hook/query/idp/useDepositRialPaymentHistory"
+import useWithdrawRialPaymentHistory from "../../hook/query/idp/useWithdrawRialPaymentHistory"
 import Table from "./Table"
 
-const RialHistory = () => {
-    const {isLoading,data}  = useIdpRialPaymentHistory()
+const WithdrawRialHistory = () => {
+    const {isLoading,data}  = useWithdrawRialPaymentHistory()
     // @ts-ignore
     const sortedData = data?.object.sort((a:any, b:any) => new Date(b.write_date) - new Date(a.write_date));
 
@@ -27,4 +27,4 @@ const RialHistory = () => {
     )
 }
 
-export default RialHistory
+export default WithdrawRialHistory
