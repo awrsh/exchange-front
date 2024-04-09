@@ -24,7 +24,7 @@ const Sell = ({ select }: { select: number }) => {
             // if (values.price < 300000) return errorToast(`مبلغ فروش نباید کمتر  از ${Number(300000).toLocaleString()} باشد`)
             const data = {
                 type: select === 0 ? "buy" : "sell",
-                currency_id: Number(values?.crypto?.id),
+                currency_id: Number(values?.crypto?.currency_id.id),
                 amount: Number(values.amount)
             }
             mutate(data)
@@ -55,9 +55,11 @@ const Sell = ({ select }: { select: number }) => {
     }
     // @ts-ignore
     const total = user?.wallets.find((crypto) => crypto.currency_id.code === formik?.values.crypto?.currency_id.code)
+    console.log("total" , total);
 
     const onClickSubLabel = () => {
         formik.setFieldValue("price", Number(total?.balance) * Number(total?.currency_id.price_info_price))
+
         const amount = Number(total?.balance) / Number(formik.values?.crypto?.currency_id.price_info_price)
         formik.setFieldValue("amount", amount ? total?.balance : 0)
         formik.setFieldValue("slider", 0)
