@@ -18,7 +18,7 @@ const TransactionHistory = () => {
                 <div className="bg-white bg-dark rounded-xl p-6 mt-4">
                     <div className="flex items-center gap-4 overflow-auto">
                         {tabs.map((tab, idx) => (
-                            <button onClick={() => setSelect(idx)} key={idx} className={text-[13px] whitespace-nowrap transition-all duration-300 p-3 rounded-lg ${select === idx ? "bg-int text-white font-bold" : "font-regular bg-gray-100 dark:bg-slate-400"}}>{tab}</button>
+                            <button onClick={() => setSelect(idx)} key={idx} className={`text-[13px] whitespace-nowrap transition-all duration-300 p-3 rounded-lg ${select === idx ? "bg-int text-white font-bold" : "font-regular bg-gray-100 dark:bg-slate-400"}`}>{tab}</button>
                         ))}
                     </div>
                     
@@ -45,7 +45,6 @@ const TransactionHistory = () => {
                     </div>
                 </div>
             </div>
-            
         </Layout>
     )
 }
