@@ -114,15 +114,17 @@ const Buy = ({select}:{select:number}) => {
                     disabled={!formik?.values?.crypto}
                 />
                 <Input
+                    className='mt-3'
                     isOnChange
                     disabled
                     name=''
-                    label='موجودی شما'
+                    label='موجودی تومانی'
                     formik={formik}
                     value={total?.balance ? Number(total?.balance).toLocaleString() : ""}
                     subLabel='تومان'
                 />
                 <Input
+                    className='mt-3'
                     isOnChange
                     name='amount'
                     label={`مقدار ${formik.values?.crypto?.title ? `(${formik.values?.crypto?.title_fa})` : ""}`}
