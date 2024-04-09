@@ -38,7 +38,7 @@ const WithdrawRials = () => {
                 <div className="grid grid-cols-3 gap-4">
                     {
                         amounts.map((amount, idx) => (
-                            <button type="button" onClick={() => formik.setFieldValue("amount", amount.value)} className={` text-xs py-3 rounded-xl text-gray-700 ${Number(formik.values.amount) === amount.value ? "bg-blue-500 text-white" : "bg-gray-100"}`} key={idx}>{amount.label}</button>
+                            <button type="button" onClick={() => formik.setFieldValue("amount", amount.value)} className={` text-xs py-3 rounded-xl text-gray-700 ${Number(formik.values.amount) === amount.value ? "bg-int text-white" : "bg-gray-100"}`} key={idx}>{amount.label}</button>
                         ))
                     }
                 </div>

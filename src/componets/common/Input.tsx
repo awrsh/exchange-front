@@ -82,7 +82,7 @@ const Input = ({
                         />
                         {icon_left}
                         {subLabel && (
-                            <button type="button" onClick={onClickSubLabel} className="whitespace-nowrap  text-[14px] text-blue-500 h-full font-regular flex justify-center items-center w-[60px]">
+                            <button disabled={disabled} type="button" onClick={onClickSubLabel} className="whitespace-nowrap  text-[14px] text-blue-500 h-full font-regular flex justify-center items-center w-[60px]">
                                 {subLabel}
                             </button>
                         )}

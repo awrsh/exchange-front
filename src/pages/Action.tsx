@@ -16,7 +16,7 @@ const Action = () => {
                         <div className="flex items-center gap-4 mt-4">
                             {
                                 ["واریز تومانی", "برداشت تومانی"].map((name, idx) => (
-                                    <button onClick={() => setSelect(idx)} className={` w-[140px] transition-all text-[12px] rounded-xl p-3 ${select === idx ? "bg-blue-500 text-white" : "bg-gray-100"}`} key={idx}>{name}</button>
+                                    <button onClick={() => setSelect(idx)} className={` w-[140px] transition-all text-[12px] rounded-xl p-3 ${select === idx ? "bg-int text-white" : "bg-gray-100"}`} key={idx}>{name}</button>
                                 ))
                             }
                         </div>

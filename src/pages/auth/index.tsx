@@ -43,7 +43,7 @@ const Auth = () => {
                             <Input type="tel" ltr placeholder="لطفا شماره تلفن خود را وارد کنید" formik={formik} name="mobile" label="شماره تلفن" />
                             <Input icon_left={show?<GoEye className="cursor-pointer text-gray-600" onClick={onShow} size={20}/>:<GoEyeClosed className="cursor-pointer text-gray-600" onClick={onShow} size={20}/>} type={show?"text":"password"} ltr placeholder="لطفا رمز عبور خود را وارد کنید" formik={formik} name="password" label="رمز عبور" />
                             <button type="button" onClick={() => setOpen(true)} className="text-xs text-blue-500">فراموشی رمز عبور</button>
-                            <Button isLoading={isLoading} containerClass="!mt-7 bg-blue-500" name="ورود" />
+                            <Button isLoading={isLoading} containerClass="!mt-7 !bg-int" name="ورود" />
                         </form>
                         <Link className="font-medium text-center block mt-4 text-xs" to={"/auth/register"} >تاکنون ثبت‌نام نکرده اید؟ <span className="font-bold underline text-int">ثبت نام</span></Link>
                     </div>

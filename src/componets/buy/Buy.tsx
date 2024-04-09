@@ -10,7 +10,7 @@ import useGetCuurencyListQuery from '../../hook/query/currency/useGetCuurencyLis
 import useOrderMutation from '../../hook/mutation/order/useOrderMutation'
 
 
-const Buy = ({select}:{select:number}) => {
+const Buy = ({ select }: { select: number }) => {
     const { data, isLoading } = useGetCuurencyListQuery()
     const { toggleVerifyAuth } = useGlobalStore()
     const { mutate, isLoading: loadingOrder, isSuccess } = useOrderMutation()
@@ -57,9 +57,9 @@ const Buy = ({select}:{select:number}) => {
     const total = user?.wallets.find((crypto) => crypto.currency_id.code === "IRT")
 
     const onClickSubLabel = () => {
-        formik.setFieldValue("price", total?.balance)
+        formik.setFieldValue("price", Number(total?.balance).toFixed(3))
         const amount = Number(total?.balance) / Number(formik.values?.crypto?.price_info_price)
-        formik.setFieldValue("amount", amount ? amount.toFixed(2) : 0)
+        formik.setFieldValue("amount", amount ? amount.toFixed(8) : 0)
     }
 
     const onChangeAmount = (e: any) => {
@@ -68,9 +68,10 @@ const Buy = ({select}:{select:number}) => {
         formik.setFieldValue("price", price)
     }
     const onChnagePrice = (e: any) => {
+        if(Number(e.target.value) > Number(total?.balance)) return
         const amount = e.target.value / Number(formik.values?.crypto?.price_info_price)
         formik.setFieldValue("price", e.target.value)
-        formik.setFieldValue("amount", amount ? amount.toFixed(2) : 0)
+        formik.setFieldValue("amount", amount ? amount.toFixed(8) : 0)
     }
 
     const onChangeSlider = (_: any, value: number) => {
@@ -81,12 +82,24 @@ const Buy = ({select}:{select:number}) => {
 
     useEffect(() => {
         if (isSuccess) {
-            formik.resetForm()
+            formik.setValues({
+                crypto:"",
+                amount:"",
+                price:""
+            })
         }
     }, [isSuccess])
+    const onChangeCrypto = (value: any) => {
+        formik.setValues({
+            ...formik.values,
+            crypto: value,
+            amount:"",
+            price:""
+        })
+    }
     return (
         <div className='mt-3'>
-      
+
             <form onSubmit={formik.handleSubmit} className='mt-5'>
                 <Select
                     isLoading={isLoading}
@@ -95,9 +108,11 @@ const Buy = ({select}:{select:number}) => {
                     formatOptionLabel={formatOptionLabel}
                     formik={formik}
                     name='crypto'
-                    options={select === 0? data?.objects! : []}
+                    options={select === 0 ? data?.objects! : []}
                     label='لطفا رمز ارز خود را انتخاب کنید'
                     isSearchable
+                    onChange={onChangeCrypto}
+
                 />
 
                 <Input
@@ -156,7 +171,7 @@ const Buy = ({select}:{select:number}) => {
                         <p className='font-num'>{formik?.values?.price ? Number(formik?.values?.price - 10000).toLocaleString() : ""}</p>
                     </div>
                 </div>
-                <Button containerClass='!bg-[#23DCCE]' disabled={loadingOrder} onClick={onClick} name={"خرید" } />
+                <Button containerClass='!bg-green-600' isLoading={loadingOrder} onClick={onClick} name={"خرید"} />
             </form>
         </div>
     )

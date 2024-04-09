@@ -22,7 +22,7 @@ const BuyPage = () => {
                     </div>
                     <div className='flex gap-5 mt-5'>
                         {tabs_items.map((tab, idx) => (
-                            <button onClick={() => setSelect(idx)} className={`flex-1 transition-all duration-150 font-bold py-3 rounded-xl text-xs border ${select === idx ? ` text-white ${idx === 0 ? "bg-[#23DCCE]" : "bg-red-500"}` : ""}`} key={idx}>{tab}</button>
+                            <button onClick={() => setSelect(idx)} className={`flex-1 transition-all duration-150 font-bold py-3 rounded-xl text-xs border ${select === idx ? ` text-white ${idx === 0 ? "bg-green-600" : "bg-red-500"}` : ""}`} key={idx}>{tab}</button>
                         ))}
                     </div>
 

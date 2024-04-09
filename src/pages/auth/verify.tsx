@@ -21,6 +21,10 @@ const Verify = () => {
     mutate({ mobile: searchParams.get("mobile")!, otp: Number(value) })
   }
 
+  const onCompleted = (otp: string) => {
+    mutate({ mobile: searchParams.get("mobile")!, otp: Number(otp) })
+  }
+
   return (
     <div className="flex gap-10 h-screen max-h-screen overflow-hidden">
       <div className="flex-1 flex items-center justify-center">
@@ -42,15 +46,15 @@ const Verify = () => {
           </div>
 
           <span className="block mt-14">
-            <ReactInputVerificationCode onChange={(val) => setValue(val)} placeholder="" length={4} value={value} />
+            <ReactInputVerificationCode onCompleted={onCompleted} autoFocus onChange={(val) => setValue(val)} placeholder="" length={4} value={value} />
           </span>
 
-          <Button isLoading={isLoading} disabled={value.length !== 4} onClick={onSubmit} name="تائید کد" containerClass="!mt-14" />
+          <Button isLoading={isLoading} disabled={value.length !== 4} onClick={onSubmit} name="تائید کد" containerClass="!mt-14 !bg-int" />
         </div>
       </div>
       <div className="flex-1 hidden lg:flex bg-neutral-50 items-center justify-center">
-                <img className='object-cover w-[70%] h-[70%] rounded-0' src={Slide2} alt='' />
-            </div>
+        <img className='object-cover w-[70%] h-[70%] rounded-0' src={Slide2} alt='' />
+      </div>
     </div>
   )
 };

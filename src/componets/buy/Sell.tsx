@@ -55,25 +55,28 @@ const Sell = ({ select }: { select: number }) => {
     }
     // @ts-ignore
     const total = user?.wallets.find((crypto) => crypto.currency_id.code === formik?.values.crypto?.currency_id.code)
-    console.log(total, formik.values)
 
     const onClickSubLabel = () => {
-        formik.setFieldValue("price", total?.balance)
+        formik.setFieldValue("price", Number(total?.balance) * Number(total?.currency_id.price_info_price))
         const amount = Number(total?.balance) / Number(formik.values?.crypto?.currency_id.price_info_price)
-        formik.setFieldValue("amount", amount ? amount.toFixed(2) : 0)
+        formik.setFieldValue("amount", amount ? total?.balance : 0)
+        formik.setFieldValue("slider", 0)
     }
 
     const onChangeAmount = (e: any) => {
+        if (formik.values.amount > Number(total?.balance)) return
+
         formik.setFieldValue("slider", 0)
         const price = e.target.value * Number(formik.values?.crypto?.currency_id.price_info_price)
         formik.setFieldValue("amount", e.target.value)
         formik.setFieldValue("price", price)
     }
     const onChnagePrice = (e: any) => {
+        if (formik.values.amount > Number(total?.balance)) return
         const amount = e.target.value / Number(formik.values?.crypto?.currency_id.price_info_price)
         formik.setFieldValue("price", e.target.value)
         formik.setFieldValue("slider", 0)
-        formik.setFieldValue("amount", amount ? amount.toFixed(1) : 0)
+        formik.setFieldValue("amount", amount ? amount.toFixed(8) : 0)
     }
 
     const onChangeSlider = (_: any, value: number) => {
@@ -162,7 +165,7 @@ const Sell = ({ select }: { select: number }) => {
                         <p className='font-num'>{formik?.values?.price ? Number(formik?.values?.price - 10000).toLocaleString() : ""}</p>
                     </div>
                 </div>
-                <Button containerClass="!bg-red-500" disabled={loadingOrder} onClick={onClick} name={select === 0 ? "خرید" : "فروش"} />
+                <Button containerClass="!bg-red-500" isLoading={loadingOrder} onClick={onClick} name={select === 0 ? "خرید" : "فروش"} />
             </form>
         </div>
     )

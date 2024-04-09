@@ -47,13 +47,13 @@ const MyWallet = () => {
                                         >
                                             <div className="flex flex-col items-center">
                                                 <p className="flex flex-col items-center gap-1 text-zinc-900">
-                                                <span>{Number(crypto.balance).toLocaleString("fa")}</span>
+                                                <span>{Number(crypto.balance).toLocaleString()}</span>
                                                     {crypto.currency_id.code !== "IRT" && (
                                                         <span className="font-num font-bold">
-                                                            {Number(
+                                                            {Number(Number(
                                                                 Number(crypto.currency_id.price_info_price) *
                                                                 Number(crypto.balance)
-                                                            ).toLocaleString()}{" "}
+                                                            ).toFixed(0)).toLocaleString()}{" "}
                                                             <span className="text-xs font-medium text-gray-500">
                                                                 تومان
                                                             </span>
