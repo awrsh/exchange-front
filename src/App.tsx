@@ -9,7 +9,7 @@ import Home from "./pages/home";
 import InviteFriends from "./pages/inviteFriends";
 import MyWallet from "./pages/myWallet";
 import ProfessionalMarket from "./pages/professionalMarket";
-import TransactionHistory from "./pages/TransactionHistory";
+// import TransactionHistory from "./pages/TransactionHistory2";
 import Verification from "./pages/verification/verification";
 import ExChangePage from "./pages/ExChange";
 import CurrentPrice from "./pages/CurrentPrice";
