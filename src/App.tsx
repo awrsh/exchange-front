@@ -16,6 +16,7 @@ import CurrentPrice from "./pages/CurrentPrice";
 import RialAction from "./pages/RialAction";
 import Form from "./componets/verificationTable/Form";
 import Action from "./pages/Action";
+import TransactionHistory2 from "./pages/TransactionHistory2";
 
 const Pages = [
   {
@@ -60,7 +61,7 @@ const Pages = [
   },
   {
     path: "/transaction-history",
-    element: <TransactionHistory />,
+    element: <TransactionHistory2 />,
   },
   {
     path: "/professionalMarket",
