@@ -15,6 +15,7 @@ const TransactionHistory = () => {
         <Layout>
             <div className="w-[95%] mx-auto">
                 <h1 className="text-xl font-bold">تاریخچه معاملات</h1>
+                
                 <div className="bg-white bg-dark rounded-xl p-6 mt-4">
                     <div className="flex items-center gap-4 overflow-auto">
                         {tabs.map((tab, idx) => (
