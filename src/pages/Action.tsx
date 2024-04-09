@@ -4,9 +4,12 @@ import Layout from "../componets/common/Layout"
 import { IoCheckmarkDone } from "react-icons/io5";
 
 import { useState } from "react"
+import WithdrawalCurrency from "../componets/action/WithdrawalCurrency";
+import DepositCurrency from "../componets/action/DepositCurrency";
 
 const Action = () => {
     const [select, setSelect] = useState(0)
+    const tabs = ["واریز تومانی", "برداشت تومانی","واریز ارزی","برداشت ارزی"]
     return (
         <Layout>
             <div className="layout">
@@ -15,7 +18,7 @@ const Action = () => {
                     <div className="flex-1">
                         <div className="flex items-center gap-4 mt-4">
                             {
-                                ["واریز تومانی", "برداشت تومانی"].map((name, idx) => (
+                                tabs.map((name, idx) => (
                                     <button onClick={() => setSelect(idx)} className={` w-[140px] transition-all text-[12px] rounded-xl p-3 ${select === idx ? "bg-int text-white" : "bg-gray-100"}`} key={idx}>{name}</button>
                                 ))
                             }
@@ -25,6 +28,12 @@ const Action = () => {
                         }
                         {
                             select === 1 ? <WithdrawRials /> : null
+                        }
+                        {
+                            select === 2 ? <DepositCurrency /> : null
+                        }
+                        {
+                            select === 3 ? <WithdrawalCurrency /> : null
                         }
                     </div>
                     <div className="flex-1 flex-col  mt-16 p-4 rounded-xl border">

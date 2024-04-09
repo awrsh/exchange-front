@@ -4,6 +4,8 @@ import { getCurrency } from '../../../services/currencies'
 
 const useGetCuurencyListQuery = (show_in_dashboard?:boolean) => {
   return useQuery([Currencies.CURRENCIES], async () => await getCurrency(show_in_dashboard), {
+    retry:0,
+    refetchOnWindowFocus:false
 
   })
 }

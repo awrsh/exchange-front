@@ -6,7 +6,7 @@ import client from "./utils/client";
 
 
 export const getOrder = async () => {
-    const url = getRoute({ route: "/transactions/crypto/" });
+    const url = getRoute({ route: "/orders/" });
     return await client<{objects:any[]}>({ url });
 };
 

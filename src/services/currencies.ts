@@ -18,3 +18,15 @@ export const getNetwork = async () => {
     const url = getRoute({ route: "/currencies/networks" });
     return await client<{objects:Currency[]}>({ url });
 };
+export const getWalletAddress = async (data:{currency_code:string,network_code:string}) => {
+    const url = getRoute({ route: `/currencies/wallets/?currency_code=${data.currency_code}&network_code=${data.network_code}` });
+    return await client<{objects:{address:string}[]}>({ url });
+};
+export const craeteWalletAddress = async (data:{currency_code:string,network_code:string}) => {
+    const url = getRoute({ route: `/currencies/wallets/` });
+    return await client<{objects:{address:string}[]}>({ url ,method:"POST",data});
+};
+export const createTransactionCrypto = async (data:any) => {
+    const url = getRoute({ route: `/transactions/crypto/` });
+    return await client<{objects:{address:string}[]}>({ url,method:"POST",data});
+};
