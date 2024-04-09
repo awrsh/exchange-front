@@ -1,5 +1,5 @@
 import { useMutation } from 'react-query'
-import { errorToast } from '../../../helpers/utils/error'
+import { errorToast, successToast } from '../../../helpers/utils/error'
 import { useParams } from 'react-router-dom'
 import { verifyAccount } from '../../../services/auth';
 
@@ -10,6 +10,8 @@ const useVerifyAccountMutation = () => {
       if (data?.result === "error") {
         errorToast(data?.error?.description)
         return
+      }else{
+        successToast("اطلاعات شما با موفقیت ثبت شد")
       }
     },
     onError:(error:any)=>{

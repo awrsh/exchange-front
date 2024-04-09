@@ -98,10 +98,11 @@ const CardVerify = ({ authority, level }: Props) => {
           </div>
         </div>
         <Button
-          disabled={user?.authentication_status === "pending" || !level}
+   
+          // disabled={user?.authentication_status === "pending" || !level}
           onClick={onClick}
-          name={level && user?.authentication_status === "pending" ? "در حال بررسی" : "تکمیل اطلاعات"}
-          containerClass={`!mb-3 !w-[90%] !mx-auto ${level && user?.authentication_status === "pending" ? "!bg-yellow-500" : ""}`}
+          name={level && user?.authentication_status === "pending" ? "در حال بررسی" : user?.authentication_status === "level_۱" ? "اطلاعت تکمیل شده است" : "تکمیل اطلاعات"}
+          containerClass={`!mb-3 !w-[90%] !mx-auto  ${user?.authentication_status === "pending" ? "": user?.authentication_status === "level_۱" ? "!bg-[#23DCCE]": "!bg-yellow-500"}`}
         />
       </div>
     </div>

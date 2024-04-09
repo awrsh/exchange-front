@@ -25,7 +25,7 @@ const ExChange = () => {
         <div className='flex-1 '>
           <Input formik={formik} name='' label='قیمت' />
           <Input formik={formik} name='' label='مقدار' />
-          <CustomSlider />
+          <CustomSlider onChange={()=>{}} value={25} />
           <Input formik={formik} name='' label='مجموع' />
           <div className='flex items-center justify-between '>
             <p className='text-xs'>کارمزد</p>
@@ -40,7 +40,7 @@ const ExChange = () => {
         <div className='flex-1'>
           <Input formik={formik} name='' label='قیمت' />
           <Input formik={formik} name='' label='مقدار' />
-          <CustomSlider  color='#dc2626'/>
+          <CustomSlider onChange={()=>{}} value={25} color='#dc2626'/>
           <Input formik={formik} name='' label='مجموع' />
           <div className='flex items-center justify-between '>
             <p className='text-xs'>کارمزد</p>

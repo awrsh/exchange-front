@@ -24,6 +24,7 @@ interface Props {
     max?: number,
     isError?: boolean;
     maxLength?: number;
+    onClickSubLabel?:()=>void;
 }
 const Input = ({
     label,
@@ -45,7 +46,8 @@ const Input = ({
     disabled,
     placeholderRtl = true,
     isError = true,
-    maxLength
+    maxLength,
+    onClickSubLabel
 }: Props) => {
 
 
@@ -80,9 +82,9 @@ const Input = ({
                         />
                         {icon_left}
                         {subLabel && (
-                            <p className="whitespace-nowrap  text-[14px] text-blue-500 h-full font-regular flex justify-center items-center w-[60px]">
+                            <button type="button" onClick={onClickSubLabel} className="whitespace-nowrap  text-[14px] text-blue-500 h-full font-regular flex justify-center items-center w-[60px]">
                                 {subLabel}
-                            </p>
+                            </button>
                         )}
                     </div>
 

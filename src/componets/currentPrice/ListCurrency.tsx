@@ -55,7 +55,7 @@ const ListCurrency = () => {
                                     </div>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
-                                    <p className="font-medium">$ {Number(crypto.price_info_usdt_amount).toLocaleString()}</p>
+                                    <p className="font-medium">$ {Number(crypto.price_info_usdt_price).toLocaleString()}</p>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
                                     <p className="font-num">{Number(crypto.price_info_price).toLocaleString()} <span className="text-[10px]">تومان</span></p>

@@ -66,7 +66,7 @@ const Select = ({
         <div className={`w-full ${className}`}>
             {
                 label &&
-                <label className="pb-[4px] block font-medium text-[13px] ">
+                <label className="pb-[9px] block font-medium text-[13px] ">
                     {label}:
                     {required && <span className="text-[#DF2040] text-sm">*</span>}
                 </label>

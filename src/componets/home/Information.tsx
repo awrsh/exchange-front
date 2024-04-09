@@ -17,11 +17,11 @@ const Information = () => {
                     </div>
                 </div>
                 <div className="space-y-2">
-                    <p className="text-[14px] font-bold ">وضعیت کاربر</p>
+                    <p className="text-[14px] font-bold text-center ">وضعیت کاربر</p>
                     {
                         user?.authentication_status === "level_0" ?
                             <Link className="p-1 px-2 rounded-lg mt-2 block bg-red-500 border border-[#F8A5AA] text-[12px] text-white" to="/ver">
-                                احراز هویت
+                                احراز هویت نشده
                             </Link> :
                             <p className="font-regular text-center block bg-[#e5faf3] py-1 rounded-lg text-[#34b288]   text-[12px]">
                                 {user?.authentication_status === "level_۱" ? "احراز هویت" : user?.authentication_status === "level_2" ? "" : ""}

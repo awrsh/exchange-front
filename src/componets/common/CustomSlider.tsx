@@ -1,9 +1,12 @@
 import { Slider } from '@mui/material'
 import { styled } from '@mui/material/styles';
 interface Props{
-    color?:string
+    color?:string;
+    onChange?:any;
+    value?:number;
+    disabled?:boolean;
 }
-const CustomSlider = ({color="#52af77"}:Props) => {
+const CustomSlider = ({color="#52af77",value,onChange,disabled}:Props) => {
 
     function valuetext(value: number) {
         return <span className='font-num'>{value}%</span>;
@@ -80,6 +83,9 @@ const CustomSlider = ({color="#52af77"}:Props) => {
                 step={25}
                 valueLabelFormat={valuetext}
                 marks={marks}
+                onChange={onChange}
+                value={value}
+                disabled={disabled}
             />
         </div>
     )
