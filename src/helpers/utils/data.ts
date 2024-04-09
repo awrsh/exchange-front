@@ -600,7 +600,7 @@ export const menus =[
     link:"/buy"
   },
   {
-    name:"قیمت لحضه‌ای",
+    name:"قیمت لحظه‌ای",
     link:"/current-price"
   },
   {
