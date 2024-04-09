@@ -160,4 +160,5 @@ const Buy = ({select}:{select:number}) => {
     )
 }
 
+
 export default Buy
