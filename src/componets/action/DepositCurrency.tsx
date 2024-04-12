@@ -5,11 +5,10 @@ import useGetCuurencyListQuery from "../../hook/query/currency/useGetCuurencyLis
 import { useEffect } from "react"
 import { IoCopyOutline } from "react-icons/io5";
 import QRCode from "react-qr-code";
-import { successToast } from "../../helpers/utils/error"
+import { errorToast, successToast } from "../../helpers/utils/error"
 import Input from "../common/Input"
 import useCraeteTransactionCryptoMutation from "../../hook/mutation/currencies/useCraeteTransactionCryptoMutation"
 import { CircularProgress } from "@mui/material"
-import useCraeteWalletAddress from "../../hook/mutation/currencies/useCraeteWalletAddress"
 import useGetWalletAddress from "../../hook/query/currencies/useGetWalletAddress"
 
 const DepositCurrency = () => {
@@ -21,7 +20,9 @@ const DepositCurrency = () => {
             amount: null,
             txid: null
         },
+        // @ts-ignore
         onSubmit: (values) => {
+            if(!currencyWallet?.objects[0]?.address!) return errorToast("آدرس ولتی برای این ارز وجود ندارد")
             const data = {
                 "type": "deposit",
                 wallet_address: currencyWallet?.objects[0].address!,
@@ -110,7 +111,7 @@ const DepositCurrency = () => {
                 <Input formik={formik} name="txid" label="txid" />
 
                 {
-                    loading ? <CircularProgress /> : currencyWallet?.objects[0].address! ?
+                    loading ? <CircularProgress /> :currencyWallet?.objects[0]?.address! ? currencyWallet?.objects[0].address! ?
                         <div className="flex  !mt-8 justify-between">
                             <p className="text-[13px] font-bold">آدرس کیف پول:</p>
                             <div className="flex flex-col items-end gap-6">
@@ -118,10 +119,10 @@ const DepositCurrency = () => {
                                     <p>{currencyWallet?.objects[0].address}</p>
                                     <IoCopyOutline onClick={onCopy} cursor="pointer" size={22} />
                                 </div>
-                                <QRCode className="w-[120px] h-[100px]" value={currencyWallet?.objects[0].address!} />
+                                <QRCode className="w-[120px] h-[100px]" value={currencyWallet?.objects[0]?.address!} />
                             </div>
                         </div>
-                        :
+                        :"آدرسی ولتی برای این ارز وجود ندارد":
                         null
                 }
 

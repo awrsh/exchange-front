@@ -36,7 +36,7 @@ const Register = () => {
                     <Input placeholder="لطفا نام‌خانوادگی خود را وارد کنید" required name="last_name" label="نام‌خانوادگی" formik={formik} />
                     <Input ltr type="password" placeholder="رمز عبور" required name="password" label="رمز عبور" formik={formik} />
                     <Input ltr type="password"  placeholder="تکرار رمز عبور" required name="passwordConfirmation" label="تکرار رمز عبور" formik={formik} />
-                    <Button isLoading={isLoading} containerClass="col-span-2 !mt-10" name="ثبت اطلاعات" />
+                    <Button isLoading={isLoading} containerClass="col-span-2 !bg-int !mt-10" name="ثبت اطلاعات" />
                 </form>
                 <Link className="font-medium text-center block mt-4 text-xs" to={"/auth"} > قبلا ثبت‌نام کرده اید؟ <span className="font-bold underline text-int"> ورود</span></Link>
 

@@ -4,12 +4,13 @@ import WithTokenCkeck from "../hook/common/WithTokenCkeck"
 import DepositRialHistory from "../componets/common/DepositRialHistory"
 import WithdrawRialHistory from "../componets/common/WithdrawRialHistory"
 import TransactionOrder from "../componets/common/TransactionOrder"
+import DepositCryptoHistory from "../componets/common/DepositCryptoHistory"
 const TransactionHistory = () => {
     const [select, setSelect] = useState(0)
-    const tabs = ['خرید',"فروش", "واریز های تومانی", "برداشت های تومانی"]
+    const tabs = ['خرید',"فروش", "واریز های تومانی", "برداشت های تومانی","واریز ارزی","برداشت ارزی"]
     return (
         <Layout>
-            <div className="w-[95%] mx-auto">
+            <div className="w-[95%] mx-auto relative">
                 <h1 className="text-xl font-bold">تاریخچه معاملات</h1>
                 <div className="bg-white bg-dark rounded-xl p-6 mt-4">
                     <div className="flex items-center gap-4 overflow-auto">
@@ -23,6 +24,8 @@ const TransactionHistory = () => {
                         {select === 1 ? <TransactionOrder type="sell" /> : null}
                         {select === 2 ? <DepositRialHistory /> : null}
                         {select === 3 ? <WithdrawRialHistory /> : null}
+                        {select === 4 ? <DepositCryptoHistory type="deposit"/> : null}
+                        {select === 5 ? <DepositCryptoHistory type="withdraw"/> : null}
                     </div>
                 </div>
             </div>
