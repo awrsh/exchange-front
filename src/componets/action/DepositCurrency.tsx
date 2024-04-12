@@ -22,7 +22,7 @@ const DepositCurrency = () => {
         },
         // @ts-ignore
         onSubmit: (values) => {
-            if(!currencyWallet?.objects[0]?.address!) return errorToast("آدرس ولتی برای این ارز وجود ندارد")
+            if (!currencyWallet?.objects[0]?.address!) return errorToast("آدرس ولتی برای این ارز وجود ندارد")
             const data = {
                 "type": "deposit",
                 wallet_address: currencyWallet?.objects[0].address!,
@@ -36,7 +36,7 @@ const DepositCurrency = () => {
     })
     const { crypto, network } = formik.values
     const { data, isLoading } = useGetCuurencyListQuery()
-    const { data: currencyWallet, isLoading: loading } = useGetWalletAddress({ currency_code: crypto?.code, network_code: network?.code, enabled: network && crypto ?true : false})
+    const { data: currencyWallet, isLoading: loading } = useGetWalletAddress({ currency_code: crypto?.code, network_code: network?.code, enabled: network && crypto ? true : false })
 
     const formatOptionLabel = ({ title, image, price_info_price }: any) => {
         return <div className='flex items-center gap-2'>
@@ -72,6 +72,13 @@ const DepositCurrency = () => {
         navigator.clipboard.writeText(currencyWallet?.objects[0].address!)
         successToast("با موفقیت کپی شد")
     }
+
+
+    const onChange = (value: any) => {
+        formik.setFieldValue("crypto", value)
+        formik.setFieldValue("network", "")
+
+    }
     return (
         <div className="p-2 mt-7">
             <div className="flex flex-col gap-3">
@@ -92,6 +99,8 @@ const DepositCurrency = () => {
                     getOptionValue={(option) => option.title}
                     formatOptionLabel={formatOptionLabel}
                     isLoading={isLoading}
+                    onChange={onChange}
+
                     formik={formik}
                     label="انتخاب ارز"
                     name="crypto"
@@ -108,10 +117,14 @@ const DepositCurrency = () => {
                     options={formik.values?.crypto?.networks!}
                 />
                 <Input type="number" formik={formik} name="amount" label="مقدار" />
-                <Input formik={formik} name="txid" label="txid" />
+                {
+                    currencyWallet?.objects[0]?.address ?
+                        <Input formik={formik} name="txid" label="txid" />
+                        : null
+                }
 
                 {
-                    loading ? <CircularProgress /> :currencyWallet?.objects[0]?.address! ? currencyWallet?.objects[0].address! ?
+                    loading ? <CircularProgress /> : currencyWallet?.objects[0]?.address! ? currencyWallet?.objects[0].address! ?
                         <div className="flex  !mt-8 justify-between">
                             <p className="text-[13px] font-bold">آدرس کیف پول:</p>
                             <div className="flex flex-col items-end gap-6">
@@ -122,12 +135,12 @@ const DepositCurrency = () => {
                                 <QRCode className="w-[120px] h-[100px]" value={currencyWallet?.objects[0]?.address!} />
                             </div>
                         </div>
-                        :"آدرسی ولتی برای این ارز وجود ندارد":
+                        : "آدرسی ولتی برای این ارز وجود ندارد" :
                         null
                 }
 
 
-                <Button isLoading={loadingDeposit} type="submit" containerClass="!mt-16 !bg-int" name="واریز" />
+                <Button disabled={currencyWallet?.objects[0]?.address ? false : true} isLoading={loadingDeposit} type="submit" containerClass="!mt-16 !bg-int" name="واریز" />
             </form>
 
         </div>

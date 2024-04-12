@@ -6,7 +6,7 @@ import useAuthStore from "../../stores/user-store"
 import useCalculateCommissionMutation from "../../hook/mutation/transactions/useCalculateCommissionMutation"
 
 const WithdrawalCurrency = () => {
-    const {data,isLoading,mutate} = useCalculateCommissionMutation()
+    const {isLoading,mutate} = useCalculateCommissionMutation()
     const { user } = useAuthStore()
     const formik = useFormik<any>({
         initialValues: {
