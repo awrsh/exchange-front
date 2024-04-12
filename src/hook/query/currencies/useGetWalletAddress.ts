@@ -1,5 +1,6 @@
 import { useQuery } from 'react-query'
-import { getWalletAddress, listCurrencies } from '../../../services/currencies'
+import { getWalletAddress } from '../../../services/currencies'
+// import { getWalletAddress, listCurrencies } from '../../../services/currencies'
 type Props = {
     currency_code: string, network_code: string,
     enabled:boolean
