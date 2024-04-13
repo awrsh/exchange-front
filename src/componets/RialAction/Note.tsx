@@ -42,11 +42,11 @@ const Note = () => {
                 <ul className="mt-5 space-y-3">
                     <li className="flex items-center">
                         <IoCheckmarkDone className="text-green-600" size={24} />
-                        <p className="flex-1 text-[13px] text-neutral-500 text-center ">برداشت ریالی در تراست تتر ، به مقصد همه بانک ها بر اساس سیکل پایا خواهد بود.</p>
+                        <p className="flex-1 text-[13px] text-neutral-500 text-center ">برداشت ریالی در بیت‌آسیا ، به مقصد همه بانک ها بر اساس سیکل پایا خواهد بود.</p>
                     </li>
                     <li className="flex items-center">
                         <IoCheckmarkDone className="text-green-600" size={24} />
-                        <p className="flex-1 text-[13px] text-neutral-500 text-center ">کارمزد برداشت ریالی مربوط به سیستم بانکی بوده و توسط سیستم پرداخت یار گرفته می شود و سایت تراست تتر در آن ذینفع نیست.</p>
+                        <p className="flex-1 text-[13px] text-neutral-500 text-center ">کارمزد برداشت ریالی مربوط به سیستم بانکی بوده و توسط سیستم پرداخت یار گرفته می شود و سایت بیت‌آسیا در آن ذینفع نیست.</p>
                     </li>
                     <li className="flex items-center">
                         <IoCheckmarkDone className="text-green-600" size={24} />
@@ -54,7 +54,7 @@ const Note = () => {
                     </li>
                     <li className="flex items-center">
                         <IoCheckmarkDone className="text-green-600" size={24} />
-                        <p className="flex-1 text-[13px] text-neutral-500 text-center ">واریز ریالی به تراست تتر <span  className="text-red-500">بدون کارمزد</span> برای کاربران عزیز انجام می گردد.</p>
+                        <p className="flex-1 text-[13px] text-neutral-500 text-center ">واریز ریالی به بیت‌آسیا <span  className="text-red-500">بدون کارمزد</span> برای کاربران عزیز انجام می گردد.</p>
                     </li>
                 </ul>
             </div>

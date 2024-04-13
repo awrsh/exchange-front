@@ -67,7 +67,7 @@ const Action = () => {
                             <div className="flex items-start gap-4">
                                 <IoCheckmarkDone className="min-w-[20px] min-h-[20px] text-green-500" />
                                 <p className="text-xs leading-7 text-center text-gray-500">
-                                    برداشت ریالی در تراست تتر ، به مقصد همه بانک ها بر اساس سیکل پایا خواهد بود. کارمزد برداشت ریالی مربوط به سیستم بانکی بوده و توسط سیستم پرداخت یار گرفته می شود و سایت تراست تتر در آن ذینفع نیست.
+                                    برداشت ریالی در بیت‌آسیا ، به مقصد همه بانک ها بر اساس سیکل پایا خواهد بود. کارمزد برداشت ریالی مربوط به سیستم بانکی بوده و توسط سیستم پرداخت یار گرفته می شود و سایت بیت‌آسیا در آن ذینفع نیست.
                                 </p>
                             </div>
                             <div className="flex items-start gap-4">
@@ -78,7 +78,7 @@ const Action = () => {
                             <div className="flex items-start gap-4">
                                 <IoCheckmarkDone className="min-w-[20px] min-h-[20px] text-green-500" />
                                 <p className="text-xs leading-7 text-center text-gray-500">
-                                    واریز ریالی به تراست تتر <span className="text-red-500">بدون کارمزد</span>
+                                    واریز ریالی به بیت‌آسیا <span className="text-red-500">بدون کارمزد</span>
                                     برای کاربران عزیز انجام می گردد
                                 </p>
                             </div>
