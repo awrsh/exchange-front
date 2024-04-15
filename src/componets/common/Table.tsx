@@ -45,13 +45,13 @@ export default function Table({
     return (
         <div className="flex-1 dark:!bg-dark">
             {title && <p className="font-es-regular text-[#3b3b3b] pb-4 pr-1">{title}</p>}
-            <div className="lg:border relative bg-white dark:!bg-block rounded-tr-lg lg:rounded-lg overflow-hidden">
+            <div className="lg:border relative bg-white dark:!bg-block rounded-tr-lg lg:rounded-lg overflow-hidden " >
                 <TableContainer className="" sx={{ position: "relative",background:"inherit" }} component={Paper}>
                     <TableMui>
                         <TableHead className="dark:!bg-slate-500 " >
                             <TableRow >
                                 {header.map((name, i) => (
-                                    <StyledTableCell className="!text-[13px] dark:!text-white dark:!bg-block" key={i} align="center">
+                                    <StyledTableCell className="!text-[13px] dark:!text-white dark:!bg-navyBlue" key={i} align="center">
                                         {name}
                                     </StyledTableCell>
                                 ))}
@@ -65,7 +65,7 @@ export default function Table({
 
                         {!isLoaidng && length === 0 ? (
                             <div className="py-14">
-                                <p className="text-center absolute bottom-12 left-1/2 -translate-x-1/2 text-[14px] font-bold ">
+                                <p className="text-center absolute bottom-12 left-1/2  -translate-x-1/2 text-[14px] font-bold ">
                                     اطلاعاتی ثبت نشده است
                                 </p>
                             </div>

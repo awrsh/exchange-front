@@ -58,7 +58,7 @@ const DepositCryptoHistory = ({ type }: { type: string }) => {
                                     <p className="font-bold text-start w-[100px]">{crypto.currency_id.title}</p>
                                 </div>
                             </StyledTableCell>
-                            <StyledTableCell align="center">
+                            <StyledTableCell align="center" className='dark:!text-white'>
                                 {/* @ts-ignore */}
                                 {new Date(crypto.create_date).toLocaleDateString("fa-IR", options)
                                 }
@@ -66,10 +66,10 @@ const DepositCryptoHistory = ({ type }: { type: string }) => {
                             <StyledTableCell align="center">
                                 <span className="font-num">{Number(crypto.currency_id.price_info_price).toLocaleString()}</span>
                             </StyledTableCell>
-                            <StyledTableCell align="center">
+                            <StyledTableCell align="center" >
                                 <span className="font-num">{crypto.tx_id}</span>
                             </StyledTableCell>
-                            <StyledTableCell align="center">
+                            <StyledTableCell align="center" >
                                 <span className="font-num">{crypto.wallet_address}</span>
                             </StyledTableCell>
 

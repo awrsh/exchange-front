@@ -46,7 +46,7 @@ const Select = ({
         control: (base: any, state: any) => ({
             ...base,
             border: state.isFocused ? 0 : formik.errors[name!]?.id ? "1px solid #ef4444" : "1px solid #eee",
-            backgroundColor: theme === "dark"?"#CBD5E1": backgroundColor,
+            backgroundColor: theme === "dark"?"#0B1520": backgroundColor,
             height: isMulti ? "fit-content" : "46.58px",
             borderRadius: "8px",
             fontSize: "12px !important",
@@ -59,6 +59,10 @@ const Select = ({
             options: (styles: any) => ({
                 ...styles,
                 fontSize: "12px !important",
+                menu: (base : any) => ({
+                    ...base,
+                 backgroundColor : "red"
+                  }),
             }),
         }),
     };
