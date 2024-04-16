@@ -164,7 +164,7 @@ const Sell = ({ select }: { select: number }) => {
                     </div>
                     <div className='flex flex-col items-center gap-3'>
                         <p className='font-extrabold text-neutral-800 dark:text-white'>دریافتی‌شما</p>
-                        <p className='font-num dark:text-white'>{formik?.values?.price ? Number(formik?.values?.price - 10000).toLocaleString() : ""}</p>
+                        <p className='font-num dark:text-white'>{formik?.values?.price ? Number(formik?.values?.price - 10000).toFixed(8).toLocaleString() : ""}</p>
                     </div>
                 </div>
                 <Button containerClass="!bg-red-500" isLoading={loadingOrder} onClick={onClick} name={select === 0 ? "خرید" : "فروش"} />

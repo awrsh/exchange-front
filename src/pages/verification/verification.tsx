@@ -5,7 +5,7 @@ import VerifyTable from "../../componets/verificationTable/VerifyTable";
 import Layout from "../../componets/common/Layout";
 import useAuthStore from "../../stores/user-store";
 function Verification() {
-  const {user} = useAuthStore()
+  const { user } = useAuthStore()
   const { data, isLoading } = useGetAuthorityLevels();
   return (
     <div>
@@ -14,7 +14,7 @@ function Verification() {
           <CircularProgress />
         ) : (
           <>
-            <div className="px-10  mx-auto py-[15px] ">
+            <div className="px-10  mx-auto py-[15px]  ">
               <div className="flex gap-[150px] ">
                 {data?.map((authority, idx) => (
                   <CardVerify level={user?.user_level === idx} authority={authority} key={idx} />

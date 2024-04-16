@@ -521,7 +521,7 @@ export const transactionsList = [
 
 
 
-export const tabsCurrentPrice = ["همه ارز‌ها", "مورد علاقه", 'پرسودترین', "گرانترین", "جدیدترین", "ارزانترین", "پر ضررترین", "فن توکن", "وب3", "متاورس"]
+export const tabsCurrentPrice = []
 export const currenciesList1 = [
   { interest: 'علاقه‌مندی', name: 'Bitcoin', usdPrice: 35000, tomanPrice: 3500000000, change24h: 5, chart: [20, 2, 15, 1, 30, 3, 50, 70, 60] },
   { interest: 'علاقه‌مندی', name: 'Ethereum', usdPrice: 2500, tomanPrice: 250000000, change24h: -3, chart: [10, 3, 25, 7, 10, 23, 20] },

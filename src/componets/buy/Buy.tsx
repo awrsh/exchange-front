@@ -169,7 +169,7 @@ const Buy = ({ select }: { select: number }) => {
                     <div className='flex flex-col items-center gap-3 
 '>
                         <p className='font-extrabold text-neutral-800 dark:text-white'>دریافتی‌شما</p>
-                        <p className='font-num dark:text-white'>{formik?.values?.price ? Number(formik?.values?.amount).toLocaleString() : ""}</p>
+                        <p className='font-num dark:text-white'>{formik?.values?.price ? Number(formik?.values?.amount).toFixed(8).toLocaleString() : ""}</p>
                     </div>
                 </div>
                 <Button  isLoading={loadingOrder} onClick={onClick} name={"خرید"} containerClass='!bg-green-500' />
