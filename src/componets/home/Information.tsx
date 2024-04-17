@@ -5,8 +5,8 @@ import userImage from "../../assets/images/user.jpg"
 const Information = () => {
     const { user } = useAuthStore()
     const [select, setSelect] = useState(0)
-    const tabs = ["تومان", "USDT", "BTC"]
-
+    const tabs = ["تومان", "USDT" ]
+    
     return (
         <div className="flex-1 w-full bg-white h-full rounded-xl p-3 bg-dark">
             <div className="border-b flex justify-between items-center pb-3 border-neutral-200">

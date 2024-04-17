@@ -31,7 +31,7 @@ const Information = () => {
                     </p>
                 </div>
             </div>
-            <div className="flex justify-around py-9 items-center border-b border-neutral-200 ">
+            <div className="flex justify-around py-9 items-start border-b border-neutral-200 ">
                 <div className="flex flex-col justify-center items-center gap-4">
                     <div className="flex gap-1 items-center text-neutral-800">
                         <HiMiniDevicePhoneMobile size={24} />

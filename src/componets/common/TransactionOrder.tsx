@@ -56,18 +56,18 @@ const TransactionOrder = ({ type }: { type: string }) => {
                                         </div>
                                     </div>
                                 </StyledTableCell>
-                                <StyledTableCell align='center'>
+                                <StyledTableCell align='center' className='dark:!text-white'>
                                     {
                                         // @ts-ignore
                                         new Date(row.create_date).toLocaleDateString("fa-IR", options)
                                     }
                                 </StyledTableCell>
-                                <StyledTableCell align='center'>
+                                <StyledTableCell align='center' className='dark:!text-white'>
                                     {
                                         row?.amount
                                     }
                                 </StyledTableCell>
-                                <StyledTableCell align='center'>
+                                <StyledTableCell align='center' className='dark:!text-white'>
                                     {
                                         row?.factor_number
                                     }

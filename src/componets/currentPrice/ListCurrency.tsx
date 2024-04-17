@@ -31,12 +31,12 @@ const ListCurrency = () => {
 
     return (
         <>
-            <div className="mt-5 sticky top-1 z-50 bg-white rounded-xl px-3 shadow-sm py-2 flex items-center gap-5">
+            <div className="mt-5 sticky top-1 z-50 bg-white dark:bg-deep_dark rounded-xl px-3 shadow-sm py-2 flex items-center gap-5">
                 <Input icon_left={<BsSearch />} className="!max-w-[400px] mt-2" inputdivClass="bg-white" placeholder="جستجوی ارز" formik={formik} />
                 <div className="flex-1 gap-4 flex justify-between items-center overflow-hidden">
 
                     {tabsCurrentPrice.map((tab, idx) => (
-                        <button onClick={() => setSelect(idx)} className={` font-bold flex-1 text-xs h-11 rounded-xl transition-all duration-500 ${select === idx ? "bg-int text-white" : "bg-white dark:bg-slate-400"}`} key={idx}>{tab}</button>
+                        <button onClick={() => setSelect(idx)} className={` font-bold flex-1 text-xs h-11 rounded-xl transition-all duration-500 ${select === idx ? "bg-int text-white" : "bg-white dark:bg-block"}`} key={idx}>{tab}</button>
                     ))}
                 </div>
             </div>
@@ -55,7 +55,7 @@ const ListCurrency = () => {
                                     </div>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
-                                    <p className="font-medium">$ {Number(crypto.price_info_usdt_price).toLocaleString()}</p>
+                                    <p className="font-medium">$ {Number(crypto.price_info_usdt_price).toFixed(crypto.decimal).toLocaleString()}</p>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
                                     <p className="font-num">{Number(crypto.price_info_price).toLocaleString()} <span className="text-[10px]">تومان</span></p>

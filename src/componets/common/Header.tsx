@@ -30,9 +30,9 @@ const Header = () => {
       <header className="flex justify-between gap-10 items-center w-[95%] mx-auto py-4">
         <div className="flex items-center gap-14">
           <img className="w-28" src={Logo} alt="" />
-          <ul className="flex items-center gap-8">
+          <ul className="lg:flex hidden items-center gap-8">
             {menus.map((menu,idx) =>(
-              <Link key={idx} className="text-[14px] text-gray-600" to={menu.link}>{menu.name}</Link>
+              <Link key={idx} className="text-[14px] text-gray-600 dark:text-white" to={menu.link}>{menu.name}</Link>
             ))}
           </ul>
         </div>

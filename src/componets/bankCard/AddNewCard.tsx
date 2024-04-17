@@ -31,7 +31,7 @@ const AddNewCard = () => {
             <div className="mt-5 w-full flex flex-col-reverse lg:flex-row gap-10 items-center">
                 <div className="flex-1 w-full">
                     <Form formik={formik} />
-                    <Button onClick={formik.handleSubmit} isLoading={isLoading} containerClass="!mt-8 !mx-auto w-[120px]" name="ثبت کارت بانکی" />
+                    <Button onClick={formik.handleSubmit} isLoading={isLoading} containerClass="!mt-8 !mx-auto !bg-int w-[120px]" name="ثبت کارت بانکی" />
                 </div>
                 <div className="flex-1 w-full">
                     <Card shaba={formik.values.iban} cardId={formik.values.card_number} />

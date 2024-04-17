@@ -4,22 +4,22 @@ import Table from "../common/Table"
 const YourReceipts = () => {
     const data = [
         {
-            verify:"1 تا 3 نفر",
-            reward:20
+            verify: "1 تا 3 نفر",
+            reward: 20
         },
         {
-            verify:"4 تا 10 نفر",
-            reward:25
+            verify: "4 تا 10 نفر",
+            reward: 25
         },
         {
-            verify:"4 تا 10 نفر",
-            reward:25
+            verify: "4 تا 10 نفر",
+            reward: 25
         },
         {
-            verify:"4 تا 10 نفر",
-            reward:25
+            verify: "4 تا 10 نفر",
+            reward: 25
         },
-        
+
     ]
     return (
         <div className="bg-white bg-dark h-full overflow-auto flex gap-6 flex-col rounded-xl p-3">
@@ -28,11 +28,11 @@ const YourReceipts = () => {
             </div>
             <Table header={["دوستان تائید هویت شده", "پاداش"]}>
                 {
-                    data.map((item,idx)=>(
-                <StyledTableRow className="style-table-row" key={idx}>
-                    <StyledTableCell className="!font-num dark:!text-white" align="center">{item.verify}</StyledTableCell>
-                    <StyledTableCell className="!font-num dark:!text-white"  align="center">%{item.reward}</StyledTableCell>
-                </StyledTableRow>
+                    data.map((item, idx) => (
+                        <StyledTableRow className="style-table-row" key={idx}>
+                            <StyledTableCell className="!font-num dark:!text-white " align="center">{item.verify}</StyledTableCell>
+                            <StyledTableCell className="!font-num dark:!text-white" align="center">%{item.reward}</StyledTableCell>
+                        </StyledTableRow>
 
                     ))
                 }

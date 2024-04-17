@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+//import { Link } from "react-router-dom"
 import { PieChart } from '@mui/x-charts/PieChart';
 import useAuthStore from "../../stores/user-store";
 
@@ -22,7 +22,7 @@ const TotalAssetValue = () => {
                             <p className="font-bold font-num">{totalDollar?.toFixed(2)}<span className="text-xs">$</span></p>
                         </div>
                         <p className="text-xs text-neutral-600">موجودی ارزی</p>
-                        <Link to={"#"} className="font-light text-xs text-blue-500">خرید و فروش ارز</Link>
+                        {/* <Link to={"#"} className="font-light text-xs text-blue-500">خرید و فروش ارز</Link> */}
                     </div>
                     <div className="flex flex-col items-center gap-4">
                         <div className="flex items-center gap-1">
@@ -30,7 +30,7 @@ const TotalAssetValue = () => {
                             <p className="font-bold font-num">{Number(Number(totalToman?.balance).toFixed(0)).toLocaleString()} <span className="text-xs">تومان</span></p>
                         </div>
                         <p className="text-xs text-neutral-600">موجودی تومانی</p>
-                        <Link to={"#"} className="font-light text-xs text-blue-500">خرید و فروش تومانی</Link>
+                        {/* <Link to={"#"} className="font-light text-xs text-blue-500">خرید و فروش تومانی</Link> */}
                     </div>
                 </div>
             </div>

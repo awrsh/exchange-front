@@ -9,7 +9,8 @@ export default {
     extend: {
       backgroundColor:{
         block:"#222222",
-        deep_dark:"#1a1a1a"
+        deep_dark:"#1a1a1a",
+        navyBlue : "#0B1520"
       },
       colors: {
         "int": "#338eff",

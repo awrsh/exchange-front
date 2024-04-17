@@ -24,7 +24,7 @@ interface Props {
     max?: number,
     isError?: boolean;
     maxLength?: number;
-    onClickSubLabel?:()=>void;
+    onClickSubLabel?: () => void;
 }
 const Input = ({
     label,
@@ -63,7 +63,7 @@ const Input = ({
                 )}
                 <div className="flex items-center gap-3">
                     <div
-                        className={`border-[1px] flex-1  border-[#e1e1e1]  overflow-hidden  h-[44px] bg-[#f5f5f5] dark:bg-slate-300 gap-3 rounded-lg flex items-center ${disabled ? "bg-gray-50" : ""} ${subLabel ? "pr-2" : "px-2"
+                        className={`border-[1px] flex-1  border-[#e1e1e1]  overflow-hidden  h-[44px] bg-[#f5f5f5] dark:bg-navyBlue dark:text-white gap-3 rounded-lg flex items-center ${disabled ? "bg-gray-50" : ""} ${subLabel ? "pr-2" : "px-2"
                             } ${formik && formik?.touched[name!] && formik?.errors[name!] ? "border-red-500" : "border-gray_deep "
                             } ${inputdivClass}`}
                     >
@@ -73,7 +73,7 @@ const Input = ({
                             disabled={disabled}
                             name={name}
                             maxLength={maxLength}
-                            className={`bg-transparent w-full text-[12px] text-black font-num  dark:placeholder:text-zinc-500 outline-none placeholder:text-[#9e9e9e] ${placeholderRtl ? "placeholder:text-right" : "placeholder:text-left"} ${ltr ? "ltr" : ""
+                            className={`bg-transparent w-full text-[12px]  font-num  dark:placeholder:text-zinc-500 outline-none placeholder:text-[#9e9e9e] ${placeholderRtl ? "placeholder:text-right" : "placeholder:text-left"} ${ltr ? "ltr" : ""
                                 }`}
                             placeholder={placeholder}
                             value={isOnChange ? value : formik.values[name!]}

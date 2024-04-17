@@ -163,26 +163,27 @@ const Buy = ({ select }: { select: number }) => {
 
                 <CustomSlider disabled={!formik?.values?.crypto} value={formik.values.slider} onChange={onChangeSlider} />
 
-                {/* <div className='flex items-center justify-between p-3 rounded-xl bg-[#f5f5f5] dark:bg-slate-300'>
+                {/* <div className='flex items-center justify-between p-3 rounded-xl bg-[#f5f5f5] dark:bg-block'>
                     <p className='font-bold text-neutral-800'>مجموع </p>
                     <p className='font-bold text-zinc-400'>BTC <span className='font-num font-extrabold mx-3 text-neutral-800'>2,000,000</span></p>
                 </div> */}
 
-                <div className='flex items-center justify-between p-3 my-5 rounded-xl bg-[#f5f5f5] dark:bg-slate-300'>
+                <div className='flex items-start justify-between p-3 my-5 rounded-xl bg-[#f5f5f5] dark:bg-navyBlue '>
                     <div className='flex flex-col items-center gap-3'>
-                        <p className='font-extrabold text-neutral-800'>مبلغ‌کل</p>
-                        <p className='font-num'>{formik?.values?.price ? Number(formik?.values?.price).toLocaleString() : null}</p>
+                        <p className='font-extrabold text-neutral-800 dark:text-white'>مبلغ‌کل</p>
+                        <p className='font-num dark:text-white'>{formik?.values?.price ? Number(formik?.values?.price).toLocaleString() : null}</p>
                     </div>
-                    <div className='flex flex-col items-center gap-3'>
-                        <p className='font-extrabold text-neutral-800'>کارمزد</p>
-                        <p className='font-num'>{Number(10000).toLocaleString()}</p>
+                    <div className='flex flex-col items-center gap-3 '>
+                        <p className='font-extrabold text-neutral-800 dark:text-white'>کارمزد</p>
+                        <p className='font-num dark:text-white'>{Number(10000).toLocaleString()}</p>
                     </div>
-                    <div className='flex flex-col items-center gap-3'>
-                        <p className='font-extrabold text-neutral-800'>دریافتی‌شما</p>
-                        <p className='font-num'>{formik?.values?.price ? Number(formik?.values?.amount).toLocaleString() : ""}</p>
+                    <div className='flex flex-col items-center gap-3 
+'>
+                        <p className='font-extrabold text-neutral-800 dark:text-white'>دریافتی‌شما</p>
+                        <p className='font-num dark:text-white'>{formik?.values?.price ? Number(formik?.values?.amount).toFixed(8).toLocaleString() : ""}</p>
                     </div>
                 </div>
-                <Button isLoading={loadingOrder} name={"خرید"} />
+                <Button  isLoading={loadingOrder} name={"خرید"} containerClass='!bg-green-500' />
             </form>
             {
                 modal.open &&
