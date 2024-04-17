@@ -45,7 +45,7 @@ export type TransactionCrypto = {
         price_info_max: number;
         price_info_mean: number;
         price_info_min: number;
-        price_info_price: number;
+        price: number;
         price_info_time: string;
         price_info_usdt_amount: number;
         price_info_usdt_change: number;

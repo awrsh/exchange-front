@@ -11,7 +11,7 @@ const CardListCryptocurrencies = ({ crypto }: Props) => {
                 <img className="w-6 h-6" src={crypto.image} />
                 <p className="font-bold text-[13px]">{crypto.title}</p>
             </div>
-            <p className="flex-1 text-center text-xs font-num">{Number(crypto.price_info_price).toLocaleString()}</p>
+            <p className="flex-1 text-center text-xs font-num">{Number(crypto.price).toLocaleString()}</p>
             <div className="flex-1 flex justify-center ">
                 <span className={`text-center text-xs font-num ${Number(crypto.price_info_change) < 0 ?"text-red-600":"text-green-600"}`}>%</span>
                 <p className={`text-center [direction:ltr] text-xs font-num ${Number(crypto.price_info_change) < 0 ?"text-red-600":"text-green-600"}`}>{crypto.price_info_change}</p>

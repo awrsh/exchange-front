@@ -38,7 +38,7 @@ const DepositCurrency = () => {
     const { data, isLoading } = useGetCuurencyListQuery()
     const { data: currencyWallet, isLoading: loading } = useGetWalletAddress({ currency_code: crypto?.code, network_code: network?.code, enabled: network && crypto ? true : false })
 
-    const formatOptionLabel = ({ title, image, price_info_price }: any) => {
+    const formatOptionLabel = ({ title, image, price }: any) => {
         return <div className='flex items-center gap-2'>
             {
                 image &&
@@ -46,7 +46,7 @@ const DepositCurrency = () => {
             }
             <div className='flex items-center gap-2'>
                 <span className='text-xs font-bold'>{title}</span>
-                <span className='text-[11px] pt-1 font-num'>{Number(price_info_price).toLocaleString()} تومان</span>
+                <span className='text-[11px] pt-1 font-num'>{Number(price).toLocaleString()} تومان</span>
             </div>
         </div>
     }
@@ -74,9 +74,14 @@ const DepositCurrency = () => {
     }
 
 
-    const onChange = (value: any) => {
+    const onChange = (value: React.ChangeEvent<HTMLInputElement>) => {
         formik.setFieldValue("crypto", value)
         formik.setFieldValue("network", "")
+
+    }
+    const onChangeAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if(Number(e.target.value) < 0) return
+        formik.setFieldValue("amount", e.target.value)
 
     }
     return (
@@ -116,7 +121,7 @@ const DepositCurrency = () => {
                     name="network"
                     options={formik.values?.crypto?.networks!}
                 />
-                <Input type="number" formik={formik} name="amount" label="مقدار" />
+                <Input isOnChange onChange={onChangeAmount} value={formik.values.amount} type="number" formik={formik} name="amount" label="مقدار" />
                 {
                     currencyWallet?.objects[0]?.address ?
                         <Input formik={formik} name="txid" label="txid" />

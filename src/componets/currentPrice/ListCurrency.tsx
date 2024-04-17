@@ -58,7 +58,7 @@ const ListCurrency = () => {
                                     <p className="font-medium">$ {Number(crypto.price_info_usdt_price).toFixed(crypto.decimal).toLocaleString()}</p>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
-                                    <p className="font-num">{Number(crypto.price_info_price).toLocaleString()} <span className="text-[10px]">تومان</span></p>
+                                    <p className="font-num">{Number(crypto.price).toLocaleString()} <span className="text-[10px]">تومان</span></p>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
                                     <p className="font-num">{Number(crypto.price_info_change) >= 0 ? <span className="text-green-500">% {crypto.price_info_change}</span> : <span className="text-red-500 block [direction:ltr]">% {crypto.price_info_change}</span>}</p>

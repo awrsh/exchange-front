@@ -23,3 +23,15 @@ export function formatCardNumber(str:string) {
   
     return formattedString;
   }
+
+
+  //  ایجاد ویرگول برای رقم ها
+export const addCommas = (num:number | string) =>
+    num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  
+  export const removeNonNumeric = (num:number | string) =>
+    num.toString().replace(/[^0-9]/g, "");
+  
+  export const numberWithCommas = (x:number | string) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };

@@ -28,7 +28,7 @@ const Information = () => {
                                 در انتظار تائید
                             </p> :
                                 <Link to={"/verification"} className="font-regular text-center block bg-[#e5faf3] py-1 rounded-lg text-[#34b288]   text-[12px]">
-                                    {user?.authentication_status === "level_۱" ? "احراز هویت" : user?.authentication_status === "level_2" ? "در انتظار تائید" : ""}
+                                    {user?.authentication_status === "level_1" ? "  سطح 1" : user?.authentication_status === "level_2" ? "سطح 2" : user?.authentication_status === "level_3"?"سطح 3":""}
                                 </Link>
                     }
                 </div>

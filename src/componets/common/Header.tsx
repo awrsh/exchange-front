@@ -31,7 +31,7 @@ const Header = () => {
         <div className="flex items-center gap-14">
           <img className="w-28" src={Logo} alt="" />
           <ul className="lg:flex hidden items-center gap-8">
-            {menus.map((menu,idx) =>(
+            {menus.map((menu, idx) => (
               <Link key={idx} className="text-[14px] text-gray-600 dark:text-white" to={menu.link}>{menu.name}</Link>
             ))}
           </ul>
@@ -56,7 +56,16 @@ const Header = () => {
               <MdDarkMode size="20" className="text-ashy" />
             </button>
             {
-             user && user?.authentication_status !== "pending"?<Link className="text-xs bg-[#e5faf3] py-2 px-3 rounded-lg text-[#34b288]" to={"/verification"}>احراز هویت</Link> : null
+              user?.authentication_status === "level_0" ?
+                <Link className="p-1 px-2 rounded-lg mt-2 block bg-red-500 border border-[#F8A5AA] text-[12px] text-white" to="/ver">
+                  احراز هویت نشده
+                </Link> :
+                user?.authentication_status === "pending" ? <p className="font-regular text-center block bg-yellow-100 py-1 text-xs rounded-lg text-yellow-500   text-[12px]">
+                  در انتظار تائید
+                </p> :
+                  <Link to={"/verification"} className="font-regular text-center block bg-[#e5faf3] py-1 px-2 rounded-lg text-[#34b288]   text-[12px]">
+                    {user?.authentication_status === "level_1" ? "  سطح 1" : user?.authentication_status === "level_2" ? "سطح 2" : user?.authentication_status === "level_3" ? "سطح 3" : ""}
+                  </Link>
             }
           </div>
         </div>

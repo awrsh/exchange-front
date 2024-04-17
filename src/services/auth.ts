@@ -1,6 +1,6 @@
 import { routes } from "../helpers/api/routes";
 import { generateFormData, getRoute } from "../helpers/utils/services";
-import { typeLogin, typeRegister, typeVerify } from "../types/Auth";
+import { User, typeLogin, typeRegister, typeVerify } from "../types/Auth";
 import { ResponseVerify } from "../types/Auth/ResponseVerify";
 import client from "./utils/client";
 
@@ -8,6 +8,10 @@ import client from "./utils/client";
 export const getUser = async () => {
     const url = getRoute({ route: routes.auth.me });
     return await client<any>({ url });
+};
+export const getUserHistory = async () => {
+    const url = getRoute({ route: "/users/history/" });
+    return await client<{user_id:User,successful:boolean,reason:null | string,create_date:string}[]>({ url });
 };
 export const register = async (data:typeRegister) => {
     const url = getRoute({ route: routes.auth.register });

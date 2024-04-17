@@ -49,7 +49,7 @@ const Sell = ({ select }: { select: number }) => {
             }
             <div className='flex items-center gap-2'>
                 <span className='text-xs font-bold'>{currency_id.title}</span>
-                <span className='text-[11px] pt-1 font-num'>{Number(currency_id.price_info_price).toLocaleString()} تومان</span>
+                <span className='text-[11px] pt-1 font-num'>{Number(currency_id.price).toLocaleString()} تومان</span>
             </div>
         </div>
     }
@@ -58,9 +58,9 @@ const Sell = ({ select }: { select: number }) => {
     console.log("total" , total);
 
     const onClickSubLabel = () => {
-        formik.setFieldValue("price", Number(total?.balance) * Number(total?.currency_id.price_info_price))
+        formik.setFieldValue("price", Number(total?.balance) * Number(total?.currency_id.price))
 
-        const amount = Number(total?.balance) / Number(formik.values?.crypto?.currency_id.price_info_price)
+        const amount = Number(total?.balance) / Number(formik.values?.crypto?.currency_id.price)
         formik.setFieldValue("amount", amount ? total?.balance : 0)
         formik.setFieldValue("slider", 0)
     }
@@ -69,13 +69,13 @@ const Sell = ({ select }: { select: number }) => {
         if (formik.values.amount > Number(total?.balance)) return
 
         formik.setFieldValue("slider", 0)
-        const price = e.target.value * Number(formik.values?.crypto?.currency_id.price_info_price)
+        const price = e.target.value * Number(formik.values?.crypto?.currency_id.price)
         formik.setFieldValue("amount", e.target.value)
         formik.setFieldValue("price", price)
     }
     const onChnagePrice = (e: any) => {
         if (formik.values.amount > Number(total?.balance)) return
-        const amount = e.target.value / Number(formik.values?.crypto?.currency_id.price_info_price)
+        const amount = e.target.value / Number(formik.values?.crypto?.currency_id.price)
         formik.setFieldValue("price", e.target.value)
         formik.setFieldValue("slider", 0)
         formik.setFieldValue("amount", amount ? amount.toFixed(8) : 0)
@@ -86,7 +86,7 @@ const Sell = ({ select }: { select: number }) => {
         const precent = Number(value) / 100
         const amount = precent * Number(total?.balance)
         formik.setFieldValue("amount", amount)
-        formik.setFieldValue("price", amount * Number(formik.values.crypto.currency_id.price_info_price))
+        formik.setFieldValue("price", amount * Number(formik.values.crypto.currency_id.price))
         formik.setFieldValue("slider", value)
     }
 

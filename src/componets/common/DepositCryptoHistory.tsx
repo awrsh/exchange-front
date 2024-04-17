@@ -47,7 +47,7 @@ const DepositCryptoHistory = ({ type }: { type: string }) => {
             <div className='absolute left-6 top-[5rem]'>
                 <Input isOnChange value={formik.values.search} onChange={onChange} icon_left={<BsSearch size={20} className='text-gray-500' />} className='w-[300px]' formik={formik} name='search' placeholder='جستجوی ارز' />
             </div>
-            <Table isLoaidng={isLoading} length={filteredData?.length} header={["ردیف", "اسم ارز", "تاریخ‌وزمان", "مبلغ(تومان)", "txid", "آدرس ولت", "وضعیت"]}  >
+            <Table isLoaidng={isLoading} length={filteredData?.length} header={["ردیف", "اسم ارز", "تاریخ‌وزمان", "مبلغ(تومان)","مقدار", "txid", "آدرس ولت", "وضعیت"]}  >
                 {
                     filteredData?.filter((option:any) => option.type === type)?.map((crypto:any, idx:number) => (
                         <StyledTableRow key={idx}>
@@ -64,7 +64,10 @@ const DepositCryptoHistory = ({ type }: { type: string }) => {
                                 }
                             </StyledTableCell>
                             <StyledTableCell align="center">
-                                <span className="font-num">{Number(crypto.currency_id.price_info_price).toLocaleString()}</span>
+                                <span className="font-num">{Number(crypto.currency_id.price).toLocaleString()}</span>
+                            </StyledTableCell>
+                            <StyledTableCell align="center">
+                                <span className="font-num">{Number(crypto.amount).toLocaleString()}</span>
                             </StyledTableCell>
                             <StyledTableCell align="center" >
                                 <span className="font-num">{crypto.tx_id}</span>
@@ -72,8 +75,7 @@ const DepositCryptoHistory = ({ type }: { type: string }) => {
                             <StyledTableCell align="center" >
                                 <span className="font-num">{crypto.wallet_address}</span>
                             </StyledTableCell>
-
-                            <StyledTableCell className="dark:!text-white" align="center" >{crypto.status === "success" ? <span className="text-green-500 text-center font-bold">تکمیل شده</span> : crypto.status === "pending" ? <span className="text-yellow-500 text-center font-bold">در انتظار تائید</span> : crypto.status === "cancel" ? <span className="text-red-500 text-center font-bold">کنسل شده</span> : <span className="text-red-500 text-center font-bold">ناموفق</span>} </StyledTableCell>
+                            <StyledTableCell className="dark:!text-white" align="center" >{crypto.status === "approve" ? <span className="text-green-500 text-center font-bold">تکمیل شده</span> : crypto.status === "pending" ? <span className="text-yellow-500 text-center font-bold">در انتظار تائید</span> : crypto.status === "cancel" ? <span className="text-red-500 text-center font-bold">کنسل شده</span> : <span className="text-red-500 text-center font-bold">ناموفق</span>} </StyledTableCell>
                         </StyledTableRow>
                     ))
                 }

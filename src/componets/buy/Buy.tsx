@@ -10,6 +10,7 @@ import useGetCuurencyListQuery from '../../hook/query/currency/useGetCuurencyLis
 import useOrderMutation from '../../hook/mutation/order/useOrderMutation'
 import * as Yup from "yup"
 import Verify from './Verify'
+import { addCommas, removeNonNumeric } from '../../helpers/utils/fun'
 
 const Buy = ({ select }: { select: number }) => {
     const [modal, setModal] = useState<any>({
@@ -47,12 +48,7 @@ const Buy = ({ select }: { select: number }) => {
     })
 
 
-
-
-
-
-
-    const formatOptionLabel = ({ title, image, price_info_price }: any) => {
+    const formatOptionLabel = ({ title, image, price }: any) => {
         return <div className='flex items-center gap-2'>
             {
                 image &&
@@ -60,7 +56,7 @@ const Buy = ({ select }: { select: number }) => {
             }
             <div className='flex items-center gap-2'>
                 <span className='text-xs font-bold'>{title}</span>
-                <span className='text-[11px] pt-1 font-num'>{Number(price_info_price).toLocaleString()} تومان</span>
+                <span className='text-[11px] pt-1 font-num'>{Number(price).toLocaleString()} تومان</span>
             </div>
         </div>
     }
@@ -68,26 +64,28 @@ const Buy = ({ select }: { select: number }) => {
     const total = user?.wallets.find((crypto) => crypto.currency_id.code === "IRT")
 
     const onClickSubLabel = () => {
-        formik.setFieldValue("price", Number(total?.balance).toFixed(3))
-        const amount = Number(total?.balance) / Number(formik.values?.crypto?.price_info_price)
-        formik.setFieldValue("amount", amount ? amount.toFixed(8) : 0)
+        // console.log(Number(total?.balance).toLocaleString(),addCommas(removeNonNumeric(Number(total?.balance).toLocaleString())))
+        formik.setFieldValue("price",addCommas(removeNonNumeric(Number(total?.balance))))
+        const amount = Number(total?.balance) / Number(formik.values?.crypto?.price)
+        formik.setFieldValue("amount", amount ? Number(amount.toFixed(8)) : 0)
     }
 
     const onChangeAmount = (e: any) => {
-        const price = e.target.value * Number(formik.values?.crypto?.price_info_price)
+        const price = Number(removeNonNumeric(e.target.value)) * Number(formik.values?.crypto?.price)
         formik.setFieldValue("amount", e.target.value)
-        formik.setFieldValue("price", price)
+        formik.setFieldValue("price", addCommas(removeNonNumeric(price)))
     }
     const onChnagePrice = (e: any) => {
-        if (Number(e.target.value) > Number(total?.balance)) return
-        const amount = e.target.value / Number(formik.values?.crypto?.price_info_price)
-        formik.setFieldValue("price", e.target.value)
+        console.log(Number(removeNonNumeric(e.target.value)),Number(total?.balance))
+        if (Number(removeNonNumeric(e.target.value)) > Number(Number(total?.balance))) return
+        const amount = Number(removeNonNumeric(e.target.value)) / Number(formik.values?.crypto?.price)
+        formik.setFieldValue("price", addCommas(removeNonNumeric(e.target.value)))
         formik.setFieldValue("amount", amount ? amount.toFixed(8) : 0)
     }
 
     const onChangeSlider = (_: any, value: number) => {
         const precent = Number(value) / 100
-        formik.setFieldValue("price", precent * Number(total?.balance))
+        formik.setFieldValue("price", addCommas(removeNonNumeric(precent * Number(total?.balance))))
         formik.setFieldValue("slider", value)
     }
 
@@ -131,7 +129,6 @@ const Buy = ({ select }: { select: number }) => {
                     name='price'
                     label='مبلغ خود را وارد کنید'
                     formik={formik}
-                    type='number'
                     subLabel='همه'
                     onChange={onChnagePrice}
                     isOnChange

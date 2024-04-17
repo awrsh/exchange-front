@@ -8,7 +8,7 @@ const useCraeteTransactionCryptoMutation = () => {
         successToast("با موفقیت انجام شد")
     },
     onError:(error:any)=>{
-      errorToast(error?.response?.data?.error?.description)
+      errorToast(error?.response?.data?.error?.message)
     }
   })
 }

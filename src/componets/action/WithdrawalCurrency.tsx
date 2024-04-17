@@ -4,28 +4,34 @@ import Input from "../common/Input"
 import Button from "../common/Button"
 import useAuthStore from "../../stores/user-store"
 import useCalculateCommissionMutation from "../../hook/mutation/transactions/useCalculateCommissionMutation"
+import { useEffect } from "react"
+import useCraeteTransactionCryptoMutation from "../../hook/mutation/currencies/useCraeteTransactionCryptoMutation"
 
 const WithdrawalCurrency = () => {
-    const {isLoading,mutate} = useCalculateCommissionMutation()
+    const { mutate: mutateWithdraw, isLoading: loadingWithdarw } = useCraeteTransactionCryptoMutation()
+    const { isLoading, mutate } = useCalculateCommissionMutation()
     const { user } = useAuthStore()
     const formik = useFormik<any>({
         initialValues: {
             crypto: null,
             network: null,
             amount: null,
-            txid: null
+            wallet_address: null
         },
         onSubmit: (values) => {
-            const calculateCommission ={
-                network_code:values.network.code,
-                currency_code:values.crypto.currency_id.code
+            const data = {
+                "type": "withdarw",
+                currency_id: values.crypto.id,
+                network_id: values.network.id,
+                amount: Number(values.amount),
+                wallet_address: values.wallet_address
             }
-            mutate(calculateCommission)
-         }
+            mutateWithdraw(data)
+        }
     })
 
 
-    const formatOptionLabel = ({ currency_id,balance }: any) => {
+    const formatOptionLabel = ({ currency_id, balance }: any) => {
         return <div className="flex justify-between items-center">
             <div className='flex items-center gap-2'>
                 {
@@ -34,24 +40,40 @@ const WithdrawalCurrency = () => {
                 }
                 <div className='flex items-center gap-2'>
                     <span className='text-xs font-bold'>{currency_id?.title}</span>
-                    <span className='text-[11px] pt-1 font-num'>{Number(currency_id?.price_info_price).toLocaleString()} تومان</span>
+                    <span className='text-[11px] pt-1 font-num'>{Number(currency_id?.price).toLocaleString()} تومان</span>
                 </div>
             </div>
-            <p className="font-num text-gray-900">{balance?balance:""} <span className="text-[9px]">موجودی</span></p>
+            <p className="font-num text-gray-900">{balance ? balance : ""} <span className="text-[9px]">موجودی</span></p>
         </div>
     }
+
     const formatOptionNetwork = ({ title }: any) => {
         return <div className='flex items-center gap-2'>
             <span className='text-xs font-bold'>{title}</span>
         </div>
     }
-
-    const onChangeAmount = (e:React.ChangeEvent<HTMLInputElement>)=>{
-        if(formik?.values?.crypto?.currency_id){
-            if(e.target.value > formik?.values?.crypto?.balance) return
+    const onChangeAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (formik?.values?.crypto?.currency_id) {
+            if (Number(e.target.value) < 0) return
+            if (e.target.value > formik?.values?.crypto?.balance) return
             formik.setFieldValue("amount", e.target.value)
         }
     }
+
+
+    useEffect(() => {
+        const { network, crypto, amount } = formik.values
+        if (network?.code && crypto.currency_id && amount) {
+            const calculateCommission = {
+                network_code: network.code,
+                currency_code: crypto.currency_id.code,
+                amount: Number(amount)
+            }
+            mutate(calculateCommission)
+        }
+    }, [formik.values])
+
+
     return (
         <div className="p-2 mt-7">
             <div className="flex flex-col gap-3">
@@ -86,12 +108,12 @@ const WithdrawalCurrency = () => {
                     name="network"
                     options={formik.values?.crypto?.currency_id?.networks!}
                 />
-                <Input isOnChange value={formik.values.amount} onChange={onChangeAmount} className="!mt-3" formik={formik} label={`میزان برداشت (${formik.values.crypto?.currency_id?.title??""})`} name="" />
-                <Input formik={formik} label={`آدرس کیف پول مقصد`} name="" />
+                <Input isOnChange value={formik.values.amount} onChange={onChangeAmount} className="!mt-3" formik={formik} label={`میزان برداشت (${formik.values.crypto?.currency_id?.title ?? ""})`} name="" />
+                <Input formik={formik} label={`آدرس کیف پول مقصد`} name="wallet_address" />
                 <div className="space-y-4 bg-[#fff3d5] p-4 rounded-lg !mt-6">
                     <div className="flex justify-between items-center">
                         <p className="font-bold text-[14px] text-gray-900">میزان برداشت</p>
-                        <p className="text-[12px] text-gray-900">0 BTC</p>
+                        <p className="text-[12px] text-gray-900">{formik.values?.amount} {formik.values.crypto?.currency_id?.title}</p>
                     </div>
                     <div className="flex justify-between items-center">
                         <p className="font-bold text-[14px] text-gray-900">کارمزد</p>
@@ -102,7 +124,7 @@ const WithdrawalCurrency = () => {
                         <p className="text-[12px] text-gray-900">0 BTC</p>
                     </div>
                 </div>
-                <Button isLoading={isLoading} type="submit" containerClass="!mt-16 !bg-int" name="برداشت" />
+                <Button isLoading={isLoading || loadingWithdarw} type="submit" containerClass="!mt-16 !bg-int" name="برداشت" />
             </form>
 
         </div>

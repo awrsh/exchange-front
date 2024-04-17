@@ -25,7 +25,7 @@ export type Currency = {
     price_info_max: string;
     price_info_mean: string;
     price_info_min: string;
-    price_info_price: string;
+    price: string;
     price_info_time: string;
     price_info_usdt_amount: string;
     price_info_usdt_change: string;

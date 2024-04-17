@@ -34,7 +34,7 @@ export default function SlideListCurrency() {
                                 <SwiperSlide className='!min-w-[110px] max-w-fit flex items-center gap-3' key={idx}>
                                     <img className='w-7 h-7' src={currency?.image!} alt='' />
                                     <p className='whitespace-nowrap text-xs'>{currency.title_fa}</p>
-                                    <p className='text-xs whitespace-nowrap text-gray-800 dark:text-white font-num'>{Number(currency.price_info_price).toLocaleString()} تومان</p>
+                                    <p className='text-xs whitespace-nowrap text-gray-800 dark:text-white font-num'>{Number(currency.price).toLocaleString()} تومان</p>
                                 </SwiperSlide>
                             )
                         })

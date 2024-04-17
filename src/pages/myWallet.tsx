@@ -51,7 +51,7 @@ const MyWallet = () => {
                                                     {crypto.currency_id.code !== "IRT" && (
                                                         <span className="font-num font-bold">
                                                             {Number(Number(
-                                                                Number(crypto.currency_id.price_info_price) *
+                                                                Number(crypto.currency_id.price) *
                                                                 Number(crypto.balance)
                                                             ).toFixed(0)).toLocaleString()}{" "}
                                                             <span className="text-xs font-medium text-gray-500">
@@ -72,7 +72,7 @@ const MyWallet = () => {
                                                     {crypto.currency_id.code !== "IRT" && (
                                                         <span className="font-num font-bold">
                                                             {Number(
-                                                                Number(crypto.currency_id.price_info_price) *
+                                                                Number(crypto.currency_id.price) *
                                                                 Number(crypto.balance)
                                                             ).toLocaleString()}{" "}
                                                             <span className="text-xs font-medium text-gray-500">
