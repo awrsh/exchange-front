@@ -19,7 +19,7 @@ const Buy = ({ select }: { select: number }) => {
     })
     const { data, isLoading } = useGetCuurencyListQuery()
     const { toggleVerifyAuth } = useGlobalStore()
-    const { mutate, isLoading: loadingOrder, isSuccess } = useOrderMutation()
+    const {  isLoading: loadingOrder, isSuccess } = useOrderMutation()
     const { user } = useAuthStore()
     const formik = useFormik<any>({
         initialValues: {
