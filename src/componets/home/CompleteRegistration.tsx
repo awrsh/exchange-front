@@ -9,7 +9,7 @@ const CompleteRegistration = () => {
                 <img className="w-20 h-20" src={Image} />
                 <p className="text-white flx-1 font-light text-[14px]">احراز هویت شما تکمیل نیست جهت استفاده از تمامی امکانات صرافی احراز هویت خود را تکمیل نمایید</p>
             </div>
-            <Button onClick={()=>navigate("/verification")} containerClass="!w-[130px] " name="تکمیل ثبت‌نام" />
+            <Button onClick={()=>navigate("/verification")} containerClass="!w-[130px] !bg-int" name="تکمیل ثبت‌نام" />
         </div>
     )
 }

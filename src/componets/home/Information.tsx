@@ -6,7 +6,7 @@ const Information = () => {
     const { user } = useAuthStore()
     const [select, setSelect] = useState(0)
     const tabs = ["تومان", "USDT", "BTC"]
-    
+
     return (
         <div className="flex-1 w-full bg-white h-full rounded-xl p-3 bg-dark">
             <div className="border-b flex justify-between items-center pb-3 border-neutral-200">
@@ -24,9 +24,12 @@ const Information = () => {
                             <Link className="p-1 px-2 rounded-lg mt-2 block bg-red-500 border border-[#F8A5AA] text-[12px] text-white" to="/ver">
                                 احراز هویت نشده
                             </Link> :
-                            <p className="font-regular text-center block bg-[#e5faf3] py-1 rounded-lg text-[#34b288]   text-[12px]">
-                                {user?.authentication_status === "level_۱" ? "احراز هویت" : user?.authentication_status === "level_2" ? "" : ""}
-                            </p>
+                            user?.authentication_status === "pending" ? <p className="font-regular text-center block bg-yellow-100 py-1 text-xs rounded-lg text-yellow-500   text-[12px]">
+                                در انتظار تائید
+                            </p> :
+                                <Link to={"/verification"} className="font-regular text-center block bg-[#e5faf3] py-1 rounded-lg text-[#34b288]   text-[12px]">
+                                    {user?.authentication_status === "level_۱" ? "احراز هویت" : user?.authentication_status === "level_2" ? "در انتظار تائید" : ""}
+                                </Link>
                     }
                 </div>
             </div>

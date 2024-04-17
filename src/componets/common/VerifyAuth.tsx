@@ -7,7 +7,7 @@ const VerifyAuth = () => {
     const { verifyAuth, toggleVerifyAuth } = useGlobalStore()
     const navigate = useNavigate()
     const onClick = () => {
-        toggleVerifyAuth()
+        toggleVerifyAuth(false)
         navigate('/verification')
     }
     return (
@@ -18,10 +18,10 @@ const VerifyAuth = () => {
 
                 </DialogTitle>
                 <DialogContent>
-                    <p className='text-center text-xs my-5 text-zinc-900'>لطفا برای ادامه فرایند ابتدا وارد حساب کاربری خود شوید</p>
+                    <p className='text-center text-xs my-5 text-zinc-900'>لطفا برای ادامه فرایند ابتدا احراز هویت خود را تکمیل کنید</p>
                 </DialogContent>
                 <DialogActions className='flex items-center gap-10'>
-                    <Button onClick={toggleVerifyAuth} sx={{ border: "1px solid #D1D5DB"  }} containerClass='!bg-transparent ' className='!text-gray-600' name='انصراف' />
+                    <Button onClick={()=>toggleVerifyAuth(false)} sx={{ border: "1px solid #D1D5DB"  }} containerClass='!bg-transparent ' className='!text-gray-600' name='انصراف' />
                     <Button onClick={onClick} name='احراز هویت' />
                 </DialogActions>
             </div>

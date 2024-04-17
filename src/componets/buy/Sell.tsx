@@ -7,6 +7,7 @@ import Button from '../common/Button'
 import useAuthStore from '../../stores/user-store'
 import useGlobalStore from '../../stores/global-store'
 import useOrderMutation from '../../hook/mutation/order/useOrderMutation'
+import * as Yup from "yup"
 
 
 const Sell = ({ select }: { select: number }) => {
@@ -19,6 +20,10 @@ const Sell = ({ select }: { select: number }) => {
             amount: null,
             slider: null
         },
+        validationSchema: Yup.object({
+            crypto: Yup.object().required("فیلد اجباری"),
+            amount: Yup.string().required("فیلد اجباری است")
+        }),
         // @ts-ignore
         onSubmit: (values) => {
             // if (values.price < 300000) return errorToast(`مبلغ فروش نباید کمتر  از ${Number(300000).toLocaleString()} باشد`)
@@ -27,17 +32,12 @@ const Sell = ({ select }: { select: number }) => {
                 currency_id: Number(values?.crypto?.currency_id.id),
                 amount: Number(values.amount)
             }
+            if (user?.authentication_status === "level_0") {
+                return toggleVerifyAuth(true)
+            }
             mutate(data)
         }
     })
-
-
-
-    const onClick = () => {
-        if (user?.authentication_status === "level_0") {
-            toggleVerifyAuth()
-        }
-    }
 
 
 
@@ -167,7 +167,7 @@ const Sell = ({ select }: { select: number }) => {
                         <p className='font-num'>{formik?.values?.price ? Number(formik?.values?.price - 10000).toLocaleString() : ""}</p>
                     </div>
                 </div>
-                <Button containerClass="!bg-red-500" isLoading={loadingOrder} onClick={onClick} name={select === 0 ? "خرید" : "فروش"} />
+                <Button containerClass="!bg-red-500" isLoading={loadingOrder} name={select === 0 ? "خرید" : "فروش"} />
             </form>
         </div>
     )

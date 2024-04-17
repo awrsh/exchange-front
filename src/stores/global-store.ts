@@ -6,16 +6,16 @@ import { devtools } from "zustand/middleware";
 
 interface GlobalStore {
   verifyAuth: boolean;
-  toggleVerifyAuth:()=>void;
+  toggleVerifyAuth:(status:boolean)=>void;
 }
 
 const useGlobalStore = create<GlobalStore>()(
     devtools(
         immer((set) => ({
             verifyAuth:false,
-            toggleVerifyAuth:()=>{
+            toggleVerifyAuth:(status)=>{
                 set((state)=>{
-                    state.verifyAuth = !state.verifyAuth
+                    state.verifyAuth = status
                 })
             }
         }))

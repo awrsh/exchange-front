@@ -20,7 +20,8 @@ const useVerifyMutation = () => {
       }
     },
     onError: (error: any) => {
-      errorToast(error.response.data.error.description)
+      console.log(error.response.data)
+      errorToast(error.response.data.API_ERROR.description)
     }
   })
 }

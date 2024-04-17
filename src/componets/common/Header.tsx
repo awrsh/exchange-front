@@ -55,6 +55,9 @@ const Header = () => {
             <button onClick={handleThemeSwitch} className="w-9 h-9 rounded-full flex justify-center items-center border">
               <MdDarkMode size="20" className="text-ashy" />
             </button>
+            {
+             user && user?.authentication_status !== "pending"?<Link className="text-xs bg-[#e5faf3] py-2 px-3 rounded-lg text-[#34b288]" to={"/verification"}>احراز هویت</Link> : null
+            }
           </div>
         </div>
       </header>

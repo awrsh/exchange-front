@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Select from '../common/Select'
 import { useFormik } from 'formik'
 import Input from '../common/Input'
@@ -8,9 +8,14 @@ import useAuthStore from '../../stores/user-store'
 import useGlobalStore from '../../stores/global-store'
 import useGetCuurencyListQuery from '../../hook/query/currency/useGetCuurencyListQuery'
 import useOrderMutation from '../../hook/mutation/order/useOrderMutation'
-
+import * as Yup from "yup"
+import Verify from './Verify'
 
 const Buy = ({ select }: { select: number }) => {
+    const [modal, setModal] = useState<any>({
+        open: false,
+        info: {}
+    })
     const { data, isLoading } = useGetCuurencyListQuery()
     const { toggleVerifyAuth } = useGlobalStore()
     const { mutate, isLoading: loadingOrder, isSuccess } = useOrderMutation()
@@ -21,23 +26,29 @@ const Buy = ({ select }: { select: number }) => {
             amount: null,
             slider: null
         },
+        validationSchema: Yup.object({
+            crypto: Yup.object().required("فیلد اجباری"),
+            amount: Yup.string().required("فیلد اجباری است")
+        }),
         onSubmit: (values) => {
-            const data = {
-                type: select === 0 ? "buy" : "sell",
-                currency_id: Number(values?.crypto?.id),
-                amount: Number(values.amount)
+
+            setModal({
+                open: true,
+                info: {
+                    type:select === 0?"buy":"sell",
+                    ...values
+                }
+            })
+            if (user?.authentication_status === "level_0") {
+                return toggleVerifyAuth(true)
             }
-            mutate(data)
+            // mutate(data)
         }
     })
 
 
 
-    const onClick = () => {
-        if (user?.authentication_status === "level_0") {
-            toggleVerifyAuth()
-        }
-    }
+
 
 
 
@@ -68,7 +79,7 @@ const Buy = ({ select }: { select: number }) => {
         formik.setFieldValue("price", price)
     }
     const onChnagePrice = (e: any) => {
-        if(Number(e.target.value) > Number(total?.balance)) return
+        if (Number(e.target.value) > Number(total?.balance)) return
         const amount = e.target.value / Number(formik.values?.crypto?.price_info_price)
         formik.setFieldValue("price", e.target.value)
         formik.setFieldValue("amount", amount ? amount.toFixed(8) : 0)
@@ -83,9 +94,9 @@ const Buy = ({ select }: { select: number }) => {
     useEffect(() => {
         if (isSuccess) {
             formik.setValues({
-                crypto:"",
-                amount:"",
-                price:""
+                crypto: "",
+                amount: "",
+                price: ""
             })
         }
     }, [isSuccess])
@@ -93,8 +104,8 @@ const Buy = ({ select }: { select: number }) => {
         formik.setValues({
             ...formik.values,
             crypto: value,
-            amount:"",
-            price:""
+            amount: "",
+            price: ""
         })
     }
     return (
@@ -171,8 +182,12 @@ const Buy = ({ select }: { select: number }) => {
                         <p className='font-num'>{formik?.values?.price ? Number(formik?.values?.amount).toLocaleString() : ""}</p>
                     </div>
                 </div>
-                <Button  isLoading={loadingOrder} onClick={onClick} name={"خرید"} />
+                <Button isLoading={loadingOrder} name={"خرید"} />
             </form>
+            {
+                modal.open &&
+                <Verify modal={modal} setModal={setModal} />
+            }
         </div>
     )
 }

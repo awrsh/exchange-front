@@ -29,7 +29,7 @@ const Form = () => {
             return null
           })}
         </div>
-        <Button isLoading={isLoading} onClick={formik.handleSubmit} containerClass="!mt-10" name="ثبت اطلاعات" />
+        <Button isLoading={isLoading} onClick={formik.handleSubmit} containerClass="!mt-10 !bg-int" name="ثبت اطلاعات" />
       </div>
     </div>
   )
