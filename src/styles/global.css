@@ -91,6 +91,11 @@ body {
     border: 1px solid #eee !important;
     @apply !w-[70px] !h-[70px] rounded-xl !bg-white
 }
+.forgetPassword .ReactInputVerificationCode__container>div {
+    box-shadow: none !important;
+    border: 1px solid #eee !important;
+    @apply !w-[50px] !h-[50px] rounded-xl !bg-white
+}
 
 .hlUHmK.is-filled {
     border: 1px solid gray !important;

@@ -3,19 +3,27 @@ import WithdrawRials from "../componets/action/WithdrawRials"
 import Layout from "../componets/common/Layout"
 import { IoCheckmarkDone } from "react-icons/io5";
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import WithdrawalCurrency from "../componets/action/WithdrawalCurrency";
 import DepositCurrency from "../componets/action/DepositCurrency";
+import InternalTransfer from "../componets/action/InternalTransfer";
+import { useSearchParams } from "react-router-dom";
 
 const Action = () => {
     const [select, setSelect] = useState(0)
-    const tabs = ["واریز تومانی", "برداشت تومانی","واریز ارزی","برداشت ارزی"]
+    const tabs = ["واریز تومانی", "برداشت تومانی", "واریز ارزی", "برداشت ارزی", "انتقال داخلی"]
+    const [searchParams] = useSearchParams()
+    useEffect(() => {
+        if (searchParams.get("select")) {
+            setSelect(Number(searchParams.get("select")))
+        }
+    }, [searchParams])
     return (
         <Layout>
             <div className="layout">
                 <h1>واریز برداشت ریالی</h1>
-                <div className=" mt-10 bg-white rounded-xl p-4 flex gap-14">
-                    <div className="flex-1">
+                <div className="mt-10 bg-white rounded-xl p-4 flex gap-14">
+                    <div className="!flex-1 !w-1/2">
                         <div className="flex items-center gap-4 mt-4">
                             {
                                 tabs.map((name, idx) => (
@@ -35,8 +43,11 @@ const Action = () => {
                         {
                             select === 3 ? <WithdrawalCurrency /> : null
                         }
+                        {
+                            select === 4 ? <InternalTransfer /> : null
+                        }
                     </div>
-                    <div className="flex-1 flex-col  mt-16 p-4 rounded-xl border">
+                    <div className="!flex-1 !w-1/2 flex-col  mt-16 p-4 rounded-xl border">
                         <h1 className="text-center pt-4 font-bold">نکاتی که باید توجه داشته باشید</h1>
                         <div className="mt-10 flex flex-col gap-5">
                             <div className="flex items-start gap-4">

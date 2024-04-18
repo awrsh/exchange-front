@@ -3,7 +3,7 @@ import { getDepositRialHistory } from '../../../services/idp'
 
 const useDepositRialPaymentHistory = () => {
   return useQuery(["Rial_deposit"], async () => await getDepositRialHistory(), {
-
+    cacheTime:0
   })
 }
 

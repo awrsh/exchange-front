@@ -53,7 +53,7 @@ const Sidebar = () => {
         <div className="flex flex-col mt-24 gap-2 px-2">
           {header_menu.map((menu, idx) => (
             <Link
-              className={`flex items-center w-full px-2  py-[0.7rem] gap-2 rounded-xl hover:bg-neutral-100 dark:hover:bg-slate-400 ${location.pathname === menu.url ? "bg-int text-white hover:bg-int " : "text-neutral-500 "}`} to={menu.url} key={idx}>
+              className={`flex items-center w-full px-2  py-[0.7rem] gap-2 rounded-xl  dark:hover:bg-slate-400 ${location.pathname === menu.url ? "bg-int text-white hover:bg-int " : "text-neutral-500 hover:bg-neutral-100"}`} to={menu.url} key={idx}>
               <menu.icon size={22} className="!min-w-6 !min-h-6 mr-[2px]" />
 
               <span className={` whitespace-nowrap  ${location.pathname === menu.url ? "font-bold text-[13px]" : " font-regular text-[13.5px]"} ${open ? "opacity-100" : "opacity-0 overflow-hidden hidden !w-0"}`}>{menu.name}</span>

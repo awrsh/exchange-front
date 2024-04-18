@@ -5,9 +5,10 @@ import DepositRialHistory from "../componets/common/DepositRialHistory"
 import WithdrawRialHistory from "../componets/common/WithdrawRialHistory"
 import TransactionOrder from "../componets/common/TransactionOrder"
 import DepositCryptoHistory from "../componets/common/DepositCryptoHistory"
+import Transfers from "../componets/common/Transfers"
 const TransactionHistory = () => {
     const [select, setSelect] = useState(0)
-    const tabs = ['خرید',"فروش", "واریز های تومانی", "برداشت های تومانی","واریز ارزی","برداشت ارزی"]
+    const tabs = ['خرید',"فروش", "واریز های تومانی", "برداشت های تومانی","واریز ارزی","برداشت ارزی","انتقال داخلی"]
     return (
         <Layout>
             <div className="w-[95%] mx-auto relative">
@@ -26,6 +27,7 @@ const TransactionHistory = () => {
                         {select === 3 ? <WithdrawRialHistory /> : null}
                         {select === 4 ? <DepositCryptoHistory type="deposit"/> : null}
                         {select === 5 ? <DepositCryptoHistory type="withdraw"/> : null}
+                        {select === 6 ? <Transfers type="withdraw"/> : null}
                     </div>
                 </div>
             </div>

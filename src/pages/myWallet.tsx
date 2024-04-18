@@ -85,13 +85,13 @@ const MyWallet = () => {
                                         </StyledTableCell>
                                         <StyledTableCell className="flex items-center gap-3">
                                             <Link
-                                                to={"/action"}
+                                                to={"/action?select=0"}
                                                 className="text-blue-500   px-3 py-2 rounded-lg "
                                             >
                                                 واریز
                                             </Link>
                                             <Link
-                                                to={"/action"}
+                                                to={"/action?select=1"}
                                                 className="text-blue-500   px-3 py-2 rounded-lg "
                                             >
                                                 برداشت
@@ -99,16 +99,22 @@ const MyWallet = () => {
                                             {crypto.currency_id.code !== "IRT" ? (
                                                 <>
                                                     <Link
-                                                        to={"/action"}
+                                                        to={"/action?select=2"}
                                                         className="text-blue-500   px-3 py-2 rounded-lg "
                                                     >
                                                         واریز ارز
                                                     </Link>
                                                     <Link
-                                                        to={"/action"}
+                                                        to={"/action?select=3"}
                                                         className="text-blue-500   px-3 py-2 rounded-lg "
                                                     >
                                                         برداشت ارز
+                                                    </Link>
+                                                    <Link
+                                                        to={"/action?select=4"}
+                                                        className="text-blue-500   px-3 py-2 rounded-lg "
+                                                    >
+                                                        انتقال داخلی
                                                     </Link>
                                                 </>
                                             ) : null}

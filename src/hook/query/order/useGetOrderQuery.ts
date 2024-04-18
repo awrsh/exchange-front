@@ -4,6 +4,7 @@ import { getOrder } from '../../../services/order'
 
 const useGetOrderQuery = () => {
   return useQuery([Order.ALL_ORDERS], async () => await getOrder(), {
+    cacheTime:0,
 
   })
 }

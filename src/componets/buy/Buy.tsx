@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Select from '../common/Select'
 import { useFormik } from 'formik'
 import Input from '../common/Input'
@@ -7,7 +7,6 @@ import Button from '../common/Button'
 import useAuthStore from '../../stores/user-store'
 import useGlobalStore from '../../stores/global-store'
 import useGetCuurencyListQuery from '../../hook/query/currency/useGetCuurencyListQuery'
-import useOrderMutation from '../../hook/mutation/order/useOrderMutation'
 import * as Yup from "yup"
 import Verify from './Verify'
 import { addCommas, removeNonNumeric } from '../../helpers/utils/fun'
@@ -19,11 +18,11 @@ const Buy = ({ select }: { select: number }) => {
     })
     const { data, isLoading } = useGetCuurencyListQuery()
     const { toggleVerifyAuth } = useGlobalStore()
-    const { mutate, isLoading: loadingOrder, isSuccess } = useOrderMutation()
     const { user } = useAuthStore()
     const formik = useFormik<any>({
         initialValues: {
             crypto: null,
+            price: null,
             amount: null,
             slider: null
         },
@@ -32,18 +31,24 @@ const Buy = ({ select }: { select: number }) => {
             amount: Yup.string().required("فیلد اجباری است")
         }),
         onSubmit: (values) => {
-
-            setModal({
-                open: true,
-                info: {
-                    type:select === 0?"buy":"sell",
-                    ...values
-                }
-            })
             if (user?.authentication_status === "level_0") {
                 return toggleVerifyAuth(true)
             }
-            // mutate(data)
+            formik.resetForm({
+                values:{
+                    amount:"",
+                    price:""
+                }
+            })
+            setModal({
+                open: true,
+                info: {
+                    type: select === 0 ? "buy" : "sell",
+                    price: Number(removeNonNumeric(values.price)),
+                    amount: values.amount,
+                    crypto: values.crypto,
+                }
+            })
         }
     })
 
@@ -64,19 +69,19 @@ const Buy = ({ select }: { select: number }) => {
     const total = user?.wallets.find((crypto) => crypto.currency_id.code === "IRT")
 
     const onClickSubLabel = () => {
-        // console.log(Number(total?.balance).toLocaleString(),addCommas(removeNonNumeric(Number(total?.balance).toLocaleString())))
-        formik.setFieldValue("price",addCommas(removeNonNumeric(Number(total?.balance))))
+        formik.setFieldValue("price", addCommas(total?.balance.toFixed(0)!))
         const amount = Number(total?.balance) / Number(formik.values?.crypto?.price)
         formik.setFieldValue("amount", amount ? Number(amount.toFixed(8)) : 0)
+        formik.setFieldValue("slider", 100)
     }
 
     const onChangeAmount = (e: any) => {
-        const price = Number(removeNonNumeric(e.target.value)) * Number(formik.values?.crypto?.price)
+        const price = Number(e.target.value) * Number(formik.values?.crypto?.price)
+        if (price > Number(total?.balance.toFixed(0))) return
         formik.setFieldValue("amount", e.target.value)
-        formik.setFieldValue("price", addCommas(removeNonNumeric(price)))
+        formik.setFieldValue("price", addCommas(price))
     }
     const onChnagePrice = (e: any) => {
-        console.log(Number(removeNonNumeric(e.target.value)),Number(total?.balance))
         if (Number(removeNonNumeric(e.target.value)) > Number(Number(total?.balance))) return
         const amount = Number(removeNonNumeric(e.target.value)) / Number(formik.values?.crypto?.price)
         formik.setFieldValue("price", addCommas(removeNonNumeric(e.target.value)))
@@ -85,19 +90,14 @@ const Buy = ({ select }: { select: number }) => {
 
     const onChangeSlider = (_: any, value: number) => {
         const precent = Number(value) / 100
-        formik.setFieldValue("price", addCommas(removeNonNumeric(precent * Number(total?.balance))))
+        const price = precent * Number(Number(total?.balance).toFixed(0))
+        const amount = price / Number(formik.values?.crypto?.price)
+        formik.setFieldValue("price", addCommas(price))
+        formik.setFieldValue("amount", amount)
         formik.setFieldValue("slider", value)
     }
 
-    useEffect(() => {
-        if (isSuccess) {
-            formik.setValues({
-                crypto: "",
-                amount: "",
-                price: ""
-            })
-        }
-    }, [isSuccess])
+
     const onChangeCrypto = (value: any) => {
         formik.setValues({
             ...formik.values,
@@ -143,7 +143,7 @@ const Buy = ({ select }: { select: number }) => {
                     name=''
                     label='موجودی تومانی'
                     formik={formik}
-                    value={total?.balance ? Number(total?.balance).toLocaleString() : ""}
+                    value={total?.balance ? Number(total?.balance.toFixed(0)).toLocaleString() : ""}
                     subLabel='تومان'
                 />
                 <Input
@@ -168,7 +168,7 @@ const Buy = ({ select }: { select: number }) => {
                 <div className='flex items-start justify-between p-3 my-5 rounded-xl bg-[#f5f5f5] dark:bg-navyBlue '>
                     <div className='flex flex-col items-center gap-3'>
                         <p className='font-extrabold text-neutral-800 dark:text-white'>مبلغ‌کل</p>
-                        <p className='font-num dark:text-white'>{formik?.values?.price ? Number(formik?.values?.price).toLocaleString() : null}</p>
+                        <p className='font-num dark:text-white'>{formik?.values?.price ? formik?.values?.price : null}</p>
                     </div>
                     <div className='flex flex-col items-center gap-3 '>
                         <p className='font-extrabold text-neutral-800 dark:text-white'>کارمزد</p>
@@ -180,7 +180,7 @@ const Buy = ({ select }: { select: number }) => {
                         <p className='font-num dark:text-white'>{formik?.values?.price ? Number(formik?.values?.amount).toFixed(8).toLocaleString() : ""}</p>
                     </div>
                 </div>
-                <Button  isLoading={loadingOrder} name={"خرید"} containerClass='!bg-green-500' />
+                <Button name={"خرید"} containerClass='!bg-green-500' />
             </form>
             {
                 modal.open &&
