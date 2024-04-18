@@ -15,7 +15,7 @@ const ExChange = () => {
   })
   const onClick = () => {
     if (user?.authentication_status === "level_0") {
-        toggleVerifyAuth()
+        toggleVerifyAuth(false)
     }
 }
   return (
