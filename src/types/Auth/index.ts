@@ -27,7 +27,7 @@ export interface User {
     uid: string;
     mobile: string;
     user_level: number;
-    authentication_status:"level_0"| "level_۱" | "level_1" | "level_2" | "level_3" | "pending";
+    authentication_status: "level_0" | "level_۱" | "level_1" | "level_2" | "level_3" | "pending";
     national_code: string;
     gender: string;
     birth_date: string;
@@ -36,20 +36,25 @@ export interface User {
     avatar_image: string;
     last_login: string;
     wallets: Wallet[];
-    total_ir_balance?:string
+    total_ir_balance?: string
 }
 
 
 export type Wallet = {
     balance: number;
     id: number;
-    currency_id:Currency
+    currency_id: Currency
 }
 
 
 export type PayloadForgetPassword = {
-    mobile:string,
-    otp:string,
-    password_1:string
-    password_2:string
+    mobile: string,
+    otp: string,
+    password_1: string
+    password_2: string
+}
+export type PayloadResetPassword = {
+    old_password: string
+    password_1: string
+    password_2: string
 }

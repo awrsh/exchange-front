@@ -2,6 +2,7 @@ import { HiMiniDevicePhoneMobile } from "react-icons/hi2";
 import { CiCalendar } from "react-icons/ci";
 import { FaRegCircleUser } from "react-icons/fa6";
 import useAuthStore from "../../stores/user-store";
+import ChangePassword from "./ChangePassword";
 
 const Information = () => {
     let options = { year: "numeric", month: "long", day: "numeric" };
@@ -60,7 +61,7 @@ const Information = () => {
 
                 </div>
             </div>
- 
+            <ChangePassword />
         </div>
     )
 }
