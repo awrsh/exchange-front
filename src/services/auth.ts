@@ -1,6 +1,6 @@
 import { routes } from "../helpers/api/routes";
 import { generateFormData, getRoute } from "../helpers/utils/services";
-import { User, typeLogin, typeRegister, typeVerify } from "../types/Auth";
+import { PayloadForgetPassword, User, typeLogin, typeRegister, typeVerify } from "../types/Auth";
 import { ResponseVerify } from "../types/Auth/ResponseVerify";
 import client from "./utils/client";
 
@@ -29,4 +29,12 @@ export const verifyAccount = async (data:any) => {
     const formData = generateFormData(data)
     const url = getRoute({ route: `${routes.auth.verify_account}` });
     return await client<ResponseVerify>({ url ,method:"PUT", ...formData});
+};
+export const forgetPasswordOtp = async (data:{mobile:string}) => {
+    const url = getRoute({ route: `/users/forget-password/otp/` });
+    return await client<ResponseVerify>({ url ,method:"POST", data});
+};
+export const forgetPassword = async (data:PayloadForgetPassword) => {
+    const url = getRoute({ route: `/users/forget-password/` });
+    return await client<ResponseVerify>({ url ,method:"POST", data});
 };

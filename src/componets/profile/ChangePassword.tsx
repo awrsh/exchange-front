@@ -14,7 +14,7 @@ const ChangePassword = () => {
                 <Input formik={formik} name="" label="پسورد جدید" />
             </div>
 
-            <Button containerClass="!w-[130px] !mt-10 !mr-auto" name="ذخیره تغیرات" />
+            <Button containerClass="!w-[130px] !bg-int !mt-10 !mr-auto" name="ذخیره تغیرات" />
         </div>
     )
 }

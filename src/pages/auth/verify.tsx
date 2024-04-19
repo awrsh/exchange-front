@@ -46,7 +46,7 @@ const Verify = () => {
           </div>
 
           <span className="block mt-14">
-            <ReactInputVerificationCode onCompleted={onCompleted} autoFocus onChange={(val) => setValue(val)} placeholder="" length={4} value={value} />
+            <ReactInputVerificationCode onCompleted={onCompleted} autoFocus onChange={(val) => setValue(val)} placeholder="" length={5} value={value} />
           </span>
 
           <Button isLoading={isLoading} disabled={value.length !== 4} onClick={onSubmit} name="تائید کد" containerClass="!mt-14 !bg-int" />

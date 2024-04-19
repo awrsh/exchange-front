@@ -10,7 +10,7 @@ const LoginHistory = () => {
         <div className="bg-white bg-dark flex  flex-col rounded-xl p-3">
             <p className="font-bold text-xl border-b border-neutral-200 pb-3">تاریخچه ورود</p>
             <div className="mt-8">
-                <Table length={data?.length} header={["وضعیت", "زمان", "پیام",]} >
+                <Table className="max-h-[300px] overflow-y-auto" length={data?.length} header={["وضعیت", "زمان", "پیام",]} >
                     {
                         data?.map((user, idx) => (
                             <StyledTableRow key={idx}>

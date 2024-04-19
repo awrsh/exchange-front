@@ -33,6 +33,7 @@ interface PropsTable {
     subTitleFooter?: any;
     isLoaidng?: boolean;
     length?: number;
+    className?: string;
 }
 
 export default function Table({
@@ -41,9 +42,10 @@ export default function Table({
     title,
     isLoaidng,
     length,
+    className
 }: PropsTable) {
     return (
-        <div className="flex-1 dark:!bg-dark">
+        <div className={`flex-1 dark:!bg-dark ${className}`}>
             {title && <p className="font-es-regular text-[#3b3b3b] pb-4 pr-1">{title}</p>}
             <div className="lg:border relative bg-white dark:!bg-block rounded-tr-lg lg:rounded-lg overflow-hidden " >
                 <TableContainer className="" sx={{ position: "relative",background:"inherit" }} component={Paper}>

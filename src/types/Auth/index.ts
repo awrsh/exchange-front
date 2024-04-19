@@ -45,3 +45,11 @@ export type Wallet = {
     id: number;
     currency_id:Currency
 }
+
+
+export type PayloadForgetPassword = {
+    mobile:string,
+    otp:string,
+    password_1:string
+    password_2:string
+}
