@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import useGetTransfersQuery from '../../hook/query/transfers/useGetTransfersQuery';
 let options = { year: "numeric", month: "long", day: "numeric" };
 
-const Transfers = ({ type }: { type: string }) => {
+const Transfers = () => {
     const { data, isLoading, isSuccess } = useGetTransfersQuery();
     const [filteredData, setFilteredData] = useState<any>([]);
     const formik = useFormik({

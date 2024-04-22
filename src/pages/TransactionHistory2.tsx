@@ -27,7 +27,7 @@ const TransactionHistory = () => {
                         {select === 3 ? <WithdrawRialHistory /> : null}
                         {select === 4 ? <DepositCryptoHistory type="deposit"/> : null}
                         {select === 5 ? <DepositCryptoHistory type="withdraw"/> : null}
-                        {select === 6 ? <Transfers type="withdraw"/> : null}
+                        {select === 6 ? <Transfers /> : null}
                     </div>
                 </div>
             </div>
