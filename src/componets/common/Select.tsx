@@ -45,7 +45,7 @@ const Select = ({
     const styles = {
         control: (base: any, state: any) => ({
             ...base,
-            border: state.isFocused ? 0 : formik.errors[name!]?.id ? "1px solid #ef4444" : "1px solid #eee",
+            border: state.isFocused ? 0 : formik.errors[name!]?.label ? "1px solid #ef4444" : "1px solid #eee",
             backgroundColor: theme === "dark"?"#0B1520": backgroundColor,
             height: isMulti ? "fit-content" : "46.58px",
             borderRadius: "8px",
@@ -95,7 +95,7 @@ const Select = ({
                 menuPosition="fixed"
             />
             <span className="block font-artin-light mt-[1px] text-[11px] text-red-500 pr-1">
-                {formik.errors[name!]?.id ? formik.errors[name!]?.id : null}
+                {formik.errors[name!]?.label ? formik.errors[name!]?.label : null}
             </span>
         </div>
     );
