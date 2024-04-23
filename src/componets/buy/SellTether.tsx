@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Select from '../common/Select'
 import { useFormik } from 'formik'
 import Input from '../common/Input'
@@ -9,9 +9,11 @@ import useGlobalStore from '../../stores/global-store'
 import * as Yup from "yup"
 import { addCommas, removeNonNumeric } from '../../helpers/utils/fun'
 import Verify from './Verify'
+import useCalculateBuySellCommission from '../../hook/mutation/calculate/useCalculateBuySellCommission'
 
 
 const SellTether = ({ select }: { select: number }) => {
+    const { mutate, data: calculateData, isSuccess, reset } = useCalculateBuySellCommission()
     const [modal, setModal] = useState<any>({
         open: false,
         info: null
@@ -33,6 +35,7 @@ const SellTether = ({ select }: { select: number }) => {
             if (user?.authentication_status === "level_0") {
                 return toggleVerifyAuth(true)
             }
+            reset()
             formik.resetForm()
             setModal({
                 open: true,
@@ -60,36 +63,63 @@ const SellTether = ({ select }: { select: number }) => {
     // @ts-ignore
     const total = user?.wallets.find((crypto) => crypto.currency_id.code === formik?.values.crypto?.currency_id.code)
 
+    // all balance
     const onClickSubLabel = () => {
-        const balance = Number(total?.balance)
-        const price = Number(balance) * Number(total?.currency_id.price)
-        formik.setFieldValue("price", addCommas(price))
-        formik.setFieldValue("amount", Number(balance))
-        formik.setFieldValue("slider", 100)
+        formik.setFieldValue("amount", "")
+        mutate({
+            amount: Number(total?.balance).toFixed(0),
+            base_currency_code: "USDT",
+            currency_code: formik.values.crypto.currency_id.code,
+            type: "sell",
+        })
+        formik.setFieldValue("price", addCommas(Number(total?.balance).toFixed(0)!))
     }
 
+
     const onChangeAmount = (e: any) => {
-        if (e.target.value > Number(total?.balance)) return
-        const price = Number(e.target.value) * Number(formik.values?.crypto?.currency_id.price)
+        const price = Number(e.target.value) * Number(formik.values?.crypto?.price)
+        if (price > Number(Number(total?.balance).toFixed(0))) return
+        formik.setFieldValue("price", "")
+        mutate({
+            amount: e.target.value,
+            base_currency_code: "USDT",
+            currency_code: formik.values.crypto.currency_id.code,
+            type: "sell",
+        })
         formik.setFieldValue("amount", e.target.value)
-        formik.setFieldValue("price", addCommas(price))
+
     }
     const onChnagePrice = (e: any) => {
-        const amount = Number(removeNonNumeric(e.target.value)) / Number(formik.values?.crypto?.currency_id.price)
-        if (amount > Number(total?.balance)) return
-        formik.setFieldValue("price", addCommas(removeNonNumeric(e.target.value)))
-        formik.setFieldValue("amount", amount ? amount.toFixed(8) : 0)
+        mutate({
+            cost: removeNonNumeric(e.target.value),
+            base_currency_code: "USDT",
+            currency_code: formik.values.crypto.currency_id.code,
+            type: "sell",
+        })
+        formik.setFieldValue("price", e.target.value)
+        formik.setFieldValue("amount", "")
     }
+
+    useEffect(() => {
+        if (isSuccess) {
+            formik.setFieldValue("amount", calculateData.amount)
+            formik.setFieldValue("price", addCommas(calculateData.cost))
+        }
+    }, [isSuccess])
 
     const onChangeSlider = (_: any, value: number) => {
         const precent = Number(value) / 100
-        const amount = precent * Number(total?.balance)
-        const price = Number(amount * Number(formik.values.crypto.currency_id.price)).toFixed(0)
-        formik.setFieldValue("amount", amount)
-        formik.setFieldValue("price",addCommas(price) )
+        const amount = Number(precent * Number(total?.balance)).toFixed(8)
+        mutate({
+            amount: amount.toString(),
+            base_currency_code: "USDT",
+            currency_code: formik.values.crypto.currency_id.code,
+            type: "sell",
+        })
+       
         formik.setFieldValue("slider", value)
     }
-   
+
     return (
         <div className='mt-3'>
 
@@ -100,7 +130,7 @@ const SellTether = ({ select }: { select: number }) => {
                     formatOptionLabel={formatOptionLabel}
                     formik={formik}
                     name='crypto'
-                    options={user?.wallets.filter((option: any) => option.currency_id.code !== "IRT")!}
+                    options={user?.wallets.filter((option: any) => option.currency_id.code !== "USDT")!}
                     label='لطفا رمز ارز خود را انتخاب کنید'
                     isSearchable
                 />
@@ -142,18 +172,19 @@ const SellTether = ({ select }: { select: number }) => {
                 <CustomSlider color='red' disabled={!formik?.values?.crypto} value={formik.values.slider} onChange={onChangeSlider} />
 
 
-                <div className='flex items-start justify-between p-3 my-5 rounded-xl bg-[#f5f5f5] dark:bg-navyBlue'>
+                <div className='flex items-start justify-between p-3 my-5 rounded-xl bg-[#f5f5f5] dark:bg-navyBlue '>
                     <div className='flex flex-col items-center gap-3'>
                         <p className='font-extrabold text-neutral-800 dark:text-white'>مبلغ‌کل</p>
-                        <p className='font-num'>{formik?.values?.price ? formik?.values?.price : null}</p>
+                        <p className='font-num dark:text-white'>{calculateData?.cost.toLocaleString()}</p>
                     </div>
-                    <div className='flex flex-col items-center gap-3'>
+                    <div className='flex flex-col items-center gap-3 '>
                         <p className='font-extrabold text-neutral-800 dark:text-white'>کارمزد</p>
-                        <p className='font-num dark:text-white'>{Number(10000).toLocaleString()}</p>
+                        <p className='font-num dark:text-white'>{calculateData?.commission}</p>
                     </div>
-                    <div className='flex flex-col items-center gap-3'>
+                    <div className='flex flex-col items-center gap-3 
+'>
                         <p className='font-extrabold text-neutral-800 dark:text-white'>دریافتی‌شما</p>
-                        <p className='font-num dark:text-white'>{formik?.values?.amount?formik?.values?.amount : ""}</p>
+                        <p className='font-num dark:text-white'>{calculateData?.amount_after_commission}</p>
                     </div>
                 </div>
                 <Button containerClass="!bg-red-500" name={select === 0 ? "خرید" : "فروش"} />

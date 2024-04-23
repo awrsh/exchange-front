@@ -10,7 +10,7 @@ const useOrderMutation = () => {
   return useMutation(async (data: Order) => await newOrder(data), {
     onSuccess: async (data: any) => {
       const user = await getUser()
-      setUser({ user })
+      setUser({ user:user.object })
       successToast(`${data.object.type === "buy" ? "خرید" : "فروش"} شما با موفقیت انجام شد`)
     },
     onError: (error: any) => {

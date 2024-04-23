@@ -19,7 +19,7 @@ const TotalAssetValue = () => {
                         <div className="flex items-center gap-1">
                             <span className="w-3 h-3 rounded-full block bg-amber-500" />
                             {/* @ts-ignore */}
-                            <p className="font-bold font-num">{totalDollar?.toFixed(2)}<span className="text-xs">$</span></p>
+                            <p className="font-bold font-num">{Number(totalDollar).toFixed(2)}<span className="text-xs">$</span></p>
                         </div>
                         <p className="text-xs text-neutral-600">موجودی ارزی</p>
                         {/* <Link to={"#"} className="font-light text-xs text-blue-500">خرید و فروش ارز</Link> */}

@@ -25,6 +25,7 @@ const Verify = ({ modal, setModal }: Props) => {
 
     const onClick = () => {
         const data = {
+            base_currency_id:"9506",
             type: modal.info.type,
             currency_id: Number(modal?.info.crypto?.id),
             amount: Number(modal?.info.amount)

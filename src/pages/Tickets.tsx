@@ -19,7 +19,7 @@ const Tickets = () => {
                     <Button onClick={() => setOpen(!open)} containerClass="!w-[120px] !bg-int" name="تیکت جدید" />
                 </div>
                 <div className="mt-10">
-                    <Table isLoaidng={isLoading} length={data?.objects.length} header={["#", "عنوان تیکت", "تاریخ", "نوع پیام", "وضعیت",]} >
+                    <Table isLoaidng={isLoading} length={data?.objects.length} header={["#", "عنوان تیکت", "تاریخ", "نوع پیام", "وضعیت"]} >
                         {
                             data?.objects.map((message, idx) => (
                                 <StyledTableRow key={idx}>
@@ -33,6 +33,7 @@ const Tickets = () => {
                                     <StyledTableCell align="center">
                                         <span className={`font-bold ${message.status === "pending" ? "text-yellow-500" : ""}`}>{message.status === "pending" ? "در انتظار" : ""}</span>
                                     </StyledTableCell>
+                                    
                                 </StyledTableRow>
                             ))
                         }
