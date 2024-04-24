@@ -5,6 +5,7 @@ import InviteInformation from "../componets/invite-friends/InviteInformation"
 import YourReceipts from "../componets/invite-friends/YourReceipts"
 
 const InviteFriends = () => {
+  // const {data} = useGetReferalQuery()
   return (
     <Layout>
       <div className="w-[95%] mx-auto">

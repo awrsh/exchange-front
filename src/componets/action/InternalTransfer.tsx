@@ -92,20 +92,7 @@ const InternalTransfer = () => {
           disabled={!formik.values.crypto}
         />
 
-        <div className="space-y-4 bg-[#fff3d5] p-4 rounded-lg !mt-6">
-          <div className="flex justify-between items-center">
-            <p className="font-bold text-[14px] text-gray-900">میزان برداشت</p>
-            <p className="text-[12px] text-gray-900">{formik.values?.amount} {formik.values.crypto?.currency_id?.title}</p>
-          </div>
-          <div className="flex justify-between items-center">
-            <p className="font-bold text-[14px] text-gray-900">کارمزد</p>
-            <p className="text-[12px] text-gray-900">0 BTC</p>
-          </div>
-          <div className="flex justify-between items-center">
-            <p className="font-bold text-[14px] text-gray-900">دریافتی شما</p>
-            <p className="text-[12px] text-gray-900">0 BTC</p>
-          </div>
-        </div>
+  
         <Button type="submit" containerClass="!mt-16 !bg-int" name="انتقال" />
       </form>
       {

@@ -172,18 +172,19 @@ const Sell = ({ select }: { select: number }) => {
                 <CustomSlider color='red' disabled={!formik?.values?.crypto} value={formik.values.slider} onChange={onChangeSlider} />
 
 
-                <div className='flex items-start justify-between p-3 my-5 rounded-xl bg-[#f5f5f5] dark:bg-navyBlue'>
+                <div className='flex items-start justify-between p-3 my-5 rounded-xl bg-[#f5f5f5] dark:bg-navyBlue '>
                     <div className='flex flex-col items-center gap-3'>
                         <p className='font-extrabold text-neutral-800 dark:text-white'>مبلغ‌کل</p>
-                        <p className='font-num'>{formik?.values?.price ? formik?.values?.price : null}</p>
+                        <p className='font-num dark:text-white'>{calculateData?.cost.toLocaleString()}</p>
                     </div>
-                    <div className='flex flex-col items-center gap-3'>
+                    <div className='flex flex-col items-center gap-3 '>
                         <p className='font-extrabold text-neutral-800 dark:text-white'>کارمزد</p>
-                        <p className='font-num dark:text-white'>{Number(10000).toLocaleString()}</p>
+                        <p className='font-num dark:text-white'>{calculateData?.commission}</p>
                     </div>
-                    <div className='flex flex-col items-center gap-3'>
+                    <div className='flex flex-col items-center gap-3 
+'>
                         <p className='font-extrabold text-neutral-800 dark:text-white'>دریافتی‌شما</p>
-                        <p className='font-num dark:text-white'>{formik?.values?.amount ? formik?.values?.amount : ""}</p>
+                        <p className='font-num dark:text-white'>{calculateData?.amount_after_commission}</p>
                     </div>
                 </div>
                 <Button containerClass="!bg-red-500" name={select === 0 ? "خرید" : "فروش"} />

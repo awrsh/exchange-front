@@ -23,7 +23,7 @@ const YourReceipts = () => {
     ]
     return (
         <div className="bg-white bg-dark h-full overflow-auto flex gap-6 flex-col rounded-xl p-3">
-            <div className="border-b border-int pb-5">
+            <div className="border-b border-int pb-5 flex items-center justify-between">
                 <p className="font-bold text-xl">پاداش های دریافتی شما</p>
             </div>
             <Table header={["دوستان تائید هویت شده", "پاداش"]}>

@@ -71,10 +71,10 @@ const MyWallet = () => {
                                                 <span>{Number(crypto.balance).toLocaleString("fa")}</span>
                                                     {crypto.currency_id.code !== "IRT" && (
                                                         <span className="font-num font-bold">
-                                                            {Number(
+                                                            {Number(Number(
                                                                 Number(crypto.currency_id.price) *
                                                                 Number(crypto.balance)
-                                                            ).toLocaleString()}{" "}
+                                                            ).toFixed(0)).toLocaleString()}{" "}
                                                             <span className="text-xs font-medium text-gray-500">
                                                                 تومان
                                                             </span>
@@ -83,36 +83,36 @@ const MyWallet = () => {
                                                 </p>
                                             </div>
                                         </StyledTableCell>
-                                        <StyledTableCell className="flex items-center gap-3">
+                                        <StyledTableCell className="!flex !items-center justify-end gap-3">
                                             <Link
                                                 to={"/action?select=0"}
-                                                className="text-blue-500   px-3 py-2 rounded-lg "
+                                                className="text-blue-500  block  px-3 py-2 rounded-lg "
                                             >
                                                 واریز
                                             </Link>
                                             <Link
                                                 to={"/action?select=1"}
-                                                className="text-blue-500   px-3 py-2 rounded-lg "
+                                                className="text-blue-500  block px-3 py-2 rounded-lg "
                                             >
                                                 برداشت
                                             </Link>
                                             {crypto.currency_id.code !== "IRT" ? (
                                                 <>
                                                     <Link
-                                                        to={"/action?select=2"}
-                                                        className="text-blue-500   px-3 py-2 rounded-lg "
+                                                        to={`/buy?${crypto.currency_id.code}`}
+                                                        className="text-blue-500 block  px-3 py-2 rounded-lg "
                                                     >
-                                                        واریز ارز
+                                                        خرید آسان 
                                                     </Link>
                                                     <Link
                                                         to={"/action?select=3"}
-                                                        className="text-blue-500   px-3 py-2 rounded-lg "
+                                                        className="text-blue-500  block px-3 py-2 rounded-lg "
                                                     >
-                                                        برداشت ارز
+                                                         معامله
                                                     </Link>
                                                     <Link
                                                         to={"/action?select=4"}
-                                                        className="text-blue-500   px-3 py-2 rounded-lg "
+                                                        className="text-blue-500  block px-3 py-2 rounded-lg "
                                                     >
                                                         انتقال داخلی
                                                     </Link>

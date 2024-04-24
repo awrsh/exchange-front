@@ -63,6 +63,10 @@ const VerifyInternalTransfer = ({ modal, setModal }: Props) => {
                         <p>قیمت خرید</p>
                         <span className='font-num'>{Number(modal.info.crypto?.price!).toLocaleString()} <span className='text-xs'>تومان</span></span>
                     </div>
+                    <div className='flex items-center justify-between'>
+                        <p>شماره موبایل</p>
+                        <span className='font-num'>{modal.info.mobile}</span>
+                    </div>
                 </div>
                 <div className='space-y-2 mt-4'>
                     <p className='text-gray-900 font-medium'>
