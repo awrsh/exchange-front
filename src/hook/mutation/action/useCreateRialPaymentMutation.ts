@@ -10,7 +10,7 @@ const useCreateRialPaymentMutation = () => {
       }
     },
     onError:(error:any)=>{
-      errorToast(error?.response?.data?.error?.description)
+      errorToast(error?.response?.data?.error?.message)
     }
   })
 }

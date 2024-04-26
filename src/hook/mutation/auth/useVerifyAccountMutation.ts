@@ -9,7 +9,7 @@ const useVerifyAccountMutation = () => {
   return useMutation(async (data:any) => await verifyAccount({...data,rule_id:Number(id)}),{
     onSuccess:(data)=>{
       if (data?.result === "error") {
-        errorToast(data?.error?.description)
+        errorToast(data?.error?.message)
         return
       }else{
         successToast("اطلاعات شما با موفقیت ثبت شد")
@@ -17,7 +17,7 @@ const useVerifyAccountMutation = () => {
       }
     },
     onError:(error:any)=>{
-      errorToast(error?.response?.data?.error?.description)
+      errorToast(error?.response?.data?.error?.message)
     }
   })
 }

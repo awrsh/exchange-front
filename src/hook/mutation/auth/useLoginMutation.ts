@@ -9,7 +9,7 @@ const useLoginMutation = () => {
   return useMutation(async (data: typeLogin) => await login(data), {
     onSuccess: (data, variables) => {
       if (data?.result === "error") {
-        errorToast(data?.error?.description)
+        errorToast(data?.error?.message)
         return
       } else {
         successToast(data.message)
@@ -17,7 +17,7 @@ const useLoginMutation = () => {
       }
     },
     onError: (error: any) => {
-      errorToast(error?.response?.data?.error?.description)
+      errorToast(error?.response?.data?.error?.message)
     }
   })
 }
