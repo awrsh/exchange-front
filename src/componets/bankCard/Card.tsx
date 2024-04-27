@@ -8,7 +8,7 @@ const Card = ({ shaba, cardId }: Props) => {
     const newShaba = shaba.split("")
     const newCardId = cardId.split("")
     return (
-        <div className="w-full lg:w-[70%] flex flex-col justify-between h-[200px] lg:h-[240px] p-3 rounded-xl mx-auto bg-blue-800">
+        <div className="w-full lg:w-[70%] flex flex-col justify-between h-[200px] lg:h-[240px] p-3 rounded-xl mx-auto bg-green-600">
             <div className="flex justify-between">
                 <img className="w-10 h-10" src={Chip} />
                 <img className="w-10 h-10" src={logo} />

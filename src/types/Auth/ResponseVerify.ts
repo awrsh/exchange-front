@@ -4,5 +4,6 @@ export type ResponseVerify = {
     result: "error",
     error:{
         description:string
+        message:string
     }
 }

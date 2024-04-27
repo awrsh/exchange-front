@@ -11,6 +11,7 @@ import Verify from './Verify'
 import { addCommas, removeNonNumeric } from '../../helpers/utils/fun'
 import useCalculateBuySellCommission from '../../hook/mutation/calculate/useCalculateBuySellCommission'
 import CustomSlider from '../common/CustomSlider'
+import { errorToast } from '../../helpers/utils/error'
 
 const Buy = ({ select }: { select: number }) => {
     const { mutate, data: calculateData, isSuccess, reset } = useCalculateBuySellCommission()
@@ -88,14 +89,18 @@ const Buy = ({ select }: { select: number }) => {
 
     const onChangeAmount = (e: any) => {
         const price = Number(e.target.value) * Number(formik.values?.crypto?.price)
-        if (price > Number(Number(total?.balance).toFixed(0))) return
-        formik.setFieldValue("price", "")
+        if (price > Number(Number(total?.balance).toFixed(0))) {
+            errorToast("موجودی شما کمتر از حد مجاز برای خرید این ارز است")
+            formik.setFieldValue("amount", "")
+            return
+        }
         mutate({
             amount: e.target.value,
             base_currency_code: "IRT",
             currency_code: formik.values.crypto.code,
             type: "buy",
         })
+        formik.setFieldValue("price", "")
         formik.setFieldValue("amount", e.target.value)
 
     }
@@ -130,6 +135,7 @@ const Buy = ({ select }: { select: number }) => {
             formik.setFieldValue("price", addCommas(calculateData.cost))
         }
     }, [isSuccess])
+    console.log(formik.values)
     return (
         <div className='mt-3'>
 
@@ -170,12 +176,11 @@ const Buy = ({ select }: { select: number }) => {
                 />
                 <Input
                     className='mt-3'
-                    isOnChange
+                    isOnChange={true}
                     name='amount'
                     label={`مقدار ${formik.values?.crypto?.title ? `(${formik.values?.crypto?.title_fa})` : ""}`}
-                    formik={formik}
                     onChange={onChangeAmount}
-                    value={formik?.values?.amount}
+                    value={formik.values.amount}
                     disabled={!formik?.values?.crypto}
                 />
 

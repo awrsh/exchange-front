@@ -6,8 +6,7 @@ const TotalAssetValue = () => {
     const { user } = useAuthStore()
     const totalToman = user?.wallets.find((wallet) => wallet.currency_id.code === "IRT")
     // @ts-ignore
-    const totalDollar = user?.wallets.filter((option) => option.currency_id.code !== "IRT").reduce((acc, obj) => { return acc + obj.currency_id.price_info_usdt_price }, 0)
-    console.log(totalDollar)
+    const totalDollar = user?.wallets.filter((option) => option.currency_id.code !== "IRT").reduce((acc, obj) => { return acc + Number(obj.currency_id.price_info_usdt_price) }, 0)
     return (
         <div className="flex-1 flex flex-col lg:flex-row w-full justify-center items-center bg-white p-3 rounded-xl space-y-10 h-full bg-dark">
             <div className="flex-1 flex flex-col items-center gap-4">
