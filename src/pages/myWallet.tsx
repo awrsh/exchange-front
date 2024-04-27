@@ -6,6 +6,7 @@ import WithTokenCkeck from "../hook/common/WithTokenCkeck";
 import useAuthStore from "../stores/user-store";
 import Inventory from "../componets/my-wallet/inventory";
 import IranFlg from "../assets/images/download.jpg";
+import Dropdown from "../componets/common/Dropdown";
 const MyWallet = () => {
     const { user } = useAuthStore();
     return (
@@ -98,12 +99,9 @@ const MyWallet = () => {
                                             </Link>
                                             {crypto.currency_id.code !== "IRT" ? (
                                                 <>
-                                                    <Link
-                                                        to={`/buy?${crypto.currency_id.code}`}
-                                                        className="text-blue-500 block  px-3 py-2 rounded-lg "
-                                                    >
-                                                        خرید آسان 
-                                                    </Link>
+                                                   <Dropdown className="!p-0" list={[{link:"/buy",name:"خرید تومان"}]}>
+                                                    <p className="font-regular text-blue-500 text-xs">خرید آسان</p>
+                                                   </Dropdown>
                                                     <Link
                                                         to={"/action?select=3"}
                                                         className="text-blue-500  block px-3 py-2 rounded-lg "

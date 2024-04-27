@@ -1,15 +1,18 @@
 import { FaUserAlt } from "react-icons/fa";
-import { MdDarkMode } from "react-icons/md";
+import { MdDarkMode, MdKeyboardArrowDown } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { themeContext } from "../../context/ThemeContextProvider";
 import { useContext, useEffect } from "react";
 import Notfecation from "./Notfecation";
 import useAuthStore from "../../stores/user-store";
-import userImage from "../../assets/images/user.jpg"
 import Logo from "../../assets/images/bit-asia.svg"
 import { menus } from "../../helpers/utils/data";
+import Dropdown from "./Dropdown";
+import UserImage from "../../assets/images/user.jpg"
 const Header = () => {
+     const list = [{ name: "پروفایل", link: "/profile" },{ name: "تیکت‌ها", link: "/tickets" }]
+
   const { user } = useAuthStore()
   const [cookies] = useCookies(["token"]);
   const { theme, setTheme } = useContext(themeContext);
@@ -41,8 +44,13 @@ const Header = () => {
 
             {
               cookies.token ? <div className="flex items-center gap-2">
-                <img className="w-7 h-7 object-cover rounded-full" src={user?.avatar_image ? user.avatar_image : userImage} />
-                <span className="text-sm font-bold">{user?.first_name} {user?.last_name}</span>
+                <Dropdown className="min-w-[290px]" list={list}>
+                  <div className='flex items-center gap-1'>
+                    <img className="w-7 h-7 object-cover rounded-full " src={UserImage} />
+                    <span className="text-sm font-bold !text-gray-700">{user?.first_name} {user?.last_name}</span>
+                  </div>
+                  <MdKeyboardArrowDown size={25} className='!text-gray-700' />
+                </Dropdown>
               </div> :
                 <Link to={"/auth"} className="flex items-center text-neutral-600 dark:text-white rounded-xl gap-2 p-2 border">
                   <span className="font-bold  text-sm">ورود/ثبت‌نام</span>

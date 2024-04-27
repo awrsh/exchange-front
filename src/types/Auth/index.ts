@@ -17,6 +17,7 @@ export type typeVerify = {
 
 export interface User {
     id: number;
+    referral_code:string;
     approved_rule_ids: number[]
     username: string;
     first_name: string;

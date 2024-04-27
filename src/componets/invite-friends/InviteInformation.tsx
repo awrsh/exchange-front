@@ -1,7 +1,9 @@
 import { IoCopy } from "react-icons/io5";
 import Button from "../common/Button";
+import useAuthStore from "../../stores/user-store";
 
 const InviteInformation = () => {
+    const {user} = useAuthStore()
     return (
         <div className="bg-white bg-dark flex justify-between flex-col rounded-xl p-3">
             <div className="border-b border-int pb-5">
@@ -11,12 +13,12 @@ const InviteInformation = () => {
             <div className="space-y-4 mt-3">
                 <div className="flex items-center w-full text-neutral-400 justify-between bg-neutral-100 dark:bg-navyBlue p-3 rounded-lg">
                     <p className="font-bold text-[13px] dark:text-white">کد دعوت</p>
-                    <p className="text-int font-num ">454545</p>
+                    <p className="text-int font-num ">{user?.referral_code}</p>
                     <IoCopy />
                 </div>
                 <div className="flex items-center w-full text-neutral-400 justify-between bg-neutral-100 dark:bg-navyBlue  p-3 rounded-lg">
                     <p className="font-bold text-[13px]  dark:text-white">لینک دعوت</p>
-                    <p className="text-int font-num text-[10px] lg:text-[14px]">bitasia.com/register?ref=LOJFFD</p>
+                    <p className="text-int font-num text-[10px] lg:text-[14px]">www.bitasia.com/register?ref={user?.referral_code}</p>
                     <IoCopy />
                 </div>
                 <Button containerClass="!w-1/2 !mx-auto !bg-int" name="اشتراک گذاری"/>
