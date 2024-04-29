@@ -27,9 +27,9 @@ const ChangePassword = () => {
     return (
         <form onSubmit={formik.handleSubmit} className="mt-5">
             <div className="flex items-center gap-10">
-                <Input icon_left={show === "old_password" ? <GoEye className="cursor-pointer text-gray-600" onClick={() => setShow("")} size={20} /> : <GoEyeClosed className="cursor-pointer text-gray-600" onClick={() => setShow("old_password")} size={20} />} type={show === "old_password" ? "text" : "password"} ltr formik={formik} name="old_password" label="پسورد قبلی" />
-                <Input icon_left={show === "password_1" ? <GoEye className="cursor-pointer text-gray-600" onClick={() => setShow("")} size={20} /> : <GoEyeClosed className="cursor-pointer text-gray-600" onClick={() => setShow("password_1")} size={20} />} type={show === "password_1" ? "text" : "password"} ltr formik={formik} name="password_1" label="پسورد فعلی" />
-                <Input icon_left={show === "password_2" ? <GoEye className="cursor-pointer text-gray-600" onClick={() => setShow("")} size={20} /> : <GoEyeClosed className="cursor-pointer text-gray-600" onClick={() => setShow("password_2")} size={20} />} type={show === "password_2" ? "text" : "password"} ltr formik={formik} name="password_2" label="پسورد جدید" />
+                <Input icon_left={show === "old_password" ? <GoEye className="cursor-pointer text-gray-600" onClick={() => setShow("")} size={20} /> : <GoEyeClosed className="cursor-pointer text-gray-600" onClick={() => setShow("old_password")} size={20} />} type={show === "old_password" ? "text" : "password"} ltr formik={formik} name="old_password" label="رمزعبور فعلی" />
+                <Input icon_left={show === "password_1" ? <GoEye className="cursor-pointer text-gray-600" onClick={() => setShow("")} size={20} /> : <GoEyeClosed className="cursor-pointer text-gray-600" onClick={() => setShow("password_1")} size={20} />} type={show === "password_1" ? "text" : "password"} ltr formik={formik} name="password_1" label="رمزعبور جدید" />
+                <Input icon_left={show === "password_2" ? <GoEye className="cursor-pointer text-gray-600" onClick={() => setShow("")} size={20} /> : <GoEyeClosed className="cursor-pointer text-gray-600" onClick={() => setShow("password_2")} size={20} />} type={show === "password_2" ? "text" : "password"} ltr formik={formik} name="password_2" label="تکرار رمزعبور جدید" />
             </div>
 
             <Button type="submit" isLoading={isLoading}  containerClass="!w-[130px] !bg-int !mt-10 !mr-auto" name="ذخیره تغیرات" />

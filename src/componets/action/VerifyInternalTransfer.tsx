@@ -44,7 +44,7 @@ const VerifyInternalTransfer = ({ modal, setModal }: Props) => {
         }
     }, [isSuccess])
     return (
-        <Dialog fullWidth maxWidth="sm" open>
+        <Dialog fullWidth maxWidth="sm" open className='' >
             <DialogTitle>
                 <h1 className='text-center text-xl font-extrablack'>امنیت انتقال</h1>
 
@@ -83,11 +83,11 @@ const VerifyInternalTransfer = ({ modal, setModal }: Props) => {
                     </p>
                     <p className='text-gray-900 font-medium'>
                         <span className='w-3 h-3 mx-2 rounded-full inline-block bg-green-500'></span>
-                        امکان لفو برداشت وجود ندارد
+                        امکان لغو برداشت وجود ندارد
                     </p>
                 </div>
             </DialogContent>
-            <DialogActions className='flex items-center gap-10 '>
+            <DialogActions className='flex items-center gap-10 !p-4'>
                 <Button onClick={() => setModal({ info: {}, open: false })} sx={{ border: "1px solid gray" }} containerClass='!bg-transparent' className='text-gray-600' name='انصراف' />
                 <Button disabled={value.length !== 5} isLoading={isLoading} onClick={onClick} name="انتقال" />
             </DialogActions>
