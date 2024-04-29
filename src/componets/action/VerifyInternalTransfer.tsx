@@ -1,7 +1,8 @@
 import { Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material'
 import Button from '../common/Button';
 import useTransfersMutation from '../../hook/mutation/transfers/useTransfersMutation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import ReactInputVerificationCode from 'react-input-verification-code';
 type Props = {
     modal: {
         open: boolean
@@ -23,11 +24,13 @@ type Props = {
 }
 const VerifyInternalTransfer = ({ modal, setModal }: Props) => {
     const { mutate, isLoading, isSuccess } = useTransfersMutation()
+    const [value, setValue] = useState("")
     const onClick = () => {
         const data = {
             currency_code: modal.info.crypto.code,
             amount: Number(modal.info.amount),
-            mobile: modal.info.mobile
+            mobile: modal.info.mobile,
+            otp:value
         }
         mutate(data)
     }
@@ -68,6 +71,11 @@ const VerifyInternalTransfer = ({ modal, setModal }: Props) => {
                         <span className='font-num'>{modal.info.mobile}</span>
                     </div>
                 </div>
+                <div className=''>
+                    <p className='py-4 text-gray-700 font-bold'>لطفا کد تائید ارسالی را برای انتقال وارد کنید</p>
+                    <ReactInputVerificationCode autoFocus onChange={(val) => setValue(val)} placeholder="" length={5} value={value} />
+                </div>
+
                 <div className='space-y-2 mt-4'>
                     <p className='text-gray-900 font-medium'>
                         <span className='w-3 h-3 mx-2 rounded-full inline-block bg-green-500'></span>
@@ -81,7 +89,7 @@ const VerifyInternalTransfer = ({ modal, setModal }: Props) => {
             </DialogContent>
             <DialogActions className='flex items-center gap-10 '>
                 <Button onClick={() => setModal({ info: {}, open: false })} sx={{ border: "1px solid gray" }} containerClass='!bg-transparent' className='text-gray-600' name='انصراف' />
-                <Button isLoading={isLoading} onClick={onClick} name="انتقال" />
+                <Button disabled={value.length !== 5} isLoading={isLoading} onClick={onClick} name="انتقال" />
             </DialogActions>
         </Dialog >
     )

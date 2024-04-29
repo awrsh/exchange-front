@@ -6,34 +6,57 @@ import { amounts } from '../../helpers/utils/data'
 import Select from '../common/Select'
 import Button from '../common/Button'
 import { Link } from 'react-router-dom'
-import useWithdrawRialPaymentMutation from '../../hook/mutation/action/useWithdrawRialPaymentMutation'
 import useAuthStore from '../../stores/user-store'
-import { addCommas, removeNonNumeric } from '../../helpers/utils/fun'
+import { addCommas, formatCardNumber, removeNonNumeric } from '../../helpers/utils/fun'
+import { useEffect, useState } from 'react'
+import VerifyWithdawTransactionRial from './VerifyWithdarwRial'
+import useOtpTransactionRialMutation from '../../hook/mutation/action/useOtpTransactionRialMutation'
 
 const WithdrawRials = () => {
+    const { mutate, isSuccess,isLoading:loadingOtp } = useOtpTransactionRialMutation()
+    const [modal, setModal] = useState<any>({
+        open: false,
+        onfo: null
+    })
     const { user } = useAuthStore()
     const { data, isLoading } = useGetCreditCardRuels()
-    const { mutate, isLoading: LoadingPay } = useWithdrawRialPaymentMutation()
     const formik = useFormik<any>({
         initialValues: {
             amount: "",
             card_number: ""
         },
         validationSchema: validationSchemaRial,
-        onSubmit: (values) => {
-            const data = {
-                card_number: values.card_number.card_number,
-                amount: Number(removeNonNumeric(values.amount)) * 10
-            }
-            mutate(data)
+        onSubmit: () => {
+
+            mutate()
         }
     })
 
-    
-    const onChangeInput = (e:any)=>{
-        formik.setFieldValue("amount",addCommas(removeNonNumeric(e.target.value)))
-        
+
+    const onChangeInput = (e: any) => {
+        formik.setFieldValue("amount", addCommas(removeNonNumeric(e.target.value)))
+
     }
+
+    const formatOptionLabel = ({ card_number }: any) => {
+        return <div className='flex items-center gap-2'>
+            <span className='text-xs font-bold font-num'>{formatCardNumber(card_number)}</span>
+        </div >
+    }
+
+
+    useEffect(() => {
+        if (isSuccess) {
+            setModal({
+                open: true,
+                info: {
+                    card_number: formik.values.card_number.card_number,
+                    sheba_number: formik.values.card_number.iban,
+                    amount: Number(removeNonNumeric(formik.values.amount)) * 10
+                }
+            })
+        }
+    }, [isSuccess])
     return (
         <div className="mt-10">
             <div className='w-[70%] mx-auto'>
@@ -43,7 +66,7 @@ const WithdrawRials = () => {
                 </p>
             </div>
             <form onSubmit={formik.handleSubmit} className="mt-4 flex flex-col gap-4 flex-1">
-            <Input onChange={onChangeInput} isOnChange value={formik.values.amount} inputClassName='text-center text-lg' name="amount" label="مبلغ" formik={formik} subLabel='تومان' />
+                <Input onChange={onChangeInput} isOnChange value={formik.values.amount} inputClassName='text-center text-lg' name="amount" label="مبلغ" formik={formik} subLabel='تومان' />
                 <div className="grid grid-cols-3 gap-4">
                     {
                         amounts.map((amount, idx) => (
@@ -65,10 +88,14 @@ const WithdrawRials = () => {
                         <p className='text-[14px] font-bold'>شماره کارتی برای شما ثبت نشده است</p>
                         <Link className='text-[#d9881f] text-xs' to={"/bank-card"}>برای ثبت شماره کارت اینجا کلیک کنید</Link>
                     </div> :
-                        <Select isLoading={isLoading} label=" شماره کارت" getOptionLabel={(option) => option.card_number} getOptionValue={(option) => option.card_number} formik={formik} options={data?.objects.filter((option) => option.approved !== false)!} name="card_number" />
+                        <Select formatOptionLabel={formatOptionLabel} isLoading={isLoading} label=" شماره کارت" getOptionLabel={(option) => option.card_number} getOptionValue={(option) => option.card_number} formik={formik} options={data?.objects.filter((option) => option.approved !== false)!} name="card_number" />
                 }
-                <Button disabled={Number(user?.total_ir_balance) === 0 || !formik?.values?.card_number} isLoading={LoadingPay} type="submit" containerClass="!mt-10 !bg-int" name="برداشت" />
+                <Button disabled={Number(user?.total_ir_balance) === 0 || !formik?.values?.card_number} isLoading={isLoading|| loadingOtp} type="submit" containerClass="!mt-10 !bg-int" name="برداشت" />
             </form>
+
+            {
+                modal.open ? <VerifyWithdawTransactionRial modal={modal} setModal={setModal} /> : null
+            }
         </div>
     )
 }

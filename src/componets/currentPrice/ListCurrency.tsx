@@ -4,7 +4,7 @@ import { StyledTableCell, StyledTableRow } from "../../helpers/utils/mui"
 import Table from "../common/Table"
 import { Sparklines, SparklinesLine } from "react-sparklines"
 import Input from "../common/Input"
-import {  useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useFormik } from "formik"
 import useGlobalStore from "../../stores/global-store"
 import useAuthStore from "../../stores/user-store"
@@ -14,24 +14,24 @@ import { Currency } from "../../types/Currencies"
 
 const ListCurrency = () => {
     const { data, isLoading } = useGetCuurencyListQuery()
-    const [filteredData, setFilteredData] = useState<Currency[]|[]>([]);
+    const [filteredData, setFilteredData] = useState<Currency[] | []>([]);
     const { toggleVerifyAuth } = useGlobalStore()
     const { user } = useAuthStore()
     const [select, setSelect] = useState(0)
     const formik = useFormik<any>({
         initialValues: {
-            serach:""
+            serach: ""
         },
         onSubmit: () => { }
     })
 
 
-    useEffect(()=>{
-        if(data?.objects){
+    useEffect(() => {
+        if (data?.objects) {
             // @ts-ignore
             setFilteredData(data?.objects)
         }
-    },[data])
+    }, [data])
 
     const onClick = () => {
         if (user?.authentication_status === "level_0") {
@@ -43,12 +43,17 @@ const ListCurrency = () => {
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         formik.setFieldValue("search", e.target.value)
-        const filtered:any = data?.objects.filter((crypto) =>
-            (crypto.title.toLowerCase().includes(formik.values.search.toLowerCase()) ||
-              crypto.title_fa.toLowerCase().includes(formik.values.search.toLowerCase()))
-          );
+        if (e.target.value.length === 0) {
+            // @ts-ignore
+            setFilteredData(data?.objects)
+            return
+        }
+        const filtered: any = data?.objects.filter((crypto) =>
+        (crypto.title.toLowerCase().includes(formik.values.search.toLowerCase()) ||
+            crypto.title_fa.toLowerCase().includes(formik.values.search.toLowerCase()))
+        );
 
-          setFilteredData(filtered)
+        setFilteredData(filtered)
     }
 
     return (
@@ -77,7 +82,7 @@ const ListCurrency = () => {
                                     </div>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
-                                    <p className="font-medium">$ {crypto?.price_info_usdt_price ?Number(crypto.price_info_usdt_price).toFixed(crypto.decimal):""}</p>
+                                    <p className="font-medium">$ {crypto?.price_info_usdt_price ? Number(crypto.price_info_usdt_price) : ""}</p>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
                                     <p className="font-num">{Number(crypto.price).toLocaleString()} <span className="text-[10px]">تومان</span></p>

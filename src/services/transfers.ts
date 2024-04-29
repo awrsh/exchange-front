@@ -11,3 +11,7 @@ export const getTransfers = async () => {
     const url = getRoute({ route: `/transfers/` });
     return await client<ResponseTransfers>({ url, });
 };
+export const getOtpTransfer = async () => {
+    const url = getRoute({ route: `/transfers/otp/` });
+    return await client<Response>({ url,method:"POST" });
+};

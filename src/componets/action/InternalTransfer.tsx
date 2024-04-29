@@ -4,9 +4,12 @@ import useAuthStore from "../../stores/user-store"
 import Input from "../common/Input"
 import Button from "../common/Button"
 import VerifyInternalTransfer from "./VerifyInternalTransfer"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import * as Yup from "yup"
+import useGetOtpTransfersMutation from "../../hook/mutation/transfers/useGetOtpTransfersMutation"
 const InternalTransfer = () => {
+  const { mutate, isLoading, isSuccess } = useGetOtpTransfersMutation()
+
   const [modal, setModal] = useState<any>({
     info: null,
     open: false
@@ -25,17 +28,24 @@ const InternalTransfer = () => {
       amount: Yup.string().required("فیلد اجباری است"),
       mobile: Yup.string().required("فیلد اجباری است"),
     }),
-    onSubmit: (values) => {
+    onSubmit: () => {
+      mutate()
+    }
+  })
+
+  useEffect(() => {
+    if (isSuccess) {
       formik.resetForm()
       setModal({
         info: {
-          ...values,
-          crypto: values.crypto.currency_id
+          amount: formik.values.amount,
+          mobile: formik.values.mobile,
+          crypto: formik.values.crypto.currency_id,
         },
         open: true
       })
     }
-  })
+  }, [isSuccess])
   const formatOptionLabel = ({ currency_id, balance }: any) => {
     return <div className="flex justify-between items-center">
       <div className='flex items-center gap-2'>
@@ -92,8 +102,8 @@ const InternalTransfer = () => {
           disabled={!formik.values.crypto}
         />
 
-  
-        <Button type="submit" containerClass="!mt-16 !bg-int" name="انتقال" />
+
+        <Button disabled={Number(formik.values.crypto.balance) === 0} isLoading={isLoading} type="submit" containerClass="!mt-16 !bg-int" name="انتقال" />
       </form>
       {
         modal.open ?

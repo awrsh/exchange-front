@@ -96,7 +96,7 @@ const SellTether = ({ select }: { select: number }) => {
             currency_code: formik.values.crypto.currency_id.code,
             type: "sell",
         })
-        formik.setFieldValue("price", e.target.value)
+        formik.setFieldValue("price", addCommas(removeNonNumeric(e.target.value)))
         formik.setFieldValue("amount", "")
     }
 

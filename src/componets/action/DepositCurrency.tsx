@@ -26,8 +26,8 @@ const DepositCurrency = () => {
             const data = {
                 "type": "deposit",
                 wallet_address: currencyWallet?.objects[0].address!,
-                currency_id: values.crypto.id,
-                network_id: values.network.id,
+                currency_code: values.crypto.id,
+                network_code: values.network.id,
                 amount: Number(values.amount),
                 tx_id: values.txid
             }
@@ -80,7 +80,7 @@ const DepositCurrency = () => {
 
     }
     const onChangeAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if(Number(e.target.value) < 0) return
+        if(Number(e.target.value) <= 0) return
         formik.setFieldValue("amount", e.target.value)
 
     }

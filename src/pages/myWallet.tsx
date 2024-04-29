@@ -50,7 +50,7 @@ const MyWallet = () => {
                                         >
                                             <div className="flex flex-col items-center">
                                                 <p className="flex flex-col items-center gap-1 text-zinc-900">
-                                                    <span>{Number(Number(crypto.balance).toFixed(crypto.currency_id.decimal)).toLocaleString()}</span>
+                                                    <span>{Number(Number(crypto.balance))}</span>
                                                     {crypto.currency_id.code !== "IRT" && (
                                                         <span className="font-num font-bold">
                                                             {Number(Number(

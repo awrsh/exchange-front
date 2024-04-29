@@ -41,16 +41,20 @@ const Select = ({
     isSearchable = false,
     formatOptionLabel
 }: Props) => {
-    const {theme} = useContext(themeContext)
+    const { theme } = useContext(themeContext)
     const styles = {
         control: (base: any, state: any) => ({
             ...base,
             border: state.isFocused ? 0 : formik.errors[name!]?.label ? "1px solid #ef4444" : "1px solid #eee",
-            backgroundColor: theme === "dark"?"#0B1520": backgroundColor,
+            backgroundColor: theme === "dark" ? "#0B1520" : backgroundColor,
             height: isMulti ? "fit-content" : "46.58px",
             borderRadius: "8px",
             fontSize: "12px !important",
             fontFamily: "dana",
+            menuList: (base:any) => ({
+                ...base,
+
+            }),
             // This line disable the blue border
             boxShadow: state.isFocused ? 0 : 0,
             "&:hover": {
@@ -59,10 +63,10 @@ const Select = ({
             options: (styles: any) => ({
                 ...styles,
                 fontSize: "12px !important",
-                menu: (base : any) => ({
+                menu: (base: any) => ({
                     ...base,
-                 backgroundColor : "red"
-                  }),
+                    backgroundColor: "red"
+                }),
             }),
         }),
     };

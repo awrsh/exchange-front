@@ -4,11 +4,16 @@ import Input from "../common/Input"
 import Button from "../common/Button"
 import useAuthStore from "../../stores/user-store"
 import useCalculateCommissionMutation from "../../hook/mutation/transactions/useCalculateCommissionMutation"
-import { useEffect } from "react"
-import useCraeteTransactionCryptoMutation from "../../hook/mutation/currencies/useCraeteTransactionCryptoMutation"
+import { useEffect, useState } from "react"
+import VerifyWithdawTransactionCrypto from "./VerifyWithdawTransactionCrypto"
+import useOtpTransactionCryptoMutation from "../../hook/mutation/action/useOtpTransactionCryptoMutation"
 
 const WithdrawalCurrency = () => {
-    const { mutate: mutateWithdraw, isLoading: loadingWithdarw } = useCraeteTransactionCryptoMutation()
+    const [modal, setModal] = useState<any>({
+        open: false,
+        info: null
+    })
+    const { mutate: mutate_otp, isLoading: loadingOtp, isSuccess } = useOtpTransactionCryptoMutation()
     const { isLoading, mutate } = useCalculateCommissionMutation()
     const { user } = useAuthStore()
     const formik = useFormik<any>({
@@ -18,15 +23,8 @@ const WithdrawalCurrency = () => {
             amount: null,
             wallet_address: null
         },
-        onSubmit: (values) => {
-            const data = {
-                "type": "withdarw",
-                currency_code: values.crypto.id,
-                network_code: values.network.id,
-                amount: Number(values.amount),
-                wallet_address: values.wallet_address
-            }
-            mutateWithdraw(data)
+        onSubmit: () => {
+            mutate_otp()
         }
     })
 
@@ -72,6 +70,23 @@ const WithdrawalCurrency = () => {
             mutate(calculateCommission)
         }
     }, [formik.values])
+
+
+    useEffect(() => {
+        if (isSuccess) {
+            setModal({
+                open: true,
+                info: {
+                    "type": "withdraw",
+                    crypto: formik.values.crypto,
+                    network_code: formik.values.network.id,
+                    amount: Number(formik.values.amount),
+                    wallet_address: formik.values.wallet_address
+                }
+
+            })
+        }
+    }, [isSuccess])
 
 
     return (
@@ -124,9 +139,14 @@ const WithdrawalCurrency = () => {
                         <p className="text-[12px] text-gray-900">0 BTC</p>
                     </div>
                 </div>
-                <Button isLoading={isLoading || loadingWithdarw} type="submit" containerClass="!mt-16 !bg-int" name="برداشت" />
+                <Button disabled={formik.values?.crypto?.balance === 0} isLoading={isLoading || loadingOtp} type="submit" containerClass="!mt-16 !bg-int" name="برداشت" />
             </form>
 
+            {
+                modal.open ?
+                    <VerifyWithdawTransactionCrypto modal={modal} setModal={setModal} />
+                    : null
+            }
         </div>
     )
 }
