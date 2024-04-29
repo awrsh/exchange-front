@@ -201,17 +201,16 @@ const Buy = ({ select }: { select: number }) => {
                     <p className='font-bold text-zinc-400'>BTC <span className='font-num font-extrabold mx-3 text-neutral-800'>2,000,000</span></p>
                 </div> */}
 
-                <div className='flex items-start justify-between p-3 my-5 rounded-xl bg-[#f5f5f5] dark:bg-navyBlue '>
-                    <div className='flex flex-col items-center gap-3'>
+                <div className='flex items-start justify-around p-3 my-5 rounded-xl bg-[#f5f5f5] dark:bg-navyBlue '>
+                    {/* <div className='flex flex-col items-center gap-3'>
                         <p className='font-extrabold text-neutral-800 dark:text-white'>مبلغ‌کل</p>
                         <p className='font-num dark:text-white'>{calculateData?.cost.toLocaleString()}</p>
-                    </div>
+                    </div> */}
                     <div className='flex flex-col items-center gap-3 '>
                         <p className='font-extrabold text-neutral-800 dark:text-white'>کارمزد</p>
                         <p className='font-num dark:text-white'>{calculateData?.commission}</p>
                     </div>
-                    <div className='flex flex-col items-center gap-3 
-'>
+                    <div className='flex flex-col items-center gap-3 '>
                         <p className='font-extrabold text-neutral-800 dark:text-white'>دریافتی‌شما</p>
                         <p className='font-num dark:text-white'>{calculateData?.amount_after_commission}</p>
                     </div>

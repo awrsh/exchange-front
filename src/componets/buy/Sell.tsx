@@ -179,12 +179,12 @@ const Sell = ({ select }: { select: number }) => {
                     </div>
                     <div className='flex flex-col items-center gap-3 '>
                         <p className='font-extrabold text-neutral-800 dark:text-white'>کارمزد</p>
-                        <p className='font-num dark:text-white'>{calculateData?.commission}</p>
+                        <p className='font-num dark:text-white'>{calculateData?.commission.toLocaleString()}</p>
                     </div>
                     <div className='flex flex-col items-center gap-3 
 '>
                         <p className='font-extrabold text-neutral-800 dark:text-white'>دریافتی‌شما</p>
-                        <p className='font-num dark:text-white'>{calculateData?.amount_after_commission}</p>
+                        <p className='font-num dark:text-white'>{calculateData?.amount_after_commission.toLocaleString()}</p>
                     </div>
                 </div>
                 <Button containerClass="!bg-red-500" name={select === 0 ? "خرید" : "فروش"} />
