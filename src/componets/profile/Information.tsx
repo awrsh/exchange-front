@@ -3,7 +3,7 @@ import { CiCalendar } from "react-icons/ci";
 import { FaRegCircleUser } from "react-icons/fa6";
 import useAuthStore from "../../stores/user-store";
 import ChangePassword from "./ChangePassword";
-
+import User from "../../assets/images/user.jpg"
 const Information = () => {
     let options = { year: "numeric", month: "long", day: "numeric" };
     const { user } = useAuthStore()
@@ -13,7 +13,7 @@ const Information = () => {
             {/* image & fullname & change img */}
             <div className="flex items-center py-4 justify-between border-b border-neutral-200">
                 <div className="flex items-center gap-2">
-                    <img className="rounded-full w-14 h-14" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/The_Undertaker_US_Marine_Visit_2019_%28cropped%292.jpg/220px-The_Undertaker_US_Marine_Visit_2019_%28cropped%292.jpg" />
+                    <img className="rounded-full object-cover w-14 h-14" src={User} />
                     <div className="flex items-center flex-col">
                         <span className="font-bold text-[14px] ">{user?.first_name} {user?.last_name}</span>
                         <div>

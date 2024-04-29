@@ -10,12 +10,13 @@ const YourReceipts = () => {
             <div className="border-b border-int pb-5 flex items-center justify-between">
                 <p className="font-bold text-xl">پاداش های دریافتی شما</p>
             </div>
-            <Table isLoaidng={isLoading} length={data?.objects.length} header={["دوستان تائید هویت شده", "پاداش"]}>
+            <Table isLoaidng={isLoading} length={data?.objects.length} header={["کمترین", "بیشترین","درصد"]}>
                 {
                     data?.objects.map((item, idx) => (
                         <StyledTableRow className="style-table-row" key={idx}>
-                            <StyledTableCell className="!font-num dark:!text-white " align="center">{item.verify}</StyledTableCell>
-                            <StyledTableCell className="!font-num dark:!text-white" align="center">%{item.reward}</StyledTableCell>
+                            <StyledTableCell className="!font-num dark:!text-white " align="center">{item.min_subset_count}</StyledTableCell>
+                            <StyledTableCell className="!font-num dark:!text-white" align="center">%{item.max_subset_count}</StyledTableCell>
+                            <StyledTableCell className="!font-num dark:!text-white" align="center">%{item.percent}</StyledTableCell>
                         </StyledTableRow>
 
                     ))

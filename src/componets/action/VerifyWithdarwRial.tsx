@@ -28,7 +28,6 @@ const VerifyWithdawTransactionRial = ({ modal, setModal }: Props) => {
         }
     }, [isSuccess])
 
-    console.log(modal.info,"djjdjdjdjdjdj")
     return (
         <Dialog fullWidth maxWidth="sm" open>
             <DialogTitle>
@@ -41,7 +40,7 @@ const VerifyWithdawTransactionRial = ({ modal, setModal }: Props) => {
                     
                     <div className='flex items-center justify-between'>
                         <p>مبلغ</p>
-                        <span className='font-num'>{Number(modal.info.amount).toLocaleString()} تومان</span>
+                        <span className='font-num'>{Number(modal.info.amount/10).toLocaleString()} تومان</span>
                     </div>
                     <div className='flex items-center justify-between'>
                         <p> کارت بانکی</p>

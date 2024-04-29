@@ -19,6 +19,7 @@ const WithdrawRials = () => {
         onfo: null
     })
     const { user } = useAuthStore()
+    const toman = user?.wallets.find((wallet)=> wallet.currency_id.code === "IRT")
     const { data, isLoading } = useGetCreditCardRuels()
     const formik = useFormik<any>({
         initialValues: {
@@ -61,7 +62,7 @@ const WithdrawRials = () => {
         <div className="mt-10">
             <div className='w-[70%] mx-auto'>
                 <p className='text-center text-[13px] font-bold'>لطفا برداشت خود را به صورت تومان وارد کنید و سپس شماره کارت مورد نظر را انتخاب کنید</p>
-                <p className='text-center text-xs text-gray-600 pt-3'>موجودی قابل برداشت: <span className='text-gray-900 font-num'>{new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(Number(user?.total_ir_balance))}</span>
+                <p className='text-center text-xs text-gray-600 pt-3'>موجودی قابل برداشت: <span className='text-gray-900 font-num'>{Number(toman?.balance).toLocaleString()}</span>
 
                 </p>
             </div>
