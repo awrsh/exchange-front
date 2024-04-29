@@ -7,6 +7,7 @@ import { amounts } from '../../helpers/utils/data'
 import Select from '../common/Select'
 import Button from '../common/Button'
 import { Link } from 'react-router-dom'
+import { addCommas, removeNonNumeric } from '../../helpers/utils/fun'
 
 const DepositRial = () => {
     const { data, isLoading } = useGetCreditCardRuels()
@@ -20,19 +21,24 @@ const DepositRial = () => {
         onSubmit: (values) => {
             const data = {
                 card_number: values.card_number.card_number,
-                amount: Number(values.amount)
+                amount: Number(removeNonNumeric(values.amount)) * 10
             }
             mutate(data)
         }
     })
+
+    const onChangeInput = (e:any)=>{
+        formik.setFieldValue("amount",addCommas(removeNonNumeric(e.target.value)))
+        
+    }
     return (
-        <div className="">
-            <form onSubmit={formik.handleSubmit} className="mt-10 flex flex-col gap-4 flex-1">
-                <Input name="amount" label="مبلغ" formik={formik} subLabel='تومان' />
-                <div className="grid grid-cols-3 gap-4">
+        <div className="w-full">
+            <form onSubmit={formik.handleSubmit} className="mt-5 lg:mt-10 flex flex-col gap-4 flex-1">
+                <Input onChange={onChangeInput} isOnChange value={formik.values.amount} inputClassName='text-center text-lg' name="amount" label="مبلغ" formik={formik} subLabel='تومان' />
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
                     {
                         amounts.map((amount, idx) => (
-                            <button type="button" onClick={() => formik.setFieldValue("amount", amount.value)} className={` text-xs py-3 rounded-xl text-gray-700 ${Number(formik.values.amount) === amount.value ? "bg-int text-white" : "bg-gray-100"}`} key={idx}>{amount.label}</button>
+                            <button type="button" onClick={() => formik.setFieldValue("amount", addCommas(amount.value))} className={` text-xs py-3 rounded-xl text-gray-700 ${idx === 4?"col-span-2 lg:col-span-1":""} ${Number(formik.values.amount) === amount.value ? "bg-int text-white" : "bg-gray-100"}`} key={idx}>{amount.label}</button>
                         ))
                     }
                 </div>
@@ -43,7 +49,7 @@ const DepositRial = () => {
                     </div> :
                         <Select isLoading={isLoading} label=" شماره کارت" getOptionLabel={(option) => option.card_number} getOptionValue={(option) => option.card_number} formik={formik} options={data?.objects.filter((option) => option.approved !== false)!} name="card_number" />
                 }
-                <Button isLoading={LoadingPay} type="submit" containerClass="!mt-10 !bg-int" name="پرداخت" />
+                <Button disabled={!formik?.values?.card_number?.card_number} isLoading={LoadingPay} type="submit" containerClass="!mt-10 !bg-int" name="پرداخت" />
             </form>
 
         </div>

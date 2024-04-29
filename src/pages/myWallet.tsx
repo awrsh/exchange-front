@@ -6,14 +6,16 @@ import WithTokenCkeck from "../hook/common/WithTokenCkeck";
 import useAuthStore from "../stores/user-store";
 import Inventory from "../componets/my-wallet/inventory";
 import IranFlg from "../assets/images/download.jpg";
-import Dropdown from "../componets/common/Dropdown";
+import BtnsAction from "../componets/common/BtnsAction";
 const MyWallet = () => {
     const { user } = useAuthStore();
     return (
         <Layout>
             <div className="pb-10 w-[95%] mx-auto">
-                <h1 className="text-xl font-bold">کیف پول‌ها</h1>
-                <div className="bg-white dark:bg-dark p-4 mt-7 rounded-xl">
+                <div className='flex items-center mt-1 justify-between'>
+                    <h1 className='font-bold text-xl'>کیف‌ پول‌ها</h1>
+                    <BtnsAction />
+                </div>                <div className="bg-white dark:bg-dark p-4 mt-7 rounded-xl">
                     <Inventory />
                     <div className="mt-4 pb-5">
                         <Table
@@ -48,7 +50,7 @@ const MyWallet = () => {
                                         >
                                             <div className="flex flex-col items-center">
                                                 <p className="flex flex-col items-center gap-1 text-zinc-900">
-                                                <span>{Number(Number(crypto.balance).toFixed(crypto.currency_id.decimal)).toLocaleString()}</span>
+                                                    <span>{Number(Number(crypto.balance).toFixed(crypto.currency_id.decimal)).toLocaleString()}</span>
                                                     {crypto.currency_id.code !== "IRT" && (
                                                         <span className="font-num font-bold">
                                                             {Number(Number(
@@ -69,7 +71,7 @@ const MyWallet = () => {
                                         >
                                             <div className="flex flex-col items-center">
                                                 <p className="flex flex-col items-center gap-1 text-zinc-900">
-                                                <span>{Number(crypto.balance).toLocaleString("fa")}</span>
+                                                    <span>{Number(crypto.balance).toLocaleString("fa")}</span>
                                                     {crypto.currency_id.code !== "IRT" && (
                                                         <span className="font-num font-bold">
                                                             {Number(Number(
@@ -99,14 +101,17 @@ const MyWallet = () => {
                                             </Link>
                                             {crypto.currency_id.code !== "IRT" ? (
                                                 <>
-                                                   <Dropdown className="!p-0" list={[{link:"/buy",name:"خرید تومان"}]}>
-                                                    <p className="font-regular text-blue-500 text-xs">خرید آسان</p>
-                                                   </Dropdown>
+                                                    <Link
+                                                        to={`/buy?code=${crypto.currency_id.code}`}
+                                                        className="text-blue-500  block px-3 py-2 rounded-lg "
+                                                    >
+                                                        خرید آسان
+                                                    </Link>
                                                     <Link
                                                         to={"/action?select=3"}
                                                         className="text-blue-500  block px-3 py-2 rounded-lg "
                                                     >
-                                                         معامله
+                                                        معامله
                                                     </Link>
                                                     <Link
                                                         to={"/action?select=4"}

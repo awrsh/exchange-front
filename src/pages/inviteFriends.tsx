@@ -1,3 +1,4 @@
+import BtnsAction from "../componets/common/BtnsAction"
 import Layout from "../componets/common/Layout"
 import FriendsInvited from "../componets/invite-friends/FriendsInvited"
 import FriendsTransaction from "../componets/invite-friends/FriendsTransaction"
@@ -5,11 +6,13 @@ import InviteInformation from "../componets/invite-friends/InviteInformation"
 import YourReceipts from "../componets/invite-friends/YourReceipts"
 
 const InviteFriends = () => {
-  // const {data} = useGetReferalQuery()
   return (
     <Layout>
       <div className="w-[95%] mx-auto">
-        <h1 className="text-xl font-bold">دعوت دوستان</h1>
+        <div className='flex items-center mt-1 justify-between'>
+          <h1 className='font-bold text-xl'>دعوت دوستان</h1>
+          <BtnsAction />
+        </div>
         <div className="grid grid-cols-4 grid-rows-6 gap-4 mt-6">
           <div className="col-span-2 row-span-2 "> <InviteInformation /></div>
           <div className="col-span-2 row-span-3 col-start-3  "><YourReceipts /></div>

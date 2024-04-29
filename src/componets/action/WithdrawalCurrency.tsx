@@ -21,8 +21,8 @@ const WithdrawalCurrency = () => {
         onSubmit: (values) => {
             const data = {
                 "type": "withdarw",
-                currency_id: values.crypto.id,
-                network_id: values.network.id,
+                currency_code: values.crypto.id,
+                network_code: values.network.id,
                 amount: Number(values.amount),
                 wallet_address: values.wallet_address
             }

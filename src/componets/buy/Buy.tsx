@@ -12,14 +12,16 @@ import { addCommas, removeNonNumeric } from '../../helpers/utils/fun'
 import useCalculateBuySellCommission from '../../hook/mutation/calculate/useCalculateBuySellCommission'
 import CustomSlider from '../common/CustomSlider'
 import { errorToast } from '../../helpers/utils/error'
+import { useSearchParams } from 'react-router-dom'
 
 const Buy = ({ select }: { select: number }) => {
+    const [searchParams] = useSearchParams()
     const { mutate, data: calculateData, isSuccess, reset } = useCalculateBuySellCommission()
     const [modal, setModal] = useState<any>({
         open: false,
         info: {}
     })
-    const { data, isLoading } = useGetCuurencyListQuery()
+    const { data, isLoading , isSuccess:isSuccessListCurr} = useGetCuurencyListQuery()
     const { toggleVerifyAuth } = useGlobalStore()
     const { user } = useAuthStore()
     const formik = useFormik<any>({
@@ -135,7 +137,14 @@ const Buy = ({ select }: { select: number }) => {
             formik.setFieldValue("price", addCommas(calculateData.cost))
         }
     }, [isSuccess])
-    console.log(formik.values)
+
+
+    useEffect(()=>{
+        if(isSuccessListCurr){
+          const findItem =  data.objects.find((item)=>item.code === searchParams.get("code"))
+          formik.setFieldValue("crypto",findItem)
+        }
+    },[isSuccessListCurr])
     return (
         <div className='mt-3'>
 

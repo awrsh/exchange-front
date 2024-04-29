@@ -25,6 +25,7 @@ interface Props {
     isError?: boolean;
     maxLength?: number;
     onClickSubLabel?: () => void;
+    inputClassName?:string
 }
 const Input = ({
     label,
@@ -47,7 +48,8 @@ const Input = ({
     placeholderRtl = true,
     isError = true,
     maxLength,
-    onClickSubLabel
+    onClickSubLabel,
+    inputClassName
 }: Props) => {
 
 
@@ -74,7 +76,7 @@ const Input = ({
                             name={name}
                             maxLength={maxLength}
                             className={`bg-transparent w-full text-[12px]  font-num  dark:placeholder:text-zinc-500 outline-none placeholder:text-[#9e9e9e] ${placeholderRtl ? "placeholder:text-right" : "placeholder:text-left"} ${ltr ? "ltr" : ""
-                                }`}
+                                } ${inputClassName}`}
                             placeholder={placeholder}
                             value={isOnChange ? value : formik.values[name!]}
                             onChange={isOnChange ? onChange : (e) => formik.setFieldValue(name, (e.target.value))}

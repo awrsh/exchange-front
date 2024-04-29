@@ -22,9 +22,9 @@ const Action = () => {
         <Layout>
             <div className="layout">
                 <h1>واریز برداشت ریالی</h1>
-                <div className="mt-10 bg-white rounded-xl p-4 flex gap-14">
-                    <div className="!flex-1 !w-1/2">
-                        <div className="flex items-center gap-4 mt-4">
+                <div className="mt-10 bg-white rounded-xl p-4 flex flex-col lg:flex-row gap-14">
+                    <div className="!flex-1 lg:!w-1/2">
+                        <div className="flex items-center whitespace-nowrap overflow-auto gap-2 lg:gap-4 mt-4">
                             {
                                 tabs.map((name, idx) => (
                                     <button onClick={() => setSelect(idx)} className={` w-[140px] transition-all text-[12px] rounded-xl p-3 ${select === idx ? "bg-int text-white" : "bg-gray-100"}`} key={idx}>{name}</button>
@@ -47,7 +47,7 @@ const Action = () => {
                             select === 4 ? <InternalTransfer /> : null
                         }
                     </div>
-                    <div className="!flex-1 !w-1/2 flex-col  mt-16 p-4 rounded-xl border">
+                    <div className="!flex-1 lg:!w-1/2 flex-col  mt-16 p-4 rounded-xl border">
                         <h1 className="text-center pt-4 font-bold">نکاتی که باید توجه داشته باشید</h1>
                         <div className="mt-10 flex flex-col gap-5">
                             <div className="flex items-start gap-4">

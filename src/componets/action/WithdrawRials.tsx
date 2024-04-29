@@ -8,6 +8,7 @@ import Button from '../common/Button'
 import { Link } from 'react-router-dom'
 import useWithdrawRialPaymentMutation from '../../hook/mutation/action/useWithdrawRialPaymentMutation'
 import useAuthStore from '../../stores/user-store'
+import { addCommas, removeNonNumeric } from '../../helpers/utils/fun'
 
 const WithdrawRials = () => {
     const { user } = useAuthStore()
@@ -22,11 +23,17 @@ const WithdrawRials = () => {
         onSubmit: (values) => {
             const data = {
                 card_number: values.card_number.card_number,
-                amount: Number(values.amount)
+                amount: Number(removeNonNumeric(values.amount)) * 10
             }
             mutate(data)
         }
     })
+
+    
+    const onChangeInput = (e:any)=>{
+        formik.setFieldValue("amount",addCommas(removeNonNumeric(e.target.value)))
+        
+    }
     return (
         <div className="mt-10">
             <div className='w-[70%] mx-auto'>
@@ -36,18 +43,18 @@ const WithdrawRials = () => {
                 </p>
             </div>
             <form onSubmit={formik.handleSubmit} className="mt-4 flex flex-col gap-4 flex-1">
-                <Input disabled={Number(user?.total_ir_balance) === 0} name="amount" label="مبلغ" formik={formik} />
+            <Input onChange={onChangeInput} isOnChange value={formik.values.amount} inputClassName='text-center text-lg' name="amount" label="مبلغ" formik={formik} subLabel='تومان' />
                 <div className="grid grid-cols-3 gap-4">
                     {
                         amounts.map((amount, idx) => (
-                            <button type="button" onClick={() => formik.setFieldValue("amount", amount.value)} className={` text-xs py-3 rounded-xl text-gray-700 ${Number(formik.values.amount) === amount.value ? "bg-int text-white" : "bg-gray-100"}`} key={idx}>{amount.label}</button>
+                            <button type="button" onClick={() => formik.setFieldValue("amount", addCommas(amount.value))} className={` text-xs py-3 rounded-xl text-gray-700 ${Number(formik.values.amount) === amount.value ? "bg-int text-white" : "bg-gray-100"}`} key={idx}>{amount.label}</button>
                         ))
                     }
                 </div>
                 <Input isOnChange value='1000' subLabel='تومان' name="" label="کارمزد" formik={formik} />
                 <Input
                     isOnChange
-                    value={formik.values?.amount ? (Number(formik.values.amount) - 1000).toLocaleString() : ""}
+                    value={formik.values?.amount ? (Number(removeNonNumeric(formik.values.amount)) - 1000).toLocaleString() : ""}
                     name=""
                     label="میزان برداشت نهایی"
                     formik={formik}
@@ -60,7 +67,7 @@ const WithdrawRials = () => {
                     </div> :
                         <Select isLoading={isLoading} label=" شماره کارت" getOptionLabel={(option) => option.card_number} getOptionValue={(option) => option.card_number} formik={formik} options={data?.objects.filter((option) => option.approved !== false)!} name="card_number" />
                 }
-                <Button disabled={Number(user?.total_ir_balance) === 0} isLoading={LoadingPay} type="submit" containerClass="!mt-10 !bg-int" name="برداشت" />
+                <Button disabled={Number(user?.total_ir_balance) === 0 || !formik?.values?.card_number} isLoading={LoadingPay} type="submit" containerClass="!mt-10 !bg-int" name="برداشت" />
             </form>
         </div>
     )
