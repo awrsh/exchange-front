@@ -52,7 +52,7 @@ const WithdrawRialHistory = () => {
                             <StyledTableCell className="dark:!text-white" align="center">{new Date(crypto.write_date).toLocaleString("fa-IR")}</StyledTableCell>
                             <StyledTableCell align="center" className="!font-num dark:!text-white">{Number(crypto.amount).toLocaleString()} <span className="text-[10px]">تومان</span></StyledTableCell>
                             <StyledTableCell align="center" className="!font-num dark:!text-white">{crypto.factor_number}</StyledTableCell>
-                            <StyledTableCell align="center" className="!font-num dark:!text-white">{formatCardNumber(crypto.card_number)}</StyledTableCell>
+                            <StyledTableCell align="center" className="!font-num dark:!text-white">{crypto?.card_number?formatCardNumber(crypto?.card_number):""}</StyledTableCell>
                             <StyledTableCell className="dark:!text-white" align="center" >{crypto.status === "success" ? <span className="text-green-500 font-bold">تکمیل شده</span> : crypto.status === "pending" ? <span className="text-yellow-500 font-bold">در انتظار پرداخت</span> : crypto.status === "cancel" ? <span className="text-red-500 font-bold">کنسل شده</span> : <span className="text-red-500 font-bold">ناموفق</span>} </StyledTableCell>
                         </StyledTableRow>
                     ))
