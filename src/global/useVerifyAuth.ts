@@ -20,7 +20,7 @@ const useVerifyAuth = () => {
                 } catch (error: any) {
                     if (error?.response?.status === 401) {
                         delete axios.defaults.headers.common["Authorization"];
-                        removeCookies("token", { path: "/" });
+                        removeCookies("token", { path: "/",domain:"",sameSite:"none" });
                         navigate("/auth")
                     }
                 } finally {
