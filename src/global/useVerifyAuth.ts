@@ -15,7 +15,7 @@ const useVerifyAuth = () => {
                 // setAuthLoading(true);
                 axios.defaults.headers.common["Authorization"] = `Bearer ${cookies.token}`;
                 try {
-                    const user = await getUser();
+                    const user:any = await getUser();
                     setUser({ user:user.object });
                 } catch (error: any) {
                     if (error?.response?.status === 401) {
