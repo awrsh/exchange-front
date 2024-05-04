@@ -14,7 +14,7 @@ const useVerifyMutation = () => {
       if (result === "error") {
         errorToast(error?.description)
       } else {
-        setCookies("token", token, { path: "/", maxAge: 3 * 24 * 60 * 60 * 1000,domain:"bitasia.ir",sameSite:"none" });
+        setCookies("token", token, { path: "/", maxAge: 3 * 24 * 60 * 60 * 1000,domain:".bitasia.ir",sameSite:"none" });
         // setCookies("token", token, { path: "/", maxAge: 3 * 24 * 60 * 60 * 1000});
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         navigate("/")
