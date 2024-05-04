@@ -17,7 +17,7 @@ const Sidebar = () => {
   const location = useLocation()
   const logout = () => {
     removeUser()
-    removeCookies("token" , {path:"/",domain:"",sameSite:"none"})
+    removeCookies("token" , {path:"/",domain:"bitasia.ir"})
     navigate("/auth")
   }
   return (
