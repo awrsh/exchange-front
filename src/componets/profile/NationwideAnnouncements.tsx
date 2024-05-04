@@ -1,32 +1,26 @@
-import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material"
-import { FiBell } from "react-icons/fi";
+import {  CircularProgress } from "@mui/material"
+import useGetAllNotification from "../../hook/query/notification/useGetAllNotification";
+
+import CardNotfication from "../common/CardNotfication";
 
 const NationwideAnnouncements = () => {
+    const { isLoading, data } = useGetAllNotification()
+
     return (
-        <div className="bg-white bg-dark flex  flex-col rounded-xl p-3 h-[500px]">
+        <div className="bg-white bg-dark flex overflow-auto flex-col rounded-xl p-3 h-[500px]">
             <p className="font-bold text-xl border-b border-neutral-200 pb-3"> اطلاعیه های سراسری</p>
             <div className="mt-5">
-                <Accordion className="!shadow-none  !rounded-xl border group border-neutral-300 dark:!bg-navyBlue">
-                    <AccordionSummary
-                        // expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                    >
-                        <div className="flex gap-2 items-center">
-                            <span className="w-11 h-11  bg-neutral-100 dark:bg-slate-400 transition-all duration-300 group-hover:text-white group-hover:bg-green-600 flex justify-center items-center rounded-full">
-                                <FiBell size={20} />
-                            </span>
-                            <div className="space-y-1 ">
-                                <span className="text-[12px] font-num text-right block text-neutral-500 dark:text-white">1 روز پیش</span>
-                                <p className="text-[12px] text-zinc-900 font-regular dark:text-white">مارکت و انتقال ارز MELI بطور موقت با اختلال مواجه شده است</p>
-                            </div>
+                {
+                    isLoading ? <CircularProgress /> :
+                        <div className="flex flex-col gap-3 ">
+                            {
+                                data?.objects.map((notification, idx) => (
+                                   <CardNotfication key={idx} notification={notification}/>
+                                ))
+                            }
+
                         </div>
-                    </AccordionSummary>
-                    <AccordionDetails className="">
-                        <p className="text-[13px] dark:!text-white text-right text-zinc-900 ">بدلیل نوسان ارز MELI و جلوگیری از | از بین رفتن دارایی کاربران | خرید و فروش و انتقال این ارز توسط مارکت مبدا بطور موفت از دسترس خارج شده است.</p>
-                        <p className="text-[13px] dark:!text-white mt-4 text-zinc-900">بلافاصله پس از فعال شدن ارز از سمت مبدا | این ارز داخل صرافی کیف پول من فعال خواهد شد.</p>
-                    </AccordionDetails>
-                </Accordion>
+                }
             </div>
         </div>
     )

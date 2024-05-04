@@ -7,11 +7,19 @@ import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
 import { FiBell } from 'react-icons/fi';
 import CardNotfication from './CardNotfication';
+import useGetAllNotification from '../../hook/query/notification/useGetAllNotification';
+import useUpdateNotificationMutation from '../../hook/mutation/notification/useUpdateNotificationMutation';
+import Button from './Button';
+import { CircularProgress } from '@mui/material';
 
 export default function Notfecation() {
-    const [select, setSelect] = React.useState(0)
+    const { isLoading, data } = useGetAllNotification()
+    const { mutate, isLoading: isLoadingNotification ,isSuccess} = useUpdateNotificationMutation()
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef<HTMLButtonElement>(null);
+
+
+    const results = data?.objects.filter((option) => option.seen !== true)
 
     const handleToggle = () => {
         setOpen((prevOpen) => !prevOpen);
@@ -47,6 +55,13 @@ export default function Notfecation() {
         prevOpen.current = open;
     }, [open]);
 
+    const clickSeenNotification = () => {
+        if (isLoading) return
+        const notifications_ids = results?.map((option) => option.id).join(',');
+        mutate({ notifications_ids })
+        setOpen(false)
+
+    }
     return (
         <Stack>
             <div className='flex'>
@@ -57,7 +72,9 @@ export default function Notfecation() {
                     aria-expanded={open ? 'true' : undefined}
                     aria-haspopup="true"
                     onClick={handleToggle}
+                    className='relative flex justify-center items-center w-8 h-8 rounded-full'
                 >
+                    <span className='absolute -top-1 -right-0 w-[0.78rem] h-[0.78rem] leading-[0.78rem] flex items-center justify-center rounded-full font-num text-white text-[10px] bg-red-600'>{results?.length}</span>
                     <FiBell className="text-gray-700" size={20} />
                 </button>
                 <Popper
@@ -85,16 +102,35 @@ export default function Notfecation() {
                                         aria-labelledby="composition-button"
                                         onKeyDown={handleListKeyDown}
                                     >
-                                        <div className='flex items-center gap-2 px-3'>
+                                        {/* <div className='flex items-center gap-2 px-3'>
                                             <button onClick={() => setSelect(0)} className={`text-[13px] px-3 py-2 rounded-lg ${select === 0 ? "bg-green-500 text-white" : ""}`}>اعلانات سیتمی</button>
                                             <button onClick={() => setSelect(1)} className={`text-[13px] px-3 py-2 rounded-lg ${select === 1 ? "bg-green-500 text-white" : ""}`}>اعلانات</button>
+                                        </div> */}
+                                        <div>
+                                            {isLoading ? <CircularProgress /> :
+                                            results?.length === 0?<div>
+                                                <p className='text-center !py-10'>اعلانی وجود ندارد</p>
+                                            </div>:
+                                                <>
+                                                    <div className='my-5 px-3 pt-4 space-y-5'>
+                                                        {
+                                                            results?.map((notification, idx) => (
+                                                                <CardNotfication key={idx} notification={notification} />
+                                                            ))
+                                                        }
+                                                    </div>
+                                                    {
+                                                        // @ts-ignore
+                                                       isSuccess && results?.length !== 0 ?
+                                                            <div className='flex items-center !pb-3 justify-end gap-2 px-3 !mr-auto'>
+                                                                <Button disabled={isLoadingNotification} name='خواندن همه' onClick={clickSeenNotification} containerClass={`text-[13px] !w-fit px-3 !h-[40px] rounded-lg !bg-green-500 text-white`} />
+                                                            </div>
+                                                            : null
+                                                    }
+                                                </>
+                                            }
                                         </div>
-                                        <div className='my-5 px-3'>
-                                            <CardNotfication />
-                                        </div>
-                                        <div className='flex items-center justify-end gap-2 px-3 !mr-auto'>
-                                            <button className={`text-[13px] px-3 py-2 rounded-lg bg-green-500 text-white`}>خواندن همه</button>
-                                        </div>
+
                                         {/* <MenuItem>
                                             <p className='font-bold text-xs'>واریز جدید</p>
                                         </MenuItem>
