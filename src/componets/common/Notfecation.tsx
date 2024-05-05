@@ -14,7 +14,7 @@ import { CircularProgress } from '@mui/material';
 
 export default function Notfecation() {
     const { isLoading, data } = useGetAllNotification()
-    const { mutate, isLoading: isLoadingNotification ,isSuccess} = useUpdateNotificationMutation()
+    const { mutate, isLoading: isLoadingNotification, isSuccess } = useUpdateNotificationMutation()
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef<HTMLButtonElement>(null);
 
@@ -74,7 +74,10 @@ export default function Notfecation() {
                     onClick={handleToggle}
                     className='relative flex justify-center items-center w-8 h-8 rounded-full'
                 >
-                    <span className='absolute -top-1 -right-0 w-[0.78rem] h-[0.78rem] leading-[0.78rem] flex items-center justify-center rounded-full font-num text-white text-[10px] bg-red-600'>{results?.length}</span>
+                    {results?.length !== 0 ?
+                        <span className='absolute -top-1 -right-0 w-[0.78rem] h-[0.78rem] leading-[0.78rem] flex items-center justify-center rounded-full font-num text-white text-[10px] bg-red-600'>{results?.length}</span>
+                        : null
+                    }
                     <FiBell className="text-gray-700" size={20} />
                 </button>
                 <Popper
@@ -107,27 +110,29 @@ export default function Notfecation() {
                                             <button onClick={() => setSelect(1)} className={`text-[13px] px-3 py-2 rounded-lg ${select === 1 ? "bg-green-500 text-white" : ""}`}>اعلانات</button>
                                         </div> */}
                                         <div>
-                                            {isLoading ? <CircularProgress /> :
-                                            results?.length === 0?<div>
-                                                <p className='text-center !py-10'>اعلانی وجود ندارد</p>
-                                            </div>:
-                                                <>
-                                                    <div className='my-5 px-3 pt-4 space-y-5'>
+                                            {isLoading ? <div className='p-2 flex justify-center items-center'>
+                                                <CircularProgress />
+                                            </div> :
+                                                results?.length === 0 ? <div>
+                                                    <p className='text-center !py-10'>اعلانی وجود ندارد</p>
+                                                </div> :
+                                                    <>
+                                                        <div className='my-5 px-3 pt-4 space-y-5'>
+                                                            {
+                                                                results?.map((notification, idx) => (
+                                                                    <CardNotfication key={idx} notification={notification} />
+                                                                ))
+                                                            }
+                                                        </div>
                                                         {
-                                                            results?.map((notification, idx) => (
-                                                                <CardNotfication key={idx} notification={notification} />
-                                                            ))
+                                                            // @ts-ignore
+                                                            isSuccess && results?.length !== 0 ?
+                                                                <div className='flex items-center !pb-3 justify-end gap-2 px-3 !mr-auto'>
+                                                                    <Button disabled={isLoadingNotification} name='خواندن همه' onClick={clickSeenNotification} containerClass={`text-[13px] !w-fit px-3 !h-[40px] rounded-lg !bg-green-500 text-white`} />
+                                                                </div>
+                                                                : null
                                                         }
-                                                    </div>
-                                                    {
-                                                        // @ts-ignore
-                                                       isSuccess && results?.length !== 0 ?
-                                                            <div className='flex items-center !pb-3 justify-end gap-2 px-3 !mr-auto'>
-                                                                <Button disabled={isLoadingNotification} name='خواندن همه' onClick={clickSeenNotification} containerClass={`text-[13px] !w-fit px-3 !h-[40px] rounded-lg !bg-green-500 text-white`} />
-                                                            </div>
-                                                            : null
-                                                    }
-                                                </>
+                                                    </>
                                             }
                                         </div>
 
