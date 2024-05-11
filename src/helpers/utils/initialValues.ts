@@ -8,4 +8,5 @@ export const initialValuesRegister = {
     first_name: "",
     last_name: "",
     passwordConfirmation: "",
+    referal:""
 }
