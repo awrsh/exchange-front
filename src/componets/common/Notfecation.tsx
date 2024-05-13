@@ -75,7 +75,9 @@ export default function Notfecation() {
                     className='relative flex justify-center items-center w-8 h-8 rounded-full'
                 >
                     {results?.length !== 0 ?
-                        <span className='absolute -top-1 -right-0 w-[0.78rem] h-[0.78rem] leading-[0.78rem] flex items-center justify-center rounded-full font-num text-white text-[10px] bg-red-600'>{results?.length}</span>
+                        <span className='absolute -top-1 -right-0 w-[0.78rem] h-[0.78rem] leading-[0.78rem] flex items-center justify-center rounded-full font-num text-white text-[10px] bg-red-600'>
+                            {/* {results?.length} */}
+                        </span>
                         : null
                     }
                     <FiBell className="text-gray-700" size={20} />
@@ -109,15 +111,15 @@ export default function Notfecation() {
                                             <button onClick={() => setSelect(0)} className={`text-[13px] px-3 py-2 rounded-lg ${select === 0 ? "bg-green-500 text-white" : ""}`}>اعلانات سیتمی</button>
                                             <button onClick={() => setSelect(1)} className={`text-[13px] px-3 py-2 rounded-lg ${select === 1 ? "bg-green-500 text-white" : ""}`}>اعلانات</button>
                                         </div> */}
-                                        <div>
-                                            {isLoading ? <div className='p-2 flex justify-center items-center'>
+                                        <div className=''>
+                                            {isLoading ? <div className='px-2 py-5 flex justify-center items-center'>
                                                 <CircularProgress />
                                             </div> :
                                                 results?.length === 0 ? <div>
                                                     <p className='text-center !py-10'>اعلانی وجود ندارد</p>
                                                 </div> :
                                                     <>
-                                                        <div className='my-5 px-3 pt-4 space-y-5'>
+                                                        <div className='my-5 px-3 py-4 space-y-5'>
                                                             {
                                                                 results?.map((notification, idx) => (
                                                                     <CardNotfication key={idx} notification={notification} />

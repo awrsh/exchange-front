@@ -28,7 +28,7 @@ export const verify = async (data:typeVerify) => {
 export const verifyAccount = async (data:any) => {
     const formData = generateFormData(data)
     const url = getRoute({ route: `${routes.auth.verify_account}` });
-    return await client<ResponseVerify>({ url ,method:"PUT", ...formData});
+    return await client<ResponseVerify>({ url ,method:"POST", ...formData});
 };
 export const forgetPasswordOtp = async (data:{mobile:string}) => {
     const url = getRoute({ route: `/users/forget-password/otp/` });
